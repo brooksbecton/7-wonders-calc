@@ -10,11 +10,7 @@ import { updatePointType } from "./utils";
 const defaultState: IPointState = {
   pointTypes: [
     {
-      key: "army-points",
-      value: 0
-    },
-    {
-      key: "science-points",
+      key: "military-points",
       value: 0
     },
     {
@@ -26,11 +22,19 @@ const defaultState: IPointState = {
       value: 0
     },
     {
+      key: "civilian-points",
+      value: 0
+    },
+    {
       key: "commercial-points",
       value: 0
     },
     {
       key: "guilds-points",
+      value: 0
+    },
+    {
+      key: "science-points",
       value: 0
     },
   ]
