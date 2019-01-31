@@ -4,6 +4,15 @@ import { Provider } from "react-redux";
 import { applyMiddleware, createStore } from "redux";
 import logger from "redux-logger";
 import { CalculateContainer } from "./CalculateContainer";
+import {
+  civilian,
+  coin,
+  commercial,
+  guild,
+  military,
+  science,
+  wonders
+} from "./icons";
 import { IActionTypes, IPointState } from "./types";
 import { updatePointType } from "./utils";
 
@@ -11,32 +20,39 @@ const defaultState: IPointState = {
   pointTypes: [
     {
       key: "military-points",
+      svg: military,
       value: 0
     },
     {
       key: "treasury-points",
+      svg: coin,
       value: 0
     },
     {
       key: "wonders-points",
+      svg: wonders,
       value: 0
     },
     {
       key: "civilian-points",
+      svg: civilian,
       value: 0
     },
     {
       key: "commercial-points",
+      svg: commercial,
       value: 0
     },
     {
       key: "guilds-points",
+      svg: guild,
       value: 0
     },
     {
       key: "science-points",
+      svg: science,
       value: 0
-    },
+    }
   ]
 };
 

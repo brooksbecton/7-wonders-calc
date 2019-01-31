@@ -1,34 +1,16 @@
 import * as React from "react";
 import styled from "styled-components";
 
-const SwordIcon = () => (
-  <svg
-    version="1.1"
-    id="Layer_1"
-    x="0px"
-    y="0px"
-    viewBox="0 0 512 512"
-    height="41"
-  >
-    <g>
-      <polygon points="235.898,297.315 281.563,342.979 473.259,186.138 368.104,165.109  " />
-      <polygon points="486.103,158.107 512,0 357.758,22.035 375.928,136.072  " />
-      <path d="M76.799,435.201c-17.246-17.246-46.394-17.246-63.64,0c-17.546,17.546-17.546,46.093,0,63.64   c17.546,17.546,46.093,17.546,63.64,0C94.046,481.594,94.046,452.447,76.799,435.201z" />
-      <polygon points="214.685,276.102 346.892,143.894 325.866,38.735 169.021,230.437  " />
-      <path d="M54.996,393.365c15.852,2.063,31.14,8.746,43.017,20.623s18.56,27.165,20.623,43.017l53.623-53.623l-63.64-63.64   L54.996,393.365z" />
-      <path d="M272,375.953c-45.292-45.292-90.486-91.483-135.953-136.95H88V269h35.618c5.368,5.368,4.029,4.916,10.265,11.151   l-10.607,31.82l76.753,76.753l31.82-10.607c6.236,6.236,4.765,4.875,10.155,10.265V425H272V375.953z" />
-    </g>
-  </svg>
-);
-
 export const CalculateInput = ({
   label,
   onChange,
-  value
+  value,
+  svg
 }: {
   label: string;
   onChange: (input: number) => void;
   value: number;
+  svg: string;
 }) => {
   const [pointType, pointsLabel] = label.split("-");
 
@@ -36,7 +18,7 @@ export const CalculateInput = ({
     <Container>
       <Content>
         <IconContainer>
-          <SwordIcon />
+          <img src={svg} alt={`${pointType} ${pointsLabel} icon`} />
         </IconContainer>
         <Label htmlFor={label}>
           <p>{pointType}</p>
@@ -73,7 +55,7 @@ const BottomBar = styled.div`
     font-size: 21px;
     line-height: 28px;
     margin: 0;
-    margin-right: 8px;
+    margin-right: 12px;
     text-align: center;
   }
 `;
@@ -97,6 +79,9 @@ const Container = styled.div`
 const IconContainer = styled.div`
   display: flex;
   align-items: center;
+  img {
+    width: 35px;
+  }
 `;
 
 const Label = styled.label`
@@ -105,6 +90,8 @@ const Label = styled.label`
   padding-left: 13px;
   text-transform: capitalize;
   line-height: 8px;
+  max-width: 221.375px;
+  
   p {
     font-size: 20px;
     margin: 0;

@@ -41,8 +41,8 @@ export const Calculate = ({
           <text
             transform="translate(62 39)"
             fill="#3B3A3A"
-            font-size="34"
-            font-family="Trattatello"
+            fontSize="34"
+            fontFamily="Trattatello"
           >
             <tspan x="-61.778" y="0">
               7 Wonders
@@ -51,11 +51,12 @@ export const Calculate = ({
         </svg>
       </TopBar>
       <ScoreInputContainer>
-        {pointTypes.map(({ key, value }) => {
+        {pointTypes.map(({ key, value, svg }) => {
           return (
             <CalculateInput
               key={key}
               label={key}
+              svg={svg}
               onChange={newValue => updatePoint({ key, value: newValue })}
               value={value}
             />
