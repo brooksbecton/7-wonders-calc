@@ -30,6 +30,8 @@ export const CalculateInput = ({
   onChange: (input: number) => void;
   value: number;
 }) => {
+  const [pointType, pointsLabel] = label.split("-");
+
   return (
     <Container>
       <Content>
@@ -37,7 +39,9 @@ export const CalculateInput = ({
           <SwordIcon />
         </IconContainer>
         <Label htmlFor={label}>
-          {Array.from(label).map(c => (c === "-" ? " " : c))}
+          <p>{pointType}</p>
+          <br />
+          <span>{pointsLabel}</span>
         </Label>
         <ScoreContainer>
           <ScoreInput
@@ -59,13 +63,13 @@ export const CalculateInput = ({
 const BottomBar = styled.div`
   align-content: center;
   background-color: #000052;
-  color: #fff;
   display: flex;
   flex-direction: row;
   height: 29px;
   justify-content: flex-end;
 
   p {
+    color: #fff;
     font-size: 21px;
     line-height: 28px;
     margin: 0;
@@ -83,10 +87,11 @@ const Content = styled.div`
 
 const Container = styled.div`
   background: #f2f2f2;
+  box-shadow: 0px 6px 5px -3px rgba(0, 0, 0, 0.75);
   display: flex;
   flex-direction: column;
   margin-bottom: 25px;
-  width: 100%;
+  width: (100%);
 `;
 
 const IconContainer = styled.div`
@@ -97,9 +102,17 @@ const IconContainer = styled.div`
 const Label = styled.label`
   align-self: center;
   flex-grow: 3;
-  font-size: 20px;
-  padding-left: 10px;
+  padding-left: 13px;
   text-transform: capitalize;
+  line-height: 8px;
+  p {
+    font-size: 20px;
+    margin: 0;
+  }
+
+  span {
+    font-size: 12px;
+  }
 `;
 
 const ScoreContainer = styled.div`
