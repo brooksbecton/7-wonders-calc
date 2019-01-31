@@ -13,10 +13,10 @@ import {
   science,
   wonders
 } from "./icons";
-import { IActionTypes, IPointState } from "./types";
+import { IActionTypes, IPointType } from "./types";
 import { updatePointType } from "./utils";
 
-const defaultState: IPointState = {
+const defaultState: { pointTypes: IPointType[] } = {
   pointTypes: [
     {
       key: "military-points",
@@ -60,8 +60,8 @@ const rootReducer = (state = defaultState, action: any) => {
   const type: IActionTypes = action.type;
   switch (type) {
     case IActionTypes.UPDATE_POINT:
-      const { key, value } = action;
-      const pointTypes = updatePointType(key, value, state.pointTypes);
+      const { type: x, ...pointType } = action;
+      const pointTypes = updatePointType(pointType, state.pointTypes);
       return { ...state, pointTypes };
     default:
       return state;

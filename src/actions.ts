@@ -1,13 +1,9 @@
-import { IActionTypes } from "./types";
+import { IActionTypes, IPointType } from "./types";
 
-export const updatePoint = ({
-  key,
-  value
-}: {
-  key: string;
-  value: number;
-}): { key: string, type: IActionTypes; value: number } => ({
-  key,
+interface IActionType extends IPointType {
+  type: IActionTypes;
+}
+export const updatePoint = (newPointType: IPointType): IActionType => ({
   type: IActionTypes.UPDATE_POINT,
-  value,
+  ...newPointType
 });

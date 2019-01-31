@@ -1,9 +1,8 @@
-export interface IPointState {
-  pointTypes: Array<{
+
+export interface IPointType {
     key: string;
     value: number;
     svg: string;
-  }>;
 }
 
 export enum IActionTypes {

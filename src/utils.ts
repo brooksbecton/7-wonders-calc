@@ -1,18 +1,17 @@
 import { findIndex, map, prop, propEq, sum, update } from "ramda";
-import { IPointState } from "./types";
+import { IPointType } from "./types";
 
 export function updatePointType(
-  key: string,
-  value: number,
-  pointTypes: IPointState["pointTypes"]
+  newPointType: IPointType,
+  pointTypes: IPointType[]
 ) {
   return update(
-    findIndex(propEq("key", key), pointTypes),
-    { key, value },
+    findIndex(propEq("key", newPointType.key), pointTypes),
+    newPointType,
     pointTypes
   );
 }
 
-export function getTotalPoints(pointTypes: IPointState["pointTypes"]) {
+export function getTotalPoints(pointTypes: IPointType[]) {
   return sum(map(x => prop("value", x), pointTypes));
 }

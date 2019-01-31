@@ -1,9 +1,9 @@
 import * as React from "react";
-import { IPointState } from "./types";
+import { IPointType } from "./types";
 import { getTotalPoints } from "./utils";
 
 export interface ITotalPointsProps {
-  pointTypes: IPointState["pointTypes"];
+  pointTypes: IPointType[];
 }
 
 export const TotalPoints: React.SFC<ITotalPointsProps> = ({ pointTypes }) => {

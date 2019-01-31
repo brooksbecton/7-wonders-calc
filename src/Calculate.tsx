@@ -2,13 +2,13 @@ import * as React from "react";
 import styled from "styled-components";
 import { CalculateInput } from "./CalculateInput";
 import { TotalPoints } from "./TotalPoints";
-import { IPointState } from "./types";
+import { IPointType } from "./types";
 
 export const Calculate = ({
   pointTypes,
   updatePoint
 }: {
-  pointTypes: IPointState["pointTypes"];
+  pointTypes: IPointType[];
   updatePoint: (param: any) => void;
 }) => {
   return (
@@ -57,7 +57,7 @@ export const Calculate = ({
               key={key}
               label={key}
               svg={svg}
-              onChange={newValue => updatePoint({ key, value: newValue })}
+              onChange={(newValue) => updatePoint({key, svg, value: newValue})}
               value={value}
             />
           );
