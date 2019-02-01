@@ -36,7 +36,9 @@ export const CalculateInput = ({
         </ScoreContainer>
       </Content>
       <BottomBar>
-        <p>?</p>
+        <button onClick={() => onChange(value + 1)}>+</button>
+        <button onClick={() => onChange(value - 1)}>-</button>
+        <button>?</button>
       </BottomBar>
     </Container>
   );
@@ -50,7 +52,7 @@ const BottomBar = styled.div`
   height: 29px;
   justify-content: flex-end;
 
-  p {
+  button {
     color: #fff;
     font-size: 21px;
     line-height: 28px;
@@ -91,7 +93,7 @@ const Label = styled.label`
   text-transform: capitalize;
   line-height: 8px;
   max-width: 221.375px;
-  
+
   p {
     font-size: 20px;
     margin: 0;
