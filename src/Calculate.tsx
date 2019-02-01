@@ -1,15 +1,18 @@
 import * as React from "react";
 import styled from "styled-components";
 import { CalculateInput } from "./CalculateInput";
+import { SaveButton } from "./SaveButton";
 import { TotalPoints } from "./TotalPoints";
 import { IPointType } from "./types";
 
 export const Calculate = ({
   pointTypes,
+  savePoints,
   updatePoint
 }: {
   pointTypes: IPointType[];
-  updatePoint: (param: any) => void;
+  savePoints: (points: IPointType[]) => void;
+  updatePoint: (point: IPointType) => void;
 }) => {
   return (
     <>
@@ -57,7 +60,7 @@ export const Calculate = ({
               key={key}
               label={key}
               svg={svg}
-              onChange={(newValue) => updatePoint({key, svg, value: newValue})}
+              onChange={newValue => updatePoint({ key, svg, value: newValue })}
               value={value}
             />
           );
@@ -66,6 +69,7 @@ export const Calculate = ({
       <TotalContainer>
         <TotalPoints pointTypes={pointTypes} />
       </TotalContainer>
+      <SaveButton onClick={() => savePoints(pointTypes)} />
     </>
   );
 };

@@ -5,6 +5,4 @@ export interface IPointType {
     svg: string;
 }
 
-export enum IActionTypes {
-  UPDATE_POINT
-}
+export type IActionTypes = "UPDATE_POINT" | "SAVE_POINTS"

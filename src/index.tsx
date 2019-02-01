@@ -59,7 +59,7 @@ const defaultState: { pointTypes: IPointType[] } = {
 const rootReducer = (state = defaultState, action: any) => {
   const type: IActionTypes = action.type;
   switch (type) {
-    case IActionTypes.UPDATE_POINT:
+    case "UPDATE_POINT":
       const { type: x, ...pointType } = action;
       const pointTypes = updatePointType(pointType, state.pointTypes);
       return { ...state, pointTypes };

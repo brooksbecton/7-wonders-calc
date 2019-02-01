@@ -53,6 +53,8 @@ const BottomBar = styled.div`
   justify-content: flex-end;
 
   button {
+    background-color: #060056;
+    border: 0px;
     color: #fff;
     font-size: 21px;
     line-height: 28px;
