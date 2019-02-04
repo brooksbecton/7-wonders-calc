@@ -13,6 +13,7 @@ import {
   science,
   wonders
 } from "./icons";
+import serviceWorker from './registerServiceWorker';
 import { IActionTypes, IPointType } from "./types";
 import { updatePointType } from "./utils";
 
@@ -80,3 +81,4 @@ function App() {
 
 const rootElement = document.getElementById("root");
 render(<App />, rootElement);
+serviceWorker(); 
