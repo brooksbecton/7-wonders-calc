@@ -16,7 +16,7 @@ export const SaveButton: React.SFC<IButtonProps> = ({ onClick }) => {
 };
 
 const Button = styled.button`
-  background-color: #060056;
+  background-color: #8b6508;
   border-radius: 1000px;
   padding: 12px;
   position: fixed;
