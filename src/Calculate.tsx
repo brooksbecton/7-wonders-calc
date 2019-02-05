@@ -5,6 +5,7 @@ import pyramid from "./icons/pyramid.svg";
 import { SaveButton } from "./SaveButton";
 import { TotalPoints } from "./TotalPoints";
 import { IPointType } from "./types";
+
 export const Calculate = ({
   pointTypes,
   savePoints,
