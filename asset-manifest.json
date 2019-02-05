@@ -1,11 +1,12 @@
 {
-  "main.js": "static/js/main.18df3c1c.js",
-  "main.js.map": "static/js/main.18df3c1c.js.map",
+  "main.js": "static/js/main.6d52e41d.js",
+  "main.js.map": "static/js/main.6d52e41d.js.map",
   "static/media/civilian.svg": "static/media/civilian.e49e8ddf.svg",
   "static/media/coin.svg": "static/media/coin.d2132fcf.svg",
   "static/media/commercial.svg": "static/media/commercial.339fbabe.svg",
   "static/media/guild.svg": "static/media/guild.beab47c0.svg",
   "static/media/military.svg": "static/media/military.c6fa6544.svg",
+  "static/media/pyramid.svg": "static/media/pyramid.a934e2e0.svg",
   "static/media/save.svg": "static/media/save.13472668.svg",
   "static/media/science.svg": "static/media/science.88dd35f4.svg",
   "static/media/wonders.svg": "static/media/wonders.6bfb7247.svg"
