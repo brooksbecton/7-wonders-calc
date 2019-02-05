@@ -16,7 +16,7 @@ export const CalculateInput = ({
 
   return (
     <Container>
-      <Content>
+      <LeftSide>
         <IconContainer>
           <img src={svg} alt={`${pointType} ${pointsLabel} icon`} />
         </IconContainer>
@@ -25,7 +25,10 @@ export const CalculateInput = ({
           <br />
           <span>{pointsLabel}</span>
         </Label>
-        <ScoreContainer>
+      </LeftSide>
+      <Angle />
+      <RightSide>
+        <div>
           <ScoreInput
             id={label}
             type="tel"
@@ -33,13 +36,13 @@ export const CalculateInput = ({
             value={value}
           />
           <ScoreLabel>Score</ScoreLabel>
-        </ScoreContainer>
-      </Content>
-      <BottomBar>
-        <button onClick={() => onChange(value + 1)}>+</button>
-        <button onClick={() => onChange(value - 1)}>-</button>
-        <button>?</button>
-      </BottomBar>
+        </div>
+        <BottomBar>
+          <button onClick={() => onChange(value + 1)}>+</button>
+          <button onClick={() => onChange(value - 1)}>-</button>
+          <button>?</button>
+        </BottomBar>
+      </RightSide>
     </Container>
   );
 };
@@ -55,7 +58,7 @@ const BottomBar = styled.div`
   button {
     background-color: #060056;
     border: 0px;
-    color: #fff;
+    color: #eead0e;
     font-size: 21px;
     line-height: 28px;
     margin: 0;
@@ -63,21 +66,39 @@ const BottomBar = styled.div`
     text-align: center;
   }
 `;
-const Content = styled.div`
+const LeftSide = styled.div`
   display: flex;
   flex-direction: row;
+  height: 105px;
+  justify-content: space-between;
   padding: 10px;
   padding-bottom: 4px;
-  justify-content: space-between;
+  width: 70%;
+`;
+
+const Angle = styled.div`
+  background: #060056;
+  clip-path: polygon(100% 0, 0% 100%, 100% 100%);
+  width: 30%;
+`;
+
+const RightSide = styled.div`
+  background: #060056;
+  color: #eead0e;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  width: 25%; 
+  min-width: 110px; 
 `;
 
 const Container = styled.div`
   background: #f2f2f2;
   box-shadow: 0px 6px 5px -3px rgba(0, 0, 0, 0.75);
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   margin-bottom: 25px;
-  width: (100%);
+  width: 100%;
 `;
 
 const IconContainer = styled.div`
@@ -106,24 +127,19 @@ const Label = styled.label`
   }
 `;
 
-const ScoreContainer = styled.div`
-  flex: 2;
-  display: flex;
-  flex-direction: column;
+const ScoreLabel = styled.p`
+  margin: 0;
+  color: #f2f2f2;
+  font-size: 12px;
   text-align: center;
 `;
 
-const ScoreLabel = styled.p`
-  margin: 0;
-  font-size: 12px;
-`;
-
 const ScoreInput = styled.input`
-  background-color: #f2f2f2;
+  background-color: transparent;
   border: 0;
-  font-size: 39px;
-  height: 35px;
-  min-width: 0;
+  color: #f2f2f2;
+  font-size: 47px;
+  height: 47px;
   text-align: center;
   width: 100%;
 `;

@@ -1,10 +1,10 @@
 import * as React from "react";
 import styled from "styled-components";
 import { CalculateInput } from "./CalculateInput";
+import pyramid from "./icons/pyramid.svg";
 import { SaveButton } from "./SaveButton";
 import { TotalPoints } from "./TotalPoints";
 import { IPointType } from "./types";
-
 export const Calculate = ({
   pointTypes,
   savePoints,
@@ -16,42 +16,9 @@ export const Calculate = ({
 }) => {
   return (
     <>
-      {/* <div>
-        Icons made by{" "}
-        <a href="https://www.freepik.com/" title="Freepik">
-          Freepik
-        </a>{" "}
-        from{" "}
-        <a href="https://www.flaticon.com/" title="Flaticon">
-          www.flaticon.com
-        </a>{" "}
-        is licensed by{" "}
-        <a
-          href="http://creativecommons.org/licenses/by/3.0/"
-          title="Creative Commons BY 3.0"
-          target="_blank"
-        >
-          CC 3.0 BY
-        </a>
-      </div> */}
       <TopBar>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="126"
-          height="48"
-          viewBox="0 0 126 62"
-        >
-          <text
-            transform="translate(62 39)"
-            fill="#3B3A3A"
-            fontSize="34"
-            fontFamily="Trattatello"
-          >
-            <tspan x="-61.778" y="0">
-              7 Wonders
-            </tspan>
-          </text>
-        </svg>
+        <img src={pyramid} alt="Yellow Pyramid Icon" />
+        <p>7 Wonders</p>
       </TopBar>
       <ScoreInputContainer>
         {pointTypes.map(({ key, value, svg }) => {
@@ -76,10 +43,24 @@ export const Calculate = ({
 
 const TopBar = styled.div`
   justify-content: center;
-  background-color: #eead0e;
+  background-color: #d6d6d6;
   display: flex;
   text-align: center;
   width: 100%;
+
+  img {
+    padding-right: 10px;
+    padding-top: 5px;
+    height: 43px;
+    width: 43px;
+  }
+
+  p {
+    font-family: "Trattatello";
+    font-size: 34px;
+    margin: 0px;
+    padding: 0px;
+  }
 `;
 
 const ScoreInputContainer = styled.div`
