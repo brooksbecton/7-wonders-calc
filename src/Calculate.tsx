@@ -1,3 +1,4 @@
+import { RouteComponentProps } from "@reach/router";
 import * as React from "react";
 import styled from "styled-components";
 import { CalculateInput } from "./CalculateInput";
@@ -6,7 +7,7 @@ import { SaveButton } from "./SaveButton";
 import { TotalPoints } from "./TotalPoints";
 import { IPointType } from "./types";
 
-export const Calculate = ({
+export const Calculate: React.FunctionComponent<RouteComponentProps> = ({
   pointTypes,
   savePoints,
   updatePoint

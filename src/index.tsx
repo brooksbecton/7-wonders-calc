@@ -1,3 +1,4 @@
+import { Router } from "@reach/router";
 import * as React from "react";
 import { render } from "react-dom";
 import { Provider } from "react-redux";
@@ -13,10 +14,10 @@ import {
   science,
   wonders
 } from "./icons";
-import serviceWorker from './registerServiceWorker';
+import { PointDetail } from "./PointDetail";
+import serviceWorker from "./registerServiceWorker";
 import { IActionTypes, IPointType } from "./types";
 import { updatePointType } from "./utils";
-
 const defaultState: { pointTypes: IPointType[] } = {
   pointTypes: [
     {
@@ -74,11 +75,14 @@ const store = createStore(rootReducer, applyMiddleware(logger));
 function App() {
   return (
     <Provider store={store}>
-      <CalculateContainer />
+      <Router>
+        <PointDetail path="/detail" />
+        <CalculateContainer path="/" />
+      </Router>
     </Provider>
   );
 }
 
 const rootElement = document.getElementById("root");
 render(<App />, rootElement);
-serviceWorker(); 
+serviceWorker();

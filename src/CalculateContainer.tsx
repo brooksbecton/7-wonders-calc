@@ -1,9 +1,9 @@
+import { RouteComponentProps } from "@reach/router";
 import { connect } from "react-redux";
-
 import { savePoints, updatePoint } from "./actions";
 import { Calculate } from "./Calculate";
 
-const mapStateToProps = (state: any, ownProps: any) => {
+const mapStateToProps = (state: any, ownProps: RouteComponentProps) => {
   return { ...state, ...ownProps };
 };
 

@@ -1,3 +1,4 @@
+import { Link } from "@reach/router";
 import * as React from "react";
 import styled from "styled-components";
 
@@ -40,7 +41,7 @@ export const CalculateInput = ({
         <BottomBar>
           <button onClick={() => onChange(value + 1)}>+</button>
           <button onClick={() => onChange(value - 1)}>-</button>
-          <button>?</button>
+          <Link to="/detail">?</Link>
         </BottomBar>
       </RightSide>
     </Container>
@@ -55,15 +56,20 @@ const BottomBar = styled.div`
   height: 29px;
   justify-content: flex-end;
 
-  button {
+  button,
+  a {
     background-color: #060056;
     border: 0px;
     color: #eead0e;
+    cursor: pointer; 
     font-size: 21px;
     line-height: 28px;
     margin: 0;
     margin-right: 12px;
+    padding-left: 7px; 
+    padding-right: 7px; 
     text-align: center;
+    text-decoration: none; 
   }
 `;
 const LeftSide = styled.div`
@@ -88,8 +94,8 @@ const RightSide = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  width: 25%; 
-  min-width: 110px; 
+  width: 25%;
+  min-width: 110px;
 `;
 
 const Container = styled.div`
