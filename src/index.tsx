@@ -5,6 +5,7 @@ import { Provider } from "react-redux";
 import { applyMiddleware, createStore } from "redux";
 import logger from "redux-logger";
 import { CalculateContainer } from "./CalculateContainer";
+import { AppWrapper } from "./components/AppWrapper";
 import {
   civilian,
   coin,
@@ -75,10 +76,12 @@ const store = createStore(rootReducer, applyMiddleware(logger));
 function App() {
   return (
     <Provider store={store}>
-      <Router>
-        <PointDetail path="/detail" />
-        <CalculateContainer path="/" />
-      </Router>
+      <AppWrapper>
+        <Router>
+          <PointDetail path="/detail" />
+          <CalculateContainer path="/" />
+        </Router>
+      </AppWrapper>
     </Provider>
   );
 }

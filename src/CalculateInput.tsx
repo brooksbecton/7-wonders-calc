@@ -29,20 +29,22 @@ export const CalculateInput = ({
       </LeftSide>
       <Angle />
       <RightSide>
-        <div>
-          <ScoreInput
-            id={label}
-            type="tel"
-            onChange={e => onChange(Number(e.target.value))}
-            value={value}
-          />
-          <ScoreLabel>Score</ScoreLabel>
-        </div>
-        <BottomBar>
-          <button onClick={() => onChange(value + 1)}>+</button>
-          <button onClick={() => onChange(value - 1)}>-</button>
-          <Link to="/detail">?</Link>
-        </BottomBar>
+        <InputWrapper>
+          <div>
+            <ScoreInput
+              id={label}
+              type="tel"
+              onChange={e => onChange(Number(e.target.value))}
+              value={value}
+            />
+            <ScoreLabel>Score</ScoreLabel>
+          </div>
+          <BottomBar>
+            <button onClick={() => onChange(value + 1)}>+</button>
+            <button onClick={() => onChange(value - 1)}>-</button>
+            <Link to="/detail">?</Link>
+          </BottomBar>
+        </InputWrapper>
       </RightSide>
     </Container>
   );
@@ -61,17 +63,25 @@ const BottomBar = styled.div`
     background-color: #060056;
     border: 0px;
     color: #eead0e;
-    cursor: pointer; 
+    cursor: pointer;
     font-size: 21px;
     line-height: 28px;
     margin: 0;
     margin-right: 12px;
-    padding-left: 7px; 
-    padding-right: 7px; 
+    padding-left: 7px;
+    padding-right: 7px;
     text-align: center;
-    text-decoration: none; 
+    text-decoration: none;
   }
 `;
+
+const InputWrapper = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+  width: 70%;
+`;
+
 const LeftSide = styled.div`
   display: flex;
   flex-direction: row;
@@ -84,18 +94,21 @@ const LeftSide = styled.div`
 
 const Angle = styled.div`
   background: #060056;
-  clip-path: polygon(100% 0, 0% 100%, 100% 100%);
-  width: 30%;
+  width: 0%;
 `;
 
 const RightSide = styled.div`
   background: #060056;
+  clip-path: polygon(30% 0, 100% 0, 100% 100%, 0% 100%);
   color: #eead0e;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: flex-end;
-  width: 25%;
+  width: 80%;
   min-width: 110px;
+  input {
+    width: 100%;
+  }
 `;
 
 const Container = styled.div`
@@ -147,5 +160,5 @@ const ScoreInput = styled.input`
   font-size: 47px;
   height: 47px;
   text-align: center;
-  width: 100%;
+  width: 50%;
 `;
