@@ -77,9 +77,9 @@ function App() {
   return (
     <Provider store={store}>
       <AppWrapper>
-        <Router>
-          <PointDetail path="/detail" />
+        <Router basepath={process.env.PUBLIC_URL}>
           <CalculateContainer path="/" />
+          <PointDetail path="detail" />
         </Router>
       </AppWrapper>
     </Provider>
