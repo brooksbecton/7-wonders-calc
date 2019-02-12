@@ -64,8 +64,14 @@ const rootReducer = (state = defaultState, action: any) => {
   switch (type) {
     case "UPDATE_POINT":
       const { type: x, ...pointType } = action;
-      const pointTypes = updatePointType(pointType, state.pointTypes);
-      return { ...state, pointTypes };
+      const newValue: number = pointType.value;
+
+      return Number.isNaN(newValue)
+        ? state
+        : {
+            ...state,
+            pointTypes: updatePointType(pointType, state.pointTypes)
+          };
     default:
       return state;
   }
