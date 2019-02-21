@@ -1,20 +1,15 @@
 import { RouteComponentProps } from "@reach/router";
 import * as React from "react";
 import styled from "styled-components";
+import { savePoints, updatePoint } from "./../actions";
+import { defaultState, reducer } from "./../reducer";
 import { CalculateInput } from "./CalculateInput";
 import { SaveButton } from "./SaveButton";
 import { TotalPoints } from "./TotalPoints";
-import { IPointType } from "./types";
 
-export const Calculate: React.FunctionComponent<RouteComponentProps> = ({
-  pointTypes,
-  savePoints,
-  updatePoint
-}: {
-  pointTypes: IPointType[];
-  savePoints: (points: IPointType[]) => void;
-  updatePoint: (point: IPointType) => void;
-}) => {
+export const Calculate: React.FunctionComponent<RouteComponentProps> = () => {
+  const [pointTypes, dispatch] = React.useReducer(reducer, defaultState);
+
   return (
     <>
       <ScoreInputContainer>
@@ -24,7 +19,9 @@ export const Calculate: React.FunctionComponent<RouteComponentProps> = ({
               key={key}
               label={key}
               svg={svg}
-              onChange={newValue => updatePoint({ key, svg, value: newValue })}
+              onChange={newValue =>
+                dispatch(updatePoint({ key, svg, value: newValue }))
+              }
               value={value}
             />
           );
@@ -33,7 +30,7 @@ export const Calculate: React.FunctionComponent<RouteComponentProps> = ({
       <TotalContainer>
         <TotalPoints pointTypes={pointTypes} />
       </TotalContainer>
-      <SaveButton onClick={() => savePoints(pointTypes)} />
+      <SaveButton onClick={() => dispatch(savePoints(pointTypes))} />
     </>
   );
 };

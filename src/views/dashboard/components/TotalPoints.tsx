@@ -1,6 +1,6 @@
 import * as React from "react";
-import { IPointType } from "./types";
-import { getTotalPoints } from "./utils";
+import { IPointType } from "../types";
+import { getTotalPoints } from "../utils";
 
 export interface ITotalPointsProps {
   pointTypes: IPointType[];

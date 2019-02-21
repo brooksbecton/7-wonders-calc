@@ -1,94 +1,19 @@
 import { Router } from "@reach/router";
 import * as React from "react";
 import { render } from "react-dom";
-import { Provider } from "react-redux";
-import { applyMiddleware, createStore } from "redux";
-import logger from "redux-logger";
-import { CalculateContainer } from "./CalculateContainer";
 import { AppWrapper } from "./components/AppWrapper";
-import {
-  civilian,
-  coin,
-  commercial,
-  guild,
-  military,
-  science,
-  wonders
-} from "./icons";
-import { PointDetail } from "./PointDetail";
 import serviceWorker from "./registerServiceWorker";
-import { IActionTypes, IPointType } from "./types";
-import { updatePointType } from "./utils";
-const defaultState: { pointTypes: IPointType[] } = {
-  pointTypes: [
-    {
-      key: "military-points",
-      svg: military,
-      value: 0
-    },
-    {
-      key: "treasury-points",
-      svg: coin,
-      value: 0
-    },
-    {
-      key: "wonders-points",
-      svg: wonders,
-      value: 0
-    },
-    {
-      key: "civilian-points",
-      svg: civilian,
-      value: 0
-    },
-    {
-      key: "commercial-points",
-      svg: commercial,
-      value: 0
-    },
-    {
-      key: "guilds-points",
-      svg: guild,
-      value: 0
-    },
-    {
-      key: "science-points",
-      svg: science,
-      value: 0
-    }
-  ]
-};
-
-const rootReducer = (state = defaultState, action: any) => {
-  const type: IActionTypes = action.type;
-  switch (type) {
-    case "UPDATE_POINT":
-      const { type: x, ...pointType } = action;
-      const newValue: number = pointType.value;
-
-      return Number.isNaN(newValue)
-        ? state
-        : {
-            ...state,
-            pointTypes: updatePointType(pointType, state.pointTypes)
-          };
-    default:
-      return state;
-  }
-};
-
-const store = createStore(rootReducer, applyMiddleware(logger));
+import { Calculate } from "./views/dashboard";
+import { PointDetail } from "./views/pointDetail/components/PointDetails";
 
 function App() {
   return (
-    <Provider store={store}>
-      <AppWrapper>
-        <Router basepath={process.env.PUBLIC_URL}>
-          <CalculateContainer path="/" />
-          <PointDetail path="detail" />
-        </Router>
-      </AppWrapper>
-    </Provider>
+    <AppWrapper>
+      <Router basepath={process.env.PUBLIC_URL}>
+        <Calculate path="/" />
+        <PointDetail path="detail" />
+      </Router>
+    </AppWrapper>
   );
 }
 

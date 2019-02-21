@@ -1,7 +1,7 @@
 import * as React from "react";
 import styled from "styled-components";
 
-import { save } from "./icons/";
+import { save } from "./../../../icons";
 
 interface IButtonProps {
   onClick: () => void;
