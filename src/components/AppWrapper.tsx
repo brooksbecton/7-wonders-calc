@@ -40,7 +40,7 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column; 
-  width: 380px;
+  max-width: 380px;
 `;
 
 export default AppWrapper;

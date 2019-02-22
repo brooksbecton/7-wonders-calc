@@ -11,7 +11,7 @@ function App() {
     <AppWrapper>
       <Router basepath={process.env.PUBLIC_URL}>
         <Calculate path="/" />
-        <PointDetail path="detail" />
+        <PointDetail path="detail/:pointType" />
       </Router>
     </AppWrapper>
   );

@@ -6,3 +6,4 @@ export { default as science } from "./science.svg";
 export { default as military } from "./military.svg";
 export { default as wonders } from "./wonders.svg";
 export { default as save } from "./save.svg";
+export { default as backArrow } from "./backArrow.svg";
