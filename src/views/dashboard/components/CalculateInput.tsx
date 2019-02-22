@@ -42,7 +42,7 @@ export const CalculateInput = ({
           <BottomBar>
             <button onClick={() => onChange(value + 1)}>+</button>
             <button onClick={() => onChange(value - 1)}>-</button>
-            <Link to={`/detail/${pointType}`}>?</Link>
+            <Link to={`detail/${pointType}`}>?</Link>
           </BottomBar>
         </InputWrapper>
       </RightSide>
