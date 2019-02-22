@@ -15,15 +15,15 @@ export const PointDetail: React.FunctionComponent<Props> = ({
 }) => {
   return (
     <>
-      <Wrapper>
-        <h1>{upperFirst(pointType)}</h1>
-        <Military />
-      </Wrapper>
 
       <BackButton onClick={() => window.history.back()}>
         <img src={backArrow} alt="Go Back One Screen" />
         <span>Back</span>
       </BackButton>
+      <Wrapper>
+        <h1>{upperFirst(pointType)}</h1>
+        <Military />
+      </Wrapper>
     </>
   );
 };
@@ -37,10 +37,16 @@ const Wrapper = styled.div`
 const BackButton = styled.button`
   display: flex;
   align-items: center;
+  background-color: transparent; 
+  border: none; 
 
+  img {
+    min-width: 24px; 
+  }
   span {
     color: #060056;
-    font-size: 23px;
+    font-weight: bold; 
+    font-size: 14px;
   }
 `;
 export default PointDetail;
