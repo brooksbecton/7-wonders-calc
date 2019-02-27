@@ -112,7 +112,7 @@ const RightSide = styled.div`
 `;
 
 const Container = styled.div`
-  background: #f2f2f2;
+  background: #E5E5E5;
   box-shadow: 0px 6px 5px -3px rgba(0, 0, 0, 0.75);
   display: flex;
   flex-direction: row;
@@ -148,7 +148,7 @@ const Label = styled.label`
 
 const ScoreLabel = styled.p`
   margin: 0;
-  color: #f2f2f2;
+  color: #E5E5E5;
   font-size: 12px;
   text-align: center;
 `;
@@ -156,7 +156,7 @@ const ScoreLabel = styled.p`
 const ScoreInput = styled.input`
   background-color: transparent;
   border: 0;
-  color: #f2f2f2;
+  color: #E5E5E5;
   font-size: 47px;
   height: 47px;
   text-align: center;

@@ -16,7 +16,7 @@ export const AppWrapper: React.FunctionComponent = props => {
 
 const TopBar = styled.div`
   justify-content: center;
-  background-color: #d6d6d6;
+  background-color: #D1D1D1;
   display: flex;
   text-align: center;
   width: 100%;

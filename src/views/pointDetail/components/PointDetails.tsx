@@ -3,7 +3,7 @@ import * as React from "react";
 import styled from "styled-components";
 import { backArrow } from "./../../../icons/";
 import { upperFirst } from "./../../../utils/";
-import { Military } from "./Military";
+import { PointTypeDescription } from "./PointTypeDescription";
 interface ICustomProps {
   pointType?: string;
 }
@@ -15,21 +15,20 @@ export const PointDetail: React.FunctionComponent<Props> = ({
 }) => {
   return (
     <>
-
       <BackButton onClick={() => window.history.back()}>
         <img src={backArrow} alt="Go Back One Screen" />
         <span>Back</span>
       </BackButton>
       <Wrapper>
         <h1>{upperFirst(pointType)}</h1>
-        <Military />
+        <PointTypeDescription pointType={pointType} />
       </Wrapper>
     </>
   );
 };
 
 const Wrapper = styled.div`
-  background-color: #f2f2f2;
+  background-color: #e5e5e5;
   margin: 10px;
   padding: 10px;
 `;
@@ -37,15 +36,15 @@ const Wrapper = styled.div`
 const BackButton = styled.button`
   display: flex;
   align-items: center;
-  background-color: transparent; 
-  border: none; 
+  background-color: transparent;
+  border: none;
 
   img {
-    min-width: 24px; 
+    min-width: 24px;
   }
   span {
     color: #060056;
-    font-weight: bold; 
+    font-weight: bold;
     font-size: 14px;
   }
 `;
