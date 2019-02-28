@@ -12,7 +12,7 @@ export const Calculate: React.FunctionComponent<RouteComponentProps> = () => {
 
   return (
     <>
-      <ScoreInputContainer>
+      <>
         {pointTypes.map(({ key, value, svg }) => {
           return (
             <CalculateInput
@@ -26,7 +26,7 @@ export const Calculate: React.FunctionComponent<RouteComponentProps> = () => {
             />
           );
         })}
-      </ScoreInputContainer>
+      </>
       <TotalContainer>
         <TotalPoints pointTypes={pointTypes} />
       </TotalContainer>
@@ -34,10 +34,6 @@ export const Calculate: React.FunctionComponent<RouteComponentProps> = () => {
     </>
   );
 };
-
-const ScoreInputContainer = styled.div`
-  margin: 10px;
-`;
 
 const TotalContainer = styled.div`
   background-color: #eead0e;

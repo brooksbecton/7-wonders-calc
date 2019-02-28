@@ -43,6 +43,8 @@ const Wrapper = styled.div`
   justify-content: center;
   flex-direction: column; 
   max-width: 380px;
+  margin-left: 16px; 
+  margin-right: 16px; 
 `;
 
 export default AppWrapper;

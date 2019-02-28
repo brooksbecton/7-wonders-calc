@@ -21,6 +21,8 @@ export const PointDetail: React.FunctionComponent<Props> = ({
       </BackButton>
       <Wrapper>
         <h1>{upperFirst(pointType)}</h1>
+        <p>Points</p>
+        <hr />
         <PointTypeDescription pointType={pointType} />
       </Wrapper>
     </>
@@ -29,22 +31,30 @@ export const PointDetail: React.FunctionComponent<Props> = ({
 
 const Wrapper = styled.div`
   background-color: #e5e5e5;
-  margin: 10px;
   padding: 10px;
+
+  h1 {
+    font-size: 20px;
+    margin: 0px;
+  }
+  p {
+    margin: 0px;
+    margin-top: 5px;
+  }
 `;
 
 const BackButton = styled.button`
-  display: flex;
   align-items: center;
   background-color: transparent;
   border: none;
+  color: #060056;
+  display: flex;
+  margin-bottom: 12px;
 
   img {
-    min-width: 24px;
+    width: 20px;
   }
   span {
-    color: #060056;
-    font-weight: bold;
     font-size: 14px;
   }
 `;

@@ -19,7 +19,7 @@ export const PointTypeDescription: React.FunctionComponent<
       return <Civilian />;
     case "commercial":
       return <Commercial />;
-    case "guild":
+    case "guilds":
       return <Guild />;
     case "military":
       return <Military />;
