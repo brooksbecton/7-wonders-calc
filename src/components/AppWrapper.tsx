@@ -9,7 +9,9 @@ export const AppWrapper: React.FunctionComponent = props => {
         <img src={pyramid} alt="Yellow Pyramid Icon" />
         <p>7 Wonders</p>
       </TopBar>
-      {props.children}
+      <main>
+      	{props.children}
+      </main>
     </Wrapper>
   );
 };
