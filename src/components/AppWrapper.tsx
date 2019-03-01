@@ -7,25 +7,21 @@ export const AppWrapper: React.FunctionComponent = props => {
     <Wrapper>
       <TopBar>
         <img src={pyramid} alt="Yellow Pyramid Icon" />
-        <p>7 Wonders</p>
       </TopBar>
-      <main>
-      	{props.children}
-      </main>
+      <main>{props.children}</main>
     </Wrapper>
   );
 };
 
 const TopBar = styled.div`
   justify-content: center;
-  background-color: #D1D1D1;
+  background-color: #d1d1d1;
   display: flex;
   text-align: center;
   width: 100%;
 
   img {
-    padding-right: 10px;
-    padding-top: 5px;
+    padding: 10px;
     height: 43px;
     width: 43px;
   }
@@ -41,10 +37,10 @@ const TopBar = styled.div`
 const Wrapper = styled.div`
   display: flex;
   justify-content: center;
-  flex-direction: column; 
+  flex-direction: column;
   max-width: 380px;
-  margin-left: 16px; 
-  margin-right: 16px; 
+  margin-left: 16px;
+  margin-right: 16px;
 `;
 
 export default AppWrapper;
