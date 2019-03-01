@@ -22,7 +22,7 @@ export const CalculateInput = ({
           <img src={svg} alt={`${pointType} ${pointsLabel} icon`} />
         </IconContainer>
         <Label htmlFor={label}>
-          <p>{pointType}</p>
+          <h2>{pointType}</h2>
           <br />
           <span>{pointsLabel}</span>
         </Label>
@@ -112,7 +112,7 @@ const RightSide = styled.div`
 `;
 
 const Container = styled.div`
-  background: #E5E5E5;
+  background: #e5e5e5;
   box-shadow: 0px 6px 5px -3px rgba(0, 0, 0, 0.75);
   display: flex;
   flex-direction: row;
@@ -136,6 +136,11 @@ const Label = styled.label`
   line-height: 8px;
   max-width: 221.375px;
 
+  h2 {
+    font-size: 20px;
+    margin-bottom: 5px;
+  }
+
   p {
     font-size: 20px;
     margin: 0;
@@ -148,7 +153,7 @@ const Label = styled.label`
 
 const ScoreLabel = styled.p`
   margin: 0;
-  color: #E5E5E5;
+  color: #e5e5e5;
   font-size: 12px;
   text-align: center;
 `;
@@ -156,7 +161,7 @@ const ScoreLabel = styled.p`
 const ScoreInput = styled.input`
   background-color: transparent;
   border: 0;
-  color: #E5E5E5;
+  color: #e5e5e5;
   font-size: 47px;
   height: 47px;
   text-align: center;

@@ -1,7 +1,7 @@
 import {
   civilian,
   coin,
-  commercial,
+  commerce,
   guild,
   military,
   science,
@@ -32,8 +32,8 @@ export const defaultState: IPointType[] = [
     value: 0
   },
   {
-    key: "commercial-points",
-    svg: commercial,
+    key: "commerce-points",
+    svg: commerce,
     value: 0
   },
   {

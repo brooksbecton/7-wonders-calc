@@ -1,6 +1,6 @@
 import * as React from "react";
 
-export const Commercial: React.FunctionComponent = () => {
+export const Commerce: React.FunctionComponent = () => {
   return (
     <>
       <p>Some commercial structures from Age III grant victory points.</p>

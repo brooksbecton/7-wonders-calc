@@ -27,7 +27,6 @@ const TopBar = styled.div`
   }
 
   p {
-    font-family: "Trattatello";
     font-size: 34px;
     margin: 0px;
     padding: 0px;

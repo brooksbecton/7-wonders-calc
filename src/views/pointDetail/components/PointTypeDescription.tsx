@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Civilian } from "./Civilian";
-import { Commercial } from "./Commericial";
+import { Commerce } from "./Commericial";
 import { Guild } from "./Guild";
 import { Military } from "./Military";
 import { Science } from "./Science";
@@ -17,8 +17,8 @@ export const PointTypeDescription: React.FunctionComponent<
   switch (props.pointType) {
     case "civilian":
       return <Civilian />;
-    case "commercial":
-      return <Commercial />;
+    case "commerce":
+      return <Commerce />;
     case "guilds":
       return <Guild />;
     case "military":

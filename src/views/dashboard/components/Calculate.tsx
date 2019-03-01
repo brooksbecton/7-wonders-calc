@@ -1,6 +1,5 @@
 import { RouteComponentProps } from "@reach/router";
 import * as React from "react";
-import styled from "styled-components";
 import { updatePoint } from "./../actions";
 import { defaultState, reducer } from "./../reducer";
 import { CalculateInput } from "./CalculateInput";
@@ -27,24 +26,8 @@ export const Calculate: React.FunctionComponent<RouteComponentProps> = () => {
           );
         })}
       </>
-      <TotalContainer>
         <TotalPoints pointTypes={pointTypes} />
-      </TotalContainer>
       {/* <SaveButton onClick={() => dispatch(savePoints(pointTypes))} /> */}
     </>
   );
 };
-
-const TotalContainer = styled.div`
-  background-color: #eead0e;
-  text-align: center;
-  position: sticky;
-  bottom: 0;
-  padding-bottom: 15px;
-  padding-top: 15px;
-
-  p {
-    font-size: 23px;
-    margin: 0px;
-  }
-`;

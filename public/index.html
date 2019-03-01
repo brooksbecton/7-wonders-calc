@@ -6,7 +6,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
-    <meta name="theme-color" content="#000000" />
+    <meta name="theme-color" content="#d1d1d1" />
     <meta
       name="description"
       content="A point calculator to be used along side the popular board game '7 Wonders.'"
@@ -15,18 +15,31 @@
       manifest.json provides metadata used when your web app is added to the
       homescreen on Android. See https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
     -->
+    
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
     <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
     <style>
+      @import url('https://fonts.googleapis.com/css?family=Copse');
       html,
       body {
-        background-color: #D1D1D1;
+        background-color: #d1d1d1;
 
         margin: 0px;
         padding: 0px;
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
           Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
           "Segoe UI Symbol";
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: 'Copse', serif;
+        margin: 0px; 
+        padding: 0px; 
       }
 
       * {
