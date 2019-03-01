@@ -1,10 +1,10 @@
 import { RouteComponentProps } from "@reach/router";
 import * as React from "react";
 import styled from "styled-components";
-import { savePoints, updatePoint } from "./../actions";
+import { updatePoint } from "./../actions";
 import { defaultState, reducer } from "./../reducer";
 import { CalculateInput } from "./CalculateInput";
-import { SaveButton } from "./SaveButton";
+// import { SaveButton } from "./SaveButton";
 import { TotalPoints } from "./TotalPoints";
 
 export const Calculate: React.FunctionComponent<RouteComponentProps> = () => {
@@ -30,7 +30,7 @@ export const Calculate: React.FunctionComponent<RouteComponentProps> = () => {
       <TotalContainer>
         <TotalPoints pointTypes={pointTypes} />
       </TotalContainer>
-      <SaveButton onClick={() => dispatch(savePoints(pointTypes))} />
+      {/* <SaveButton onClick={() => dispatch(savePoints(pointTypes))} /> */}
     </>
   );
 };
