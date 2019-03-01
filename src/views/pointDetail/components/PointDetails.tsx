@@ -64,6 +64,7 @@ const BackButton = styled.button`
   color: #060056;
   display: flex;
   margin-bottom: 12px;
+  padding: 0px; 
 
   img {
     width: 20px;
