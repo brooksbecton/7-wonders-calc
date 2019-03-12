@@ -3,7 +3,6 @@ import * as React from "react";
 import posed from "react-pose";
 import styled from "styled-components";
 import { backArrow } from "./../../../icons/";
-import { upperFirst } from "./../../../utils/";
 import { PointTypeDescription } from "./PointTypeDescription";
 interface ICustomProps {
   pointType?: string;
@@ -22,7 +21,7 @@ export const PointDetail: React.FunctionComponent<Props> = ({
       </BackButton>
       <Tasdf initialPose="exit" pose="enter">
         <Wrapper>
-          <h1>{upperFirst(pointType)}</h1>
+          <h1>{pointType}</h1>
           <p>Points</p>
           <hr />
           <PointTypeDescription pointType={pointType} />
@@ -49,6 +48,7 @@ const Wrapper = styled.div`
 
   h1 {
     font-size: 20px;
+    text-transform: uppercase;
     margin: 0px;
   }
   p {
@@ -64,7 +64,7 @@ const BackButton = styled.button`
   color: #060056;
   display: flex;
   margin-bottom: 12px;
-  padding: 0px; 
+  padding: 0px;
 
   img {
     width: 20px;
