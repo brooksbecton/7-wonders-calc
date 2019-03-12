@@ -1,3 +1,4 @@
+import * as store from "store";
 import {
   civilian,
   coin,
@@ -54,8 +55,12 @@ export const reducer = (state: typeof defaultState, action: any) => {
     case "UPDATE_POINT":
       const { type: x, ...pointType } = action;
       const newValue: number = pointType.value;
+      const newState = Number.isNaN(newValue)
+        ? state
+        : updatePointType(pointType, state);
 
-      return Number.isNaN(newValue) ? state : updatePointType(pointType, state);
+      store.set("7WondersCalc/Points", newState);
+      return newState;
     default:
       return state;
   }

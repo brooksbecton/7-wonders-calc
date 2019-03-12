@@ -1,5 +1,6 @@
 import { RouteComponentProps } from "@reach/router";
 import * as React from "react";
+import * as store from "store";
 import { updatePoint } from "./../actions";
 import { defaultState, reducer } from "./../reducer";
 import { CalculateInput } from "./CalculateInput";
@@ -7,8 +8,9 @@ import { CalculateInput } from "./CalculateInput";
 import { TotalPoints } from "./TotalPoints";
 
 export const Calculate: React.FunctionComponent<RouteComponentProps> = () => {
-  const [pointTypes, dispatch] = React.useReducer(reducer, defaultState);
-
+  const pointData = store.get("7WondersCalc/Points", defaultState);
+  const [pointTypes, dispatch] = React.useReducer(reducer, pointData);
+  
   return (
     <>
       <>
@@ -26,7 +28,7 @@ export const Calculate: React.FunctionComponent<RouteComponentProps> = () => {
           );
         })}
       </>
-        <TotalPoints pointTypes={pointTypes} />
+      <TotalPoints pointTypes={pointTypes} />
       {/* <SaveButton onClick={() => dispatch(savePoints(pointTypes))} /> */}
     </>
   );
