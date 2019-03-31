@@ -2,7 +2,8 @@
   "extends": ["tslint:recommended", "tslint-react", "tslint-config-prettier"],
   "rules": {
     "jsx-no-lambda": [false],
-    "no-debugger": [false]
+    "no-debugger": [false],
+    "no-console": [false]
   },
   "linterOptions": {
     "exclude": [
