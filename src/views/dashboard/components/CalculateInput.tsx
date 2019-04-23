@@ -16,7 +16,7 @@ export const CalculateInput = ({
   const [pointType, pointsLabel] = label.split("-");
 
   return (
-    <Container>
+    <Container data-test-id={pointType}>
       <LeftSide>
         <IconContainer>
           <img src={svg} alt={`${pointType} ${pointsLabel} icon`} />
@@ -40,8 +40,18 @@ export const CalculateInput = ({
             <ScoreLabel>Score</ScoreLabel>
           </div>
           <BottomBar>
-            <button onClick={() => onChange(value + 1)}>+</button>
-            <button onClick={() => onChange(value - 1)}>-</button>
+            <button
+              data-test-id="increment"
+              onClick={() => onChange(value + 1)}
+            >
+              +
+            </button>
+            <button
+              data-test-id="decrement"
+              onClick={() => onChange(value - 1)}
+            >
+              -
+            </button>
             <Link to={`detail/${pointType}`}>?</Link>
           </BottomBar>
         </InputWrapper>
