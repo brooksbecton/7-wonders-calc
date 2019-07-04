@@ -5,7 +5,7 @@ import { defaultState, reducer } from "./reducer";
 import { IPointType } from "./types";
 
 export function usePoints(): [IPointType[], typeof setPoint] {
-  const pointData = store.get("7WondersCalc/Points", defaultState);
+  const pointData = store.get("points", defaultState);
   const [pointTypes, dispatch] = useReducer(reducer, pointData);
   const setPoint = ({
     key,
