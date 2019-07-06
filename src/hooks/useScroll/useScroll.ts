@@ -6,8 +6,10 @@ interface IScrollPositions {
 }
 
 export function useScroll() {
-  const defaultScrollPositions: IScrollPositions = { x: 0, y: 0 };
-
+  const defaultScrollPositions: IScrollPositions = {
+    x: window.scrollX,
+    y: window.scrollY
+  };
   const [scrollPositions, setScrollPositions] = useState(
     defaultScrollPositions
   );

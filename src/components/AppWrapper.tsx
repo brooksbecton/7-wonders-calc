@@ -26,29 +26,43 @@ const TopBar = ({ children }: { children: any }) => {
     }
   `;
 
+
   return (
     <>
-      <div
-        style={{
-          backgroundColor: "red",
-          display: y > 60 ? "block" : "none",
-          position: "fixed",
-          top: 0,
-          width: "100%",
-          zIndex: 1
-        }}
-      >
-        Top Bar
-      </div>
-      <TopBarNoScroll>{children}</TopBarNoScroll>
+      {y > 60 && (
+        <div
+          style={{
+            backgroundColor: "#e5e5e5",
+            display: "flex",
+            height: "45px",
+            justifyContent: "space-between",
+            position: "fixed",
+            top: 0,
+            width: "100%",
+            zIndex: 1
+          }}
+        >
+          <span style={{ marginLeft: 17 }}>{children[0]}</span>
+          <span style={{ marginRight: 17, alignSelf: "center" }}>
+            {children[1]}
+          </span>
+        </div>
+      )}
+      <TopBarNoScroll>{children[0]}</TopBarNoScroll>
     </>
   );
 };
+
 export const AppWrapper: React.FunctionComponent = props => {
   return (
     <>
       <TopBar>
-        <img src={pyramid} alt="Yellow Pyramid Icon" />
+        <img
+          src={pyramid}
+          alt="Yellow Pyramid Icon"
+          style={{ width: "40px" }}
+        />
+        <span>Menu</span>
       </TopBar>
       <Wrapper>
         <main>{props.children}</main>
