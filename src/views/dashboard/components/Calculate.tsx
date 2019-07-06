@@ -8,16 +8,15 @@ import { TotalPoints } from "./TotalPoints";
 
 export const Calculate: React.FunctionComponent<RouteComponentProps> = () => {
   const [pointTypes, setPoint] = usePoints();
-  const [scrollPositions] = useScroll();
-
-  console.log(JSON.stringify(scrollPositions));
+  const { y } = useScroll();
+  console.log(y);
   return (
     <>
       <>
         <div
           style={{
             backgroundColor: "red",
-            display: 2 > 60 ? "block" : "none",
+            display: y > 60 ? "block" : "none",
             position: "fixed",
             top: 0
           }}

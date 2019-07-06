@@ -11,12 +11,15 @@ export function useScroll() {
   const [scrollPositions, setScrollPositions] = useState(
     defaultScrollPositions
   );
-
+  const handleScrollChange = () => {
+    setScrollPositions({ x: window.scrollX, y: window.scrollY });
+  };
   useEffect(() => {
-    window.addEventListener("scroll", () => {
-      setScrollPositions({ x: window.scrollX, y: window.scrollY });
-    });
-  });
-  return [scrollPositions, setScrollPositions];
-}
+    window.addEventListener("scroll", handleScrollChange);
 
+    return () => {
+      window.removeEventListener("scroll", handleScrollChange);
+    };
+  });
+  return scrollPositions;
+}
