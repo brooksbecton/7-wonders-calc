@@ -10,11 +10,8 @@ import { Wonders } from "./Wonders";
 export interface IPointTypeDescriptionProps {
   pointType: string;
 }
-
-export const PointTypeDescription: React.FunctionComponent<
-  IPointTypeDescriptionProps
-> = props => {
-  switch (props.pointType) {
+function getPointDetail(pointType: string) {
+  switch (pointType) {
     case "civilian":
       return <Civilian />;
     case "commerce":
@@ -32,4 +29,11 @@ export const PointTypeDescription: React.FunctionComponent<
     default:
       return <p>Nones</p>;
   }
+}
+export const PointTypeDescription: React.FunctionComponent<
+  IPointTypeDescriptionProps
+> = props => {
+  return (
+    <div data-test-id={`${props.pointType}-detail`}>{getPointDetail(props.pointType)}</div>
+  );
 };

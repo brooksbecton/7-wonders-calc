@@ -52,7 +52,9 @@ export const CalculateInput = ({
             >
               -
             </button>
-            <Link to={`detail/${pointType}`}>?</Link>
+            <Link data-test-id="detail" to={`detail/${pointType}`}>
+              ?
+            </Link>
           </BottomBar>
         </InputWrapper>
       </RightSide>
