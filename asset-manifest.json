@@ -1,14 +1,23 @@
 {
-  "main.js": "static/js/main.4ebab6e6.js",
-  "main.js.map": "static/js/main.4ebab6e6.js.map",
-  "static/media/backArrow.svg": "static/media/backArrow.1a5c55a4.svg",
-  "static/media/civilian.svg": "static/media/civilian.e7193c1f.svg",
-  "static/media/coin.svg": "static/media/coin.79cccdda.svg",
-  "static/media/commerce.svg": "static/media/commerce.984e2a74.svg",
-  "static/media/guild.svg": "static/media/guild.91f0e727.svg",
-  "static/media/military.svg": "static/media/military.0fce02a1.svg",
-  "static/media/pyramid.svg": "static/media/pyramid.23267946.svg",
-  "static/media/save.svg": "static/media/save.bebc7633.svg",
-  "static/media/science.svg": "static/media/science.04116a1a.svg",
-  "static/media/wonders.svg": "static/media/wonders.1502f35a.svg"
+  "files": {
+    "main.js": "/7-wonders-calc/static/js/main.8932e9a7.chunk.js",
+    "main.js.map": "/7-wonders-calc/static/js/main.8932e9a7.chunk.js.map",
+    "runtime~main.js": "/7-wonders-calc/static/js/runtime~main.248f7cb2.js",
+    "runtime~main.js.map": "/7-wonders-calc/static/js/runtime~main.248f7cb2.js.map",
+    "static/js/2.dd2e1b9c.chunk.js": "/7-wonders-calc/static/js/2.dd2e1b9c.chunk.js",
+    "static/js/2.dd2e1b9c.chunk.js.map": "/7-wonders-calc/static/js/2.dd2e1b9c.chunk.js.map",
+    "index.html": "/7-wonders-calc/index.html",
+    "precache-manifest.589a17f212dc46a59fe405b82b9d6821.js": "/7-wonders-calc/precache-manifest.589a17f212dc46a59fe405b82b9d6821.js",
+    "service-worker.js": "/7-wonders-calc/service-worker.js",
+    "static/media/backArrow.svg": "/7-wonders-calc/static/media/backArrow.1a5c55a4.svg",
+    "static/media/civilian.svg": "/7-wonders-calc/static/media/civilian.e7193c1f.svg",
+    "static/media/coin.svg": "/7-wonders-calc/static/media/coin.79cccdda.svg",
+    "static/media/commerce.svg": "/7-wonders-calc/static/media/commerce.984e2a74.svg",
+    "static/media/guild.svg": "/7-wonders-calc/static/media/guild.91f0e727.svg",
+    "static/media/military.svg": "/7-wonders-calc/static/media/military.0fce02a1.svg",
+    "static/media/pyramid.svg": "/7-wonders-calc/static/media/pyramid.23267946.svg",
+    "static/media/save.svg": "/7-wonders-calc/static/media/save.bebc7633.svg",
+    "static/media/science.svg": "/7-wonders-calc/static/media/science.04116a1a.svg",
+    "static/media/wonders.svg": "/7-wonders-calc/static/media/wonders.1502f35a.svg"
+  }
 }
