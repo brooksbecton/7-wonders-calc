@@ -6,23 +6,25 @@ import { CalculateInput } from "./CalculateInput";
 import { TotalPoints } from "./TotalPoints";
 
 export const Calculate: React.FunctionComponent<RouteComponentProps> = () => {
-  const [pointTypes, setPoint] = usePoints();
+  // Array type is being weird
+  // const [pointTypes, setPoints] = usePoints();
+  const { x, y } = usePoints();
   return (
     <>
       <>
-        {pointTypes.map(({ key, value, svg }) => {
+        {x.map(({ key, value, svg }) => {
           return (
             <CalculateInput
               key={key}
               label={key}
               svg={svg}
-              onChange={newValue => setPoint({ key, svg, value: newValue })}
+              onChange={newValue => y({ key, svg, value: newValue })}
               value={value}
             />
           );
         })}
       </>
-      <TotalPoints pointTypes={pointTypes} />
+      <TotalPoints pointTypes={x} />
     </>
   );
 };

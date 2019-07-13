@@ -1,42 +1,50 @@
 {
-  "name": "my-app",
+  "name": "tmp",
   "version": "0.1.0",
   "private": true,
   "homepage": "https://brooksbecton.github.io/7-wonders-calc",
   "dependencies": {
     "@reach/router": "^1.2.1",
-    "@types/immutable": "^3.8.7",
+    "@types/jest": "^24.0.15",
+    "@types/node": "^12.0.12",
     "@types/ramda": "^0.26.15",
     "@types/reach__router": "^1.2.4",
+    "@types/react": "^16.8.23",
+    "@types/react-dom": "^16.8.4",
     "@types/store": "^2.0.2",
+    "@types/styled-components": "^4.1.18",
     "gh-pages": "^2.0.1",
-    "immutable": "^4.0.0-rc.12",
     "ramda": "^0.26.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-perf-devtool": "^3.1.8",
     "react-pose": "^4.0.8",
-    "react-scripts-ts": "3.1.0",
+    "react-scripts": "3.0.1",
     "store": "^2.0.12",
     "styled-components": "^4.3.2",
-    "tslint-config-prettier": "^1.18.0"
+    "typescript": "^3.5.2"
   },
   "scripts": {
-    "start": "react-scripts-ts start",
-    "build": "react-scripts-ts build",
-    "test": "react-scripts-ts test --env=jsdom",
-    "eject": "react-scripts-ts eject",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
-  "devDependencies": {
-    "@types/jest": "^24.0.15",
-    "@types/node": "^12.0.12",
-    "@types/react": "^16.8.23",
-    "@types/react-dom": "^16.8.4",
-    "@types/styled-components": "^4.1.16",
-    "@types/typescript": "^2.0.0",
-    "cypress": "^3.3.2",
-    "react-perf-devtool": "^3.1.8",
-    "typescript": "^3.5.2"
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }

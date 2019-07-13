@@ -2,7 +2,7 @@ import * as React from "react";
 import styled from "styled-components";
 
 import { useScroll } from "../hooks/useScroll";
-import pyramid from "./../icons/pyramid.svg";
+import pyramid from "../icons/pyramid.svg";
 
 const TopBar = ({ children }: { children: any }) => {
   const { y } = useScroll();
