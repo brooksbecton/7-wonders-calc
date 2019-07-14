@@ -1,15 +1,15 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "37c8e08001fd5aa0a7f3cd66478319e6",
+    "revision": "a48f0e1b9d1fdac5a3d55d6754c2b4ba",
     "url": "/7-wonders-calc/index.html"
   },
   {
-    "revision": "05e148ae770319dfd905",
-    "url": "/7-wonders-calc/static/js/2.dd2e1b9c.chunk.js"
+    "revision": "dc788e18d15510697537",
+    "url": "/7-wonders-calc/static/js/2.8e1d839d.chunk.js"
   },
   {
-    "revision": "b4caf378bbafff133ad0",
-    "url": "/7-wonders-calc/static/js/main.8932e9a7.chunk.js"
+    "revision": "1cbd36b8b2898450892d",
+    "url": "/7-wonders-calc/static/js/main.b5b47f1a.chunk.js"
   },
   {
     "revision": "b485522e4bd8c830a84a",
