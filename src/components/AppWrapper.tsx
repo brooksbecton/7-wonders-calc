@@ -1,6 +1,8 @@
+import Menu from "@material-ui/core/Menu";
+import MenuItem from "@material-ui/core/MenuItem";
 import * as React from "react";
+import * as store from "store";
 import styled from "styled-components";
-
 import { useScroll } from "../hooks/useScroll";
 import pyramid from "../icons/pyramid.svg";
 
@@ -25,7 +27,6 @@ const TopBar = ({ children }: { children: any }) => {
       padding: 0px;
     }
   `;
-
 
   return (
     <>
@@ -54,6 +55,16 @@ const TopBar = ({ children }: { children: any }) => {
 };
 
 export const AppWrapper: React.FunctionComponent = props => {
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+
+  function handleClick(event: React.MouseEvent<HTMLButtonElement>) {
+    setAnchorEl(event.currentTarget);
+  }
+
+  function handleClose() {
+    setAnchorEl(null);
+  }
+
   return (
     <>
       <TopBar>
@@ -62,11 +73,22 @@ export const AppWrapper: React.FunctionComponent = props => {
           alt="Yellow Pyramid Icon"
           style={{ width: "40px" }}
         />
-        <span>Menu</span>
+        <span onClick={handleClick}>Menu</span>
       </TopBar>
       <Wrapper>
         <main>{props.children}</main>
       </Wrapper>
+      <Menu
+        data-test-id="menu"
+        anchorEl={anchorEl}
+        keepMounted={true}
+        open={Boolean(anchorEl)}
+        onClose={handleClose}
+      >
+        <MenuItem data-test-id="reset" onClick={() => store.clearAll()}>
+          Reset
+        </MenuItem>
+      </Menu>
     </>
   );
 };

@@ -3,7 +3,6 @@
 function getTestId(id) {
   return `[data-test-id="${id}"]`;
 }
-
 describe("App", () => {
   const pointTypes = [
     "military",
@@ -17,6 +16,8 @@ describe("App", () => {
 
   beforeEach(() => {
     cy.visit("/");
+    cy.viewport("iphone-6");
+    cy.scrollTo(0, 0);
   });
 
   it("increments and decrements", () => {
