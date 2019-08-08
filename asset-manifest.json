@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.js": "/7-wonders-calc/static/js/main.b3a93906.chunk.js",
-    "main.js.map": "/7-wonders-calc/static/js/main.b3a93906.chunk.js.map",
+    "main.js": "/7-wonders-calc/static/js/main.017925f9.chunk.js",
+    "main.js.map": "/7-wonders-calc/static/js/main.017925f9.chunk.js.map",
     "runtime~main.js": "/7-wonders-calc/static/js/runtime~main.248f7cb2.js",
     "runtime~main.js.map": "/7-wonders-calc/static/js/runtime~main.248f7cb2.js.map",
     "static/js/2.8610c1c9.chunk.js": "/7-wonders-calc/static/js/2.8610c1c9.chunk.js",
     "static/js/2.8610c1c9.chunk.js.map": "/7-wonders-calc/static/js/2.8610c1c9.chunk.js.map",
     "index.html": "/7-wonders-calc/index.html",
-    "precache-manifest.c26d955a4e3bc3d6d85e4df219e466c0.js": "/7-wonders-calc/precache-manifest.c26d955a4e3bc3d6d85e4df219e466c0.js",
+    "precache-manifest.b74d05fc6caafc66d901b837742a1ef1.js": "/7-wonders-calc/precache-manifest.b74d05fc6caafc66d901b837742a1ef1.js",
     "service-worker.js": "/7-wonders-calc/service-worker.js",
     "static/media/backArrow.svg": "/7-wonders-calc/static/media/backArrow.1a5c55a4.svg",
     "static/media/civilian.svg": "/7-wonders-calc/static/media/civilian.e7193c1f.svg",
