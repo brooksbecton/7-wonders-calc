@@ -9,7 +9,7 @@ export interface ITotalPointsProps {
 export const TotalPoints: React.SFC<ITotalPointsProps> = ({ pointTypes }) => {
   return (
     <TotalContainer>
-      <h3>
+      <h3 className='text-sm'>
         Total Points: <span data-test-id="totalPoints">{getTotalPoints(pointTypes)}</span>
       </h3>
     </TotalContainer>
@@ -24,12 +24,7 @@ const TotalContainer = styled.div`
   padding-bottom: 15px;
   padding-top: 15px;
 
-  h3 {
-    font-size: 25px;
-  }
-
   p {
-    font-size: 23px;
     margin: 0px;
   }
 `;

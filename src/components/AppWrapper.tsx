@@ -22,7 +22,6 @@ const TopBar = ({ children }: { children: any }) => {
     }
 
     p {
-      font-size: 34px;
       margin: 0px;
       padding: 0px;
     }
@@ -98,8 +97,10 @@ const Wrapper = styled.div`
   justify-content: center;
   flex-direction: column;
   max-width: 380px;
-  margin-left: 16px;
-  margin-right: 16px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 10px;
+  padding-right: 10px;
 `;
 
 export default AppWrapper;

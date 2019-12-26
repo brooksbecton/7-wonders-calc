@@ -22,7 +22,7 @@ export const CalculateInput = ({
           <img src={svg} alt={`${pointType} ${pointsLabel} icon`} />
         </IconContainer>
         <Label htmlFor={label}>
-          <h2>{pointType}</h2>
+          <h2 className="text-sm">{pointType}</h2>
           <br />
           <span>{pointsLabel}</span>
         </Label>
@@ -33,6 +33,7 @@ export const CalculateInput = ({
           <div>
             <ScoreInput
               id={label}
+              className="text-l"
               type="tel"
               onChange={e => onChange(Number(e.target.value))}
               value={value}
@@ -41,6 +42,7 @@ export const CalculateInput = ({
           </div>
           <BottomBar>
             <button
+              className="text-xs"
               aria-label={`Increment ${pointType}`}
               data-test-id="increment"
               onClick={() => onChange(value + 1)}
@@ -48,6 +50,7 @@ export const CalculateInput = ({
               +
             </button>
             <button
+              className="text-xs"
               aria-label={`Decrement ${pointType}`}
               data-test-id="decrement"
               onClick={() => onChange(value - 1)}
@@ -56,6 +59,7 @@ export const CalculateInput = ({
             </button>
             {pointType === "science" && (
               <Link
+                className="text-xs"
                 aria-label={`Open Science Calculator`}
                 data-test-id="science-calculator"
                 to={`science-calculator`}
@@ -87,7 +91,6 @@ const BottomBar = styled.div`
     border: 0px;
     color: #eead0e;
     cursor: pointer;
-    font-size: 21px;
     line-height: 28px;
     margin: 0;
     margin-right: 12px;
@@ -160,24 +163,20 @@ const Label = styled.label`
   max-width: 221.375px;
 
   h2 {
-    font-size: 20px;
     margin-bottom: 5px;
   }
 
   p {
-    font-size: 20px;
     margin: 0;
   }
 
   span {
-    font-size: 12px;
   }
 `;
 
 const ScoreLabel = styled.p`
   margin: 0;
   color: #e5e5e5;
-  font-size: 12px;
   text-align: center;
 `;
 
@@ -185,7 +184,6 @@ const ScoreInput = styled.input`
   background-color: transparent;
   border: 0;
   color: #e5e5e5;
-  font-size: 47px;
   height: 47px;
   text-align: center;
   width: 50%;
