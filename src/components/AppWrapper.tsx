@@ -57,7 +57,7 @@ const TopBar = ({ children }: { children: any }) => {
 export const AppWrapper: React.FunctionComponent = props => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
-  function handleClick(event: React.MouseEvent<HTMLButtonElement>) {
+  function handleClick(event: React.MouseEvent<HTMLSpanElement>) {
     setAnchorEl(event.currentTarget);
   }
 

@@ -41,17 +41,28 @@ export const CalculateInput = ({
           </div>
           <BottomBar>
             <button
+              aria-label={`Increment ${pointType}`}
               data-test-id="increment"
               onClick={() => onChange(value + 1)}
             >
               +
             </button>
             <button
+              aria-label={`Decrement ${pointType}`}
               data-test-id="decrement"
               onClick={() => onChange(value - 1)}
             >
               -
             </button>
+            {pointType === "science" && (
+              <Link
+                aria-label={`Open Science Calculator`}
+                data-test-id="science-calculator"
+                to={`science-calculator`}
+              >
+                fx
+              </Link>
+            )}
             <Link data-test-id="detail" to={`detail/${pointType}`}>
               ?
             </Link>

@@ -6,9 +6,9 @@ import { AppWrapper } from "./components/AppWrapper";
 import serviceWorker from "./registerServiceWorker";
 import { Calculate } from "./views/dashboard";
 import { PointDetail } from "./views/pointDetail/components/PointDetails";
+import { ScienceCalculator } from "./views/ScienceCalculator";
 
-registerObserver()
-
+registerObserver();
 
 function App() {
   return (
@@ -16,6 +16,7 @@ function App() {
       <Router basepath={process.env.PUBLIC_URL}>
         <Calculate path="/" />
         <PointDetail path="detail/:pointType" />
+        <ScienceCalculator path="science-calculator" />
       </Router>
     </AppWrapper>
   );
