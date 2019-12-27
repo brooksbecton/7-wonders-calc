@@ -8,3 +8,4 @@ export { default as wonders } from "./wonders.svg";
 export { default as save } from "./save.svg";
 export { default as backArrow } from "./backArrow.svg";
 export { default as mason } from "./mason.svg";
+export { default as tally } from "./tally.svg";

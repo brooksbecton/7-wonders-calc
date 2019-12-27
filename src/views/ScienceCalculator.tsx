@@ -7,10 +7,11 @@ import { usePoints } from "../hooks/usePoints";
 import { DetailWrapper } from "./../components/DetailWrapper";
 import cogSvg from "./../icons/cog.svg";
 import { mason } from "./../icons/index";
+import { tally } from "./../icons/index";
 export interface IProps {
   icon: string;
   iconAlt: string;
-  setter: (value: any) => void;
+  onChange: (newValue: any) => void;
   value: any;
 }
 
@@ -20,52 +21,102 @@ export const ScienceCalculator: React.FC<RouteComponentProps> = props => {
     pointType => pointType.key === "science-points"
   );
 
-  const [gearPoints, setGearPoints] = React.useState(0);
-  const [architecture, setArchitecture] = React.useState(0);
-  const SliderRow: React.FC<IProps> = ({ icon, iconAlt, setter, value }) => (
-    <ScienceSliderWrapper>
-      <img src={icon} alt={iconAlt} />
-      <SliderWrapper>
-        <Slider
-          value={value}
-          marks={true}
-          step={1}
-          min={0}
-          max={8}
-          onChange={(e, value) =>
-            setter(Array.isArray(value) ? value[0] : value)
-          }
-        />
-      </SliderWrapper>
-      <div
-        style={{
-          width: "20%",
-          textAlign: "center"
-        }}
-      >
-        <p className="text-xl" style={{ marginBottom: "-10px" }}>
-          {value}
-        </p>
-        <p style={{ margin: "0" }}>cards</p>
-      </div>
-    </ScienceSliderWrapper>
-  );
+  const [gearCardCount, setGearCardCount] = React.useState(0);
+  const [architectureCardCount, setArchitectureCardCount] = React.useState(0);
+  const [tabletCardCount, setTabletCardCount] = React.useState(0);
+  const getIdenticalScore = () => {
+    const gearScore = gearCardCount * gearCardCount;
+    const archScore = architectureCardCount * architectureCardCount;
+    const langScore = tabletCardCount * tabletCardCount;
+
+    return gearScore + archScore + langScore;
+  };
+
+  const getScienceSetsScore = () => {
+    return (
+      Math.min(...[gearCardCount, architectureCardCount, tabletCardCount]) * 7
+    );
+  };
 
   return (
     <DetailWrapper>
       <h1 className="text-md">Science</h1>
-      <SliderRow
-        iconAlt={"Cog Icon"}
-        icon={cogSvg}
-        setter={setGearPoints}
-        value={gearPoints}
-      />
-      <SliderRow
-        iconAlt={"Architect Icon"}
-        icon={mason}
-        setter={setArchitecture}
-        value={architecture}
-      />
+      <ScienceSliderWrapper>
+        <img src={cogSvg} alt={"Gear Icon"} />
+        <SliderWrapper>
+          <Slider
+            value={gearCardCount}
+            step={1}
+            min={0}
+            max={8}
+            onChange={(event, value) => {
+              setGearCardCount(value as number);
+            }}
+          />
+        </SliderWrapper>
+        <div
+          style={{
+            width: "20%",
+            textAlign: "center"
+          }}
+        >
+          <p className="text-xl" style={{ marginBottom: "-10px" }}>
+            {gearCardCount}
+          </p>
+          <p style={{ margin: "0" }}>cards</p>
+        </div>
+      </ScienceSliderWrapper>
+      <ScienceSliderWrapper>
+        <img src={mason} alt={"Freemason Icon"} />
+        <SliderWrapper>
+          <Slider
+            value={architectureCardCount}
+            step={1}
+            min={0}
+            max={8}
+            onChange={(event, value) => {
+              setArchitectureCardCount(value as number);
+            }}
+          />
+        </SliderWrapper>
+        <div
+          style={{
+            width: "20%",
+            textAlign: "center"
+          }}
+        >
+          <p className="text-xl" style={{ marginBottom: "-10px" }}>
+            {architectureCardCount}
+          </p>
+          <p style={{ margin: "0" }}>cards</p>
+        </div>
+      </ScienceSliderWrapper>
+      <ScienceSliderWrapper>
+        <img src={tally} alt={"5 Tally Marks"} />
+        <SliderWrapper>
+          <Slider
+            value={tabletCardCount}
+            step={1}
+            min={0}
+            max={8}
+            onChange={(event, value) => {
+              setTabletCardCount(value as number);
+            }}
+          />
+        </SliderWrapper>
+        <div
+          style={{
+            width: "20%",
+            textAlign: "center"
+          }}
+        >
+          <p className="text-xl" style={{ marginBottom: "-10px" }}>
+            {tabletCardCount}
+          </p>
+          <p style={{ margin: "0" }}>cards</p>
+        </div>
+      </ScienceSliderWrapper>
+      <p>{getIdenticalScore() + getScienceSetsScore()}</p>
     </DetailWrapper>
   );
 };
