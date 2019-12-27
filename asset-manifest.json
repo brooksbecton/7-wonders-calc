@@ -1,23 +1,31 @@
 {
   "files": {
-    "main.js": "/7-wonders-calc/static/js/main.017925f9.chunk.js",
-    "main.js.map": "/7-wonders-calc/static/js/main.017925f9.chunk.js.map",
-    "runtime~main.js": "/7-wonders-calc/static/js/runtime~main.248f7cb2.js",
-    "runtime~main.js.map": "/7-wonders-calc/static/js/runtime~main.248f7cb2.js.map",
-    "static/js/2.8610c1c9.chunk.js": "/7-wonders-calc/static/js/2.8610c1c9.chunk.js",
-    "static/js/2.8610c1c9.chunk.js.map": "/7-wonders-calc/static/js/2.8610c1c9.chunk.js.map",
+    "main.js": "/7-wonders-calc/static/js/main.c663f5ff.chunk.js",
+    "main.js.map": "/7-wonders-calc/static/js/main.c663f5ff.chunk.js.map",
+    "runtime-main.js": "/7-wonders-calc/static/js/runtime-main.a31626e4.js",
+    "runtime-main.js.map": "/7-wonders-calc/static/js/runtime-main.a31626e4.js.map",
+    "static/js/2.20544401.chunk.js": "/7-wonders-calc/static/js/2.20544401.chunk.js",
+    "static/js/2.20544401.chunk.js.map": "/7-wonders-calc/static/js/2.20544401.chunk.js.map",
     "index.html": "/7-wonders-calc/index.html",
-    "precache-manifest.b74d05fc6caafc66d901b837742a1ef1.js": "/7-wonders-calc/precache-manifest.b74d05fc6caafc66d901b837742a1ef1.js",
+    "precache-manifest.0fc7964a6714e27824f8b4711b4d343e.js": "/7-wonders-calc/precache-manifest.0fc7964a6714e27824f8b4711b4d343e.js",
     "service-worker.js": "/7-wonders-calc/service-worker.js",
+    "static/js/2.20544401.chunk.js.LICENSE": "/7-wonders-calc/static/js/2.20544401.chunk.js.LICENSE",
     "static/media/backArrow.svg": "/7-wonders-calc/static/media/backArrow.1a5c55a4.svg",
     "static/media/civilian.svg": "/7-wonders-calc/static/media/civilian.e7193c1f.svg",
+    "static/media/cog.svg": "/7-wonders-calc/static/media/cog.684989cc.svg",
     "static/media/coin.svg": "/7-wonders-calc/static/media/coin.79cccdda.svg",
     "static/media/commerce.svg": "/7-wonders-calc/static/media/commerce.984e2a74.svg",
     "static/media/guild.svg": "/7-wonders-calc/static/media/guild.91f0e727.svg",
+    "static/media/mason.svg": "/7-wonders-calc/static/media/mason.befe781c.svg",
     "static/media/military.svg": "/7-wonders-calc/static/media/military.0fce02a1.svg",
     "static/media/pyramid.svg": "/7-wonders-calc/static/media/pyramid.23267946.svg",
     "static/media/save.svg": "/7-wonders-calc/static/media/save.bebc7633.svg",
     "static/media/science.svg": "/7-wonders-calc/static/media/science.04116a1a.svg",
     "static/media/wonders.svg": "/7-wonders-calc/static/media/wonders.1502f35a.svg"
-  }
+  },
+  "entrypoints": [
+    "static/js/runtime-main.a31626e4.js",
+    "static/js/2.20544401.chunk.js",
+    "static/js/main.c663f5ff.chunk.js"
+  ]
 }
