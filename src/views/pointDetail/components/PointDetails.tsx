@@ -25,8 +25,8 @@ export const PointDetail: React.FunctionComponent<Props> = ({
           </IconContainer>
         )}
         <div>
-          <h1>{pointType}</h1>
-          <p>Points</p>
+          <h1 className="text-md">{pointType}</h1>
+          <p style={{ padding: 0, margin: 0 }}>Points</p>
         </div>
       </Header>
       <hr />

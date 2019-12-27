@@ -22,7 +22,7 @@ export const CalculateInput = ({
           <img src={svg} alt={`${pointType} ${pointsLabel} icon`} />
         </IconContainer>
         <Label htmlFor={label}>
-          <h2 className="text-sm">{pointType}</h2>
+          <h2 className="text-md">{pointType}</h2>
           <br />
           <span>{pointsLabel}</span>
         </Label>
@@ -33,7 +33,7 @@ export const CalculateInput = ({
           <div>
             <ScoreInput
               id={label}
-              className="text-l"
+              className="text-xl"
               type="tel"
               onChange={e => onChange(Number(e.target.value))}
               value={value}
@@ -42,7 +42,7 @@ export const CalculateInput = ({
           </div>
           <BottomBar>
             <button
-              className="text-xs"
+              className="text-sm"
               aria-label={`Increment ${pointType}`}
               data-test-id="increment"
               onClick={() => onChange(value + 1)}
@@ -50,7 +50,7 @@ export const CalculateInput = ({
               +
             </button>
             <button
-              className="text-xs"
+              className="text-sm"
               aria-label={`Decrement ${pointType}`}
               data-test-id="decrement"
               onClick={() => onChange(value - 1)}
@@ -59,7 +59,7 @@ export const CalculateInput = ({
             </button>
             {pointType === "science" && (
               <Link
-                className="text-xs"
+                className="text-sm"
                 aria-label={`Open Science Calculator`}
                 data-test-id="science-calculator"
                 to={`science-calculator`}

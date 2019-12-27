@@ -7,3 +7,4 @@ export { default as military } from "./military.svg";
 export { default as wonders } from "./wonders.svg";
 export { default as save } from "./save.svg";
 export { default as backArrow } from "./backArrow.svg";
+export { default as mason } from "./mason.svg";

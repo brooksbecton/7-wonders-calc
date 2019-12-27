@@ -9,7 +9,7 @@ export interface ITotalPointsProps {
 export const TotalPoints: React.SFC<ITotalPointsProps> = ({ pointTypes }) => {
   return (
     <TotalContainer>
-      <h3 className='text-sm'>
+      <h3 className='text-md'>
         Total Points: <span data-test-id="totalPoints">{getTotalPoints(pointTypes)}</span>
       </h3>
     </TotalContainer>
