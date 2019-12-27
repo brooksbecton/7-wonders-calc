@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/7-wonders-calc/precache-manifest.0fc7964a6714e27824f8b4711b4d343e.js"
+  "/7-wonders-calc/precache-manifest.85bfcfb0e3d0186706d6fdcc1e36e93a.js"
 );
 
 self.addEventListener('message', (event) => {
