@@ -52,4 +52,9 @@ describe("App", () => {
       cy.get(getTestId(`${p}-detail`)).should("exist");
     });
   });
+
+  it("navigates to science calculator", () => {
+    cy.get(getTestId("science-calculator")).click();
+    cy.url().should("include", "science-calculator");
+  });
 });
