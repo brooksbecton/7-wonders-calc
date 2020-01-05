@@ -43,7 +43,7 @@ export const CalculateInput = ({
           <BottomBar>
             <button
               className="text-sm"
-              aria-label={`Increment ${pointType}`}
+              aria-label={`Increment ${pointType} points to ${value + 1}`}
               data-test-id="increment"
               onClick={() => onChange(value + 1)}
             >
@@ -51,7 +51,7 @@ export const CalculateInput = ({
             </button>
             <button
               className="text-sm"
-              aria-label={`Decrement ${pointType}`}
+              aria-label={`Decrement ${pointType} points to ${value - 1}`}
               data-test-id="decrement"
               onClick={() => onChange(value - 1)}
             >
@@ -67,7 +67,11 @@ export const CalculateInput = ({
                 fx
               </Link>
             )}
-            <Link data-test-id="detail" to={`detail/${pointType}`}>
+            <Link
+              aria-label={`Go to ${pointType} description`}
+              data-test-id="detail"
+              to={`detail/${pointType}`}
+            >
               ?
             </Link>
           </BottomBar>
