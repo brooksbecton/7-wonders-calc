@@ -1,3 +1,4 @@
+import Checkbox from "@material-ui/core/Checkbox";
 import Slider from "@material-ui/core/Slider";
 import { RouteComponentProps } from "@reach/router";
 import * as React from "react";
@@ -24,6 +25,7 @@ export const ScienceCalculator: React.FC<RouteComponentProps> = props => {
   const [gearCardCount, setGearCardCount] = React.useState(0);
   const [architectureCardCount, setArchitectureCardCount] = React.useState(0);
   const [tabletCardCount, setTabletCardCount] = React.useState(0);
+
   const getIdenticalScore = () => {
     const gearScore = gearCardCount * gearCardCount;
     const archScore = architectureCardCount * architectureCardCount;
@@ -41,6 +43,7 @@ export const ScienceCalculator: React.FC<RouteComponentProps> = props => {
   return (
     <DetailWrapper>
       <h1 className="text-md">Science</h1>
+      <hr />
       <ScienceSliderWrapper>
         <img src={cogSvg} alt={"Gear Icon"} />
         <SliderWrapper>
@@ -116,7 +119,9 @@ export const ScienceCalculator: React.FC<RouteComponentProps> = props => {
           <p style={{ margin: "0" }}>cards</p>
         </div>
       </ScienceSliderWrapper>
-      <p>{getIdenticalScore() + getScienceSetsScore()}</p>
+      <hr />
+
+      <p className={"text-xl"}>{getIdenticalScore() + getScienceSetsScore()}</p>
     </DetailWrapper>
   );
 };
