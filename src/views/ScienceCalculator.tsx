@@ -17,11 +17,6 @@ export interface IProps {
 }
 
 export const ScienceCalculator: React.FC<RouteComponentProps> = props => {
-  const { x: pointTypes } = usePoints();
-  const [sciencePoints] = pointTypes.filter(
-    pointType => pointType.key === "science-points"
-  );
-
   const [gearCardCount, setGearCardCount] = React.useState(0);
   const [architectureCardCount, setArchitectureCardCount] = React.useState(0);
   const [tabletCardCount, setTabletCardCount] = React.useState(0);
