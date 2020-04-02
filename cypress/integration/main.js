@@ -1,5 +1,5 @@
 /* global cy */
-
+const homeUrl = "/7-wonders-calc/";
 function getTestId(id) {
   return `[data-test-id="${id}"]`;
 }
@@ -15,9 +15,9 @@ describe("App", () => {
   ];
 
   beforeEach(() => {
-    cy.visit("/");
+    cy.visit(homeUrl);
     cy.viewport("iphone-6");
-    cy.scrollTo(0, 0);
+    // cy.scrollTo(0, 0);
   });
 
   it("increments and decrements", () => {
@@ -45,7 +45,7 @@ describe("App", () => {
 
   it("navigates to point detail", () => {
     pointTypes.forEach(p => {
-      cy.visit("/");
+      cy.visit(homeUrl);
       cy.get(getTestId(p)).within(() => {
         cy.get(getTestId("detail")).click();
       });
