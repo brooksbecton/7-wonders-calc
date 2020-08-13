@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "38bdfd665d0047544074fc658ebadf7d",
+    "revision": "a46d27b071f26d7254f257ec1f63b4ae",
     "url": "/7-wonders-calc/index.html"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/7-wonders-calc/static/js/2.888c2134.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "21452e975e2ceee6f61e",
-    "url": "/7-wonders-calc/static/js/main.4aa467bc.chunk.js"
+    "revision": "75a8321b43175e74ecaf",
+    "url": "/7-wonders-calc/static/js/main.a7f4201a.chunk.js"
   },
   {
     "revision": "13a49d18a54db2ee0ae1",
