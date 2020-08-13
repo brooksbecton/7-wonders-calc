@@ -16,7 +16,7 @@ export interface IProps {
   value: any;
 }
 
-export const ScienceCalculator: React.FC<RouteComponentProps> = props => {
+export const ScienceCalculator: React.FC<RouteComponentProps> = (props) => {
   const [gearCardCount, setGearCardCount] = React.useState(0);
   const [architectureCardCount, setArchitectureCardCount] = React.useState(0);
   const [tabletCardCount, setTabletCardCount] = React.useState(0);
@@ -30,9 +30,7 @@ export const ScienceCalculator: React.FC<RouteComponentProps> = props => {
   };
 
   const getScienceSetsScore = () => {
-    return (
-      Math.min(...[gearCardCount, architectureCardCount, tabletCardCount]) * 7
-    );
+    return Math.min(gearCardCount, architectureCardCount, tabletCardCount) * 7;
   };
 
   return (
@@ -55,7 +53,7 @@ export const ScienceCalculator: React.FC<RouteComponentProps> = props => {
         <div
           style={{
             width: "20%",
-            textAlign: "center"
+            textAlign: "center",
           }}
         >
           <p className="text-xl" style={{ marginBottom: "-10px" }}>
@@ -80,7 +78,7 @@ export const ScienceCalculator: React.FC<RouteComponentProps> = props => {
         <div
           style={{
             width: "20%",
-            textAlign: "center"
+            textAlign: "center",
           }}
         >
           <p className="text-xl" style={{ marginBottom: "-10px" }}>
@@ -105,7 +103,7 @@ export const ScienceCalculator: React.FC<RouteComponentProps> = props => {
         <div
           style={{
             width: "20%",
-            textAlign: "center"
+            textAlign: "center",
           }}
         >
           <p className="text-xl" style={{ marginBottom: "-10px" }}>
