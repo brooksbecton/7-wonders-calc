@@ -1,1 +1,1 @@
-export { PointDetail } from "./components/PointDetails";
+export { PointDetail } from './components/PointDetails';

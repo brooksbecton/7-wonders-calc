@@ -1,3 +1,3 @@
-declare module "react-perf-devtool" {
+declare module 'react-perf-devtool' {
   export function registerObserver(): void;
 }

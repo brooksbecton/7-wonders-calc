@@ -1,19 +1,19 @@
-import { Link } from "@reach/router";
-import * as React from "react";
-import styled from "styled-components";
+import { Link } from '@reach/router';
+import * as React from 'react';
+import styled from 'styled-components';
 
 export const CalculateInput = ({
   label,
   onChange,
   value,
-  svg
+  svg,
 }: {
   label: string;
   onChange: (input: number) => void;
   value: number;
   svg: string;
 }) => {
-  const [pointType, pointsLabel] = label.split("-");
+  const [pointType, pointsLabel] = label.split('-');
 
   return (
     <Container data-test-id={pointType}>
@@ -35,13 +35,14 @@ export const CalculateInput = ({
               id={label}
               className="text-xl"
               type="tel"
-              onChange={e => onChange(Number(e.target.value))}
+              onChange={(e) => onChange(Number(e.target.value))}
               value={value}
             />
             <ScoreLabel>Score</ScoreLabel>
           </div>
           <BottomBar>
             <button
+              type="button"
               className="text-sm"
               aria-label={`Increment ${pointType} points to ${value + 1}`}
               data-test-id="increment"
@@ -50,6 +51,7 @@ export const CalculateInput = ({
               +
             </button>
             <button
+              type="button"
               className="text-sm"
               aria-label={`Decrement ${pointType} points to ${value - 1}`}
               data-test-id="decrement"
@@ -57,12 +59,12 @@ export const CalculateInput = ({
             >
               -
             </button>
-            {pointType === "science" && (
+            {pointType === 'science' && (
               <Link
                 className="text-sm"
-                aria-label={`Open Science Calculator`}
+                aria-label="Open Science Calculator"
                 data-test-id="science-calculator"
-                to={`science-calculator`}
+                to="science-calculator"
               >
                 fx
               </Link>

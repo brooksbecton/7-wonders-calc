@@ -1,4 +1,4 @@
-import * as store from "store";
+import * as store from 'store';
 import {
   civilian,
   coin,
@@ -6,61 +6,62 @@ import {
   guild,
   military,
   science,
-  wonders
-} from "./../../icons";
-import { IActionTypes, IPointType } from "./types";
-import { updatePointType } from "./utils";
+  wonders,
+} from '../../icons';
+import { IPointType } from './types';
+import { updatePointType } from './utils';
 
 export const defaultState: IPointType[] = [
   {
-    key: "military-points",
+    key: 'military-points',
     svg: military,
-    value: 0
+    value: 0,
   },
   {
-    key: "treasury-points",
+    key: 'treasury-points',
     svg: coin,
-    value: 0
+    value: 0,
   },
   {
-    key: "wonders-points",
+    key: 'wonders-points',
     svg: wonders,
-    value: 0
+    value: 0,
   },
   {
-    key: "civilian-points",
+    key: 'civilian-points',
     svg: civilian,
-    value: 0
+    value: 0,
   },
   {
-    key: "commerce-points",
+    key: 'commerce-points',
     svg: commerce,
-    value: 0
+    value: 0,
   },
   {
-    key: "guilds-points",
+    key: 'guilds-points',
     svg: guild,
-    value: 0
+    value: 0,
   },
   {
-    key: "science-points",
+    key: 'science-points',
     svg: science,
-    value: 0
-  }
+    value: 0,
+  },
 ];
 
 export const reducer = (state: typeof defaultState, action: any) => {
-  const type: IActionTypes = action.type;
+  const { type } = action;
   switch (type) {
-    case "UPDATE_POINT":
+    case 'UPDATE_POINT': {
       const { type: x, ...pointType } = action;
       const newValue: number = pointType.value;
       const newState = Number.isNaN(newValue)
         ? state
         : updatePointType(pointType, state);
 
-      store.set("7WondersCalc/Points", newState);
+      store.set('7WondersCalc/Points', newState);
       return newState;
+    }
     default:
       return state;
   }

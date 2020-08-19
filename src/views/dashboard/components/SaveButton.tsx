@@ -1,19 +1,19 @@
-import * as React from "react";
-import styled from "styled-components";
+import * as React from 'react';
+import styled from 'styled-components';
 
-import { save } from "./../../../icons";
+import { save } from '../../../icons';
 
 interface IButtonProps {
   onClick: () => void;
 }
 
-export const SaveButton: React.SFC<IButtonProps> = ({ onClick }) => {
-  return (
-    <Button>
-      <img onClick={() => onClick()} src={save} alt="Save Score" />
-    </Button>
-  );
-};
+export const SaveButton: React.SFC<IButtonProps> = ({
+  onClick,
+}: IButtonProps) => (
+  <Button onClick={onClick} onKeyPress={onClick}>
+    <img src={save} alt="Save Score" />
+  </Button>
+);
 
 const Button = styled.button`
   background-color: #8b6508;

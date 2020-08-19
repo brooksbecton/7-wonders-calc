@@ -1,13 +1,13 @@
-import { IActionTypes, IPointType } from "./types";
+import { IActionTypes, IPointType } from './types';
 
 interface IUpdatePointAction extends IPointType {
   type: IActionTypes;
 }
 export const updatePoint = (newPointType: IPointType): IUpdatePointAction => {
-  const type: IActionTypes = "UPDATE_POINT";
+  const type: IActionTypes = 'UPDATE_POINT';
   return {
     type,
-    ...newPointType
+    ...newPointType,
   };
 };
 
@@ -16,9 +16,9 @@ interface ISavePointsAction {
   points: IPointType[];
 }
 export const savePoints = (points: IPointType[]): ISavePointsAction => {
-  const type: IActionTypes = "SAVE_POINTS";
+  const type: IActionTypes = 'SAVE_POINTS';
   return {
     points,
-    type
+    type,
   };
 };

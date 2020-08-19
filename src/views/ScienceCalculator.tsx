@@ -1,14 +1,12 @@
-import Checkbox from "@material-ui/core/Checkbox";
-import Slider from "@material-ui/core/Slider";
-import { RouteComponentProps } from "@reach/router";
-import * as React from "react";
-import styled from "styled-components";
+import Slider from '@material-ui/core/Slider';
+import { RouteComponentProps } from '@reach/router';
+import * as React from 'react';
+import styled from 'styled-components';
 
-import { usePoints } from "../hooks/usePoints";
-import { DetailWrapper } from "./../components/DetailWrapper";
-import cogSvg from "./../icons/cog.svg";
-import { mason } from "./../icons/index";
-import { tally } from "./../icons/index";
+import { DetailWrapper } from '../components/DetailWrapper';
+import cogSvg from '../icons/cog.svg';
+import { mason, tally } from '../icons/index';
+
 export interface IProps {
   icon: string;
   iconAlt: string;
@@ -16,7 +14,7 @@ export interface IProps {
   value: any;
 }
 
-export const ScienceCalculator: React.FC<RouteComponentProps> = (props) => {
+export const ScienceCalculator: React.FC<RouteComponentProps> = () => {
   const [gearCardCount, setGearCardCount] = React.useState(0);
   const [architectureCardCount, setArchitectureCardCount] = React.useState(0);
   const [tabletCardCount, setTabletCardCount] = React.useState(0);
@@ -29,16 +27,16 @@ export const ScienceCalculator: React.FC<RouteComponentProps> = (props) => {
     return gearScore + archScore + langScore;
   };
 
-  const getScienceSetsScore = () => {
-    return Math.min(gearCardCount, architectureCardCount, tabletCardCount) * 7;
-  };
+  const getScienceSetsScore = () => Math.min(
+    gearCardCount, architectureCardCount, tabletCardCount,
+  ) * 7;
 
   return (
     <DetailWrapper>
       <h1 className="text-md">Science</h1>
       <hr />
       <ScienceSliderWrapper>
-        <img src={cogSvg} alt={"Gear Icon"} />
+        <img src={cogSvg} alt="Gear Icon" />
         <SliderWrapper>
           <Slider
             value={gearCardCount}
@@ -52,18 +50,18 @@ export const ScienceCalculator: React.FC<RouteComponentProps> = (props) => {
         </SliderWrapper>
         <div
           style={{
-            width: "20%",
-            textAlign: "center",
+            width: '20%',
+            textAlign: 'center',
           }}
         >
-          <p className="text-xl" style={{ marginBottom: "-10px" }}>
+          <p className="text-xl" style={{ marginBottom: '-10px' }}>
             {gearCardCount}
           </p>
-          <p style={{ margin: "0" }}>cards</p>
+          <p style={{ margin: '0' }}>cards</p>
         </div>
       </ScienceSliderWrapper>
       <ScienceSliderWrapper>
-        <img src={mason} alt={"Freemason Icon"} />
+        <img src={mason} alt="Freemason Icon" />
         <SliderWrapper>
           <Slider
             value={architectureCardCount}
@@ -77,18 +75,18 @@ export const ScienceCalculator: React.FC<RouteComponentProps> = (props) => {
         </SliderWrapper>
         <div
           style={{
-            width: "20%",
-            textAlign: "center",
+            width: '20%',
+            textAlign: 'center',
           }}
         >
-          <p className="text-xl" style={{ marginBottom: "-10px" }}>
+          <p className="text-xl" style={{ marginBottom: '-10px' }}>
             {architectureCardCount}
           </p>
-          <p style={{ margin: "0" }}>cards</p>
+          <p style={{ margin: '0' }}>cards</p>
         </div>
       </ScienceSliderWrapper>
       <ScienceSliderWrapper>
-        <img src={tally} alt={"5 Tally Marks"} />
+        <img src={tally} alt="5 Tally Marks" />
         <SliderWrapper>
           <Slider
             value={tabletCardCount}
@@ -102,19 +100,19 @@ export const ScienceCalculator: React.FC<RouteComponentProps> = (props) => {
         </SliderWrapper>
         <div
           style={{
-            width: "20%",
-            textAlign: "center",
+            width: '20%',
+            textAlign: 'center',
           }}
         >
-          <p className="text-xl" style={{ marginBottom: "-10px" }}>
+          <p className="text-xl" style={{ marginBottom: '-10px' }}>
             {tabletCardCount}
           </p>
-          <p style={{ margin: "0" }}>cards</p>
+          <p style={{ margin: '0' }}>cards</p>
         </div>
       </ScienceSliderWrapper>
       <hr />
 
-      <p className={"text-xl"}>{getIdenticalScore() + getScienceSetsScore()}</p>
+      <p className="text-xl">{getIdenticalScore() + getScienceSetsScore()}</p>
     </DetailWrapper>
   );
 };

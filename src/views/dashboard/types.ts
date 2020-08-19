@@ -1,8 +1,7 @@
-
 export interface IPointType {
-    key: string;
-    value: number;
-    svg: string;
+  key: string;
+  value: number;
+  svg: string;
 }
 
-export type IActionTypes = "UPDATE_POINT" | "SAVE_POINTS"
+export type IActionTypes = 'UPDATE_POINT' | 'SAVE_POINTS';

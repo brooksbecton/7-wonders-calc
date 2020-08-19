@@ -1,12 +1,12 @@
-import { Router } from "@reach/router";
-import * as React from "react";
-import { render } from "react-dom";
-import { registerObserver } from "react-perf-devtool";
-import { AppWrapper } from "./components/AppWrapper";
-import serviceWorker from "./registerServiceWorker";
-import { Calculate } from "./views/dashboard";
-import { PointDetail } from "./views/pointDetail/components/PointDetails";
-import { ScienceCalculator } from "./views/ScienceCalculator";
+import { Router } from '@reach/router';
+import * as React from 'react';
+import { render } from 'react-dom';
+import { registerObserver } from 'react-perf-devtool';
+import { AppWrapper } from './components/AppWrapper';
+import serviceWorker from './registerServiceWorker';
+import { Calculate } from './views/dashboard';
+import { PointDetail } from './views/pointDetail/components/PointDetails';
+import { ScienceCalculator } from './views/ScienceCalculator';
 
 registerObserver();
 
@@ -22,6 +22,6 @@ function App() {
   );
 }
 
-const rootElement = document.getElementById("root");
+const rootElement = document.getElementById('root');
 render(<App />, rootElement);
 serviceWorker();

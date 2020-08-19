@@ -1,27 +1,28 @@
-import { RouteComponentProps } from "@reach/router";
-import * as React from "react";
-import styled from "styled-components";
+import { RouteComponentProps } from '@reach/router';
+import * as React from 'react';
+import styled from 'styled-components';
 
-import { DetailWrapper } from "../../../components/DetailWrapper";
-import { usePoints } from "../../../hooks/usePoints";
-import { PointTypeDescription } from "./PointTypeDescription";
+import { DetailWrapper } from '../../../components/DetailWrapper';
+import { usePoints } from '../../../hooks/usePoints';
+import { PointTypeDescription } from './PointTypeDescription';
 
 interface ICustomProps {
+  // eslint-disable-next-line react/require-default-props
   pointType?: string;
 }
 
 type Props = RouteComponentProps & ICustomProps;
 export const PointDetail: React.FunctionComponent<Props> = ({
-  pointType = ""
-}) => {
+  pointType = '',
+}: Props) => {
   const { x: pointTypes } = usePoints();
   const pointInfo = pointTypes.find(({ key }) => key.indexOf(pointType) !== -1);
   return (
     <DetailWrapper>
       <Header>
         {pointInfo && (
-          <IconContainer style={{ paddingRight: "10px" }}>
-            <img src={pointInfo.svg} alt={pointInfo.key + " icon"} />
+          <IconContainer style={{ paddingRight: '10px' }}>
+            <img src={pointInfo.svg} alt={`${pointInfo.key} icon`} />
           </IconContainer>
         )}
         <div>

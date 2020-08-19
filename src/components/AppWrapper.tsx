@@ -1,10 +1,10 @@
-import Menu from "@material-ui/core/Menu";
-import MenuItem from "@material-ui/core/MenuItem";
-import * as React from "react";
-import * as store from "store";
-import styled from "styled-components";
-import { useScroll } from "../hooks/useScroll";
-import pyramid from "../icons/pyramid.svg";
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
+import * as React from 'react';
+import * as store from 'store';
+import styled from 'styled-components';
+import { useScroll } from '../hooks/useScroll';
+import pyramid from '../icons/pyramid.svg';
 
 const TopBar = ({ children }: { children: any }) => {
   const { y } = useScroll();
@@ -32,18 +32,18 @@ const TopBar = ({ children }: { children: any }) => {
       {y > 60 && (
         <div
           style={{
-            backgroundColor: "#e5e5e5",
-            display: "flex",
-            height: "45px",
-            justifyContent: "space-between",
-            position: "fixed",
+            backgroundColor: '#e5e5e5',
+            display: 'flex',
+            height: '45px',
+            justifyContent: 'space-between',
+            position: 'fixed',
             top: 0,
-            width: "100%",
-            zIndex: 1
+            width: '100%',
+            zIndex: 1,
           }}
         >
           <span style={{ marginLeft: 17 }}>{children[0]}</span>
-          <span style={{ marginRight: 17, alignSelf: "center" }}>
+          <span style={{ marginRight: 17, alignSelf: 'center' }}>
             {children[1]}
           </span>
         </div>
@@ -53,10 +53,13 @@ const TopBar = ({ children }: { children: any }) => {
   );
 };
 
-export const AppWrapper: React.FunctionComponent = props => {
+// eslint-disable-next-line react/prop-types
+export const AppWrapper: React.FunctionComponent = ({ children }) => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
-  function handleClick(event: React.MouseEvent<HTMLSpanElement>) {
+  function handleClick(
+    event: any,
+  ) {
     setAnchorEl(event.currentTarget);
   }
 
@@ -70,17 +73,20 @@ export const AppWrapper: React.FunctionComponent = props => {
         <img
           src={pyramid}
           alt="Yellow Pyramid Icon"
-          style={{ width: "40px" }}
+          style={{ width: '40px' }}
         />
-        <span onClick={handleClick}>Menu</span>
+        <button type="button" onKeyDown={handleClick} onClick={handleClick}>
+          Menu
+        </button>
       </TopBar>
       <Wrapper>
-        <main>{props.children}</main>
+        {/* eslint-disable-next-line react/prop-types */}
+        <main>{children}</main>
       </Wrapper>
       <Menu
         data-test-id="menu"
         anchorEl={anchorEl}
-        keepMounted={true}
+        keepMounted
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >

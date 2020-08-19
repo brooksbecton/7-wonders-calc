@@ -1,1 +1,1 @@
-export { Calculate } from "./components/Calculate";
+export { Calculate } from './components/Calculate';
