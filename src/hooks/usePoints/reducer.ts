@@ -15,36 +15,43 @@ export const defaultState: IPointType[] = [
     key: 'military-points',
     svg: military,
     value: 0,
+    color: '#E74441',
   },
   {
     key: 'treasury-points',
     svg: coin,
     value: 0,
+    color: '#FFF',
   },
   {
     key: 'wonders-points',
     svg: wonders,
     value: 0,
+    color: '#FFF',
   },
   {
     key: 'civilian-points',
     svg: civilian,
     value: 0,
+    color: '#4396DD',
   },
   {
     key: 'commerce-points',
     svg: commerce,
     value: 0,
+    color: '#F6C044',
   },
   {
     key: 'guilds-points',
     svg: guild,
     value: 0,
+    color: '#9B7EC2',
   },
   {
     key: 'science-points',
     svg: science,
     value: 0,
+    color: '#4FAD7C',
   },
 ];
 

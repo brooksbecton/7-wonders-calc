@@ -2,24 +2,32 @@ import { Link } from '@reach/router';
 import * as React from 'react';
 import styled from 'styled-components';
 
+interface IProps {
+  label: string;
+  onChange: (input: number) => void;
+  value: number;
+  svg: string;
+  color: string;
+}
+
 export const CalculateInput = ({
   label,
   onChange,
   value,
   svg,
-}: {
-  label: string;
-  onChange: (input: number) => void;
-  value: number;
-  svg: string;
-}) => {
+  color,
+}: IProps) => {
   const [pointType, pointsLabel] = label.split('-');
 
   return (
     <Container data-test-id={pointType}>
       <LeftSide>
         <IconContainer>
-          <img src={svg} alt={`${pointType} ${pointsLabel} icon`} />
+          <img
+            style={{ backgroundColor: color, padding: 10 }}
+            src={svg}
+            alt={`${pointType} ${pointsLabel} icon`}
+          />
         </IconContainer>
         <Label htmlFor={label}>
           <h2 className="text-md">{pointType}</h2>

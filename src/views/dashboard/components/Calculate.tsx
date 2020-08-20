@@ -12,12 +12,17 @@ export const Calculate: React.FunctionComponent<RouteComponentProps> = () => {
   return (
     <>
       <>
-        {pointTypes.map(({ key, value, svg }) => (
+        {pointTypes.map(({
+          key, value, svg, color,
+        }) => (
           <CalculateInput
+            color={color}
             key={key}
             label={key}
             svg={svg}
-            onChange={(newValue) => setPoints({ key, svg, value: newValue })}
+            onChange={(newValue) => setPoints({
+              key, svg, color, value: newValue,
+            })}
             value={value}
           />
         ))}

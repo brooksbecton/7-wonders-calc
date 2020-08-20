@@ -69,6 +69,7 @@ describe('utils', () => {
           key: 'science-points',
           svg: 'science-svg-look-at-me',
           value: newValue,
+          color: '',
         },
         fakePoints,
       );
