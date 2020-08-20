@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "a46d27b071f26d7254f257ec1f63b4ae",
+    "revision": "ab2412c6cc469054a69a4d6e564bb5ea",
     "url": "/7-wonders-calc/index.html"
   },
   {
-    "revision": "322baae582aa9009efd4",
-    "url": "/7-wonders-calc/static/js/2.888c2134.chunk.js"
+    "revision": "947b453aff62c528abe0",
+    "url": "/7-wonders-calc/static/js/2.2002981b.chunk.js"
   },
   {
-    "revision": "882fee5ad56cfd78b1cc5d94b617aa42",
-    "url": "/7-wonders-calc/static/js/2.888c2134.chunk.js.LICENSE.txt"
+    "revision": "1937a0fc6634269e5f47f8181e27fdc7",
+    "url": "/7-wonders-calc/static/js/2.2002981b.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "75a8321b43175e74ecaf",
-    "url": "/7-wonders-calc/static/js/main.a7f4201a.chunk.js"
+    "revision": "a62f25e18800f7da0456",
+    "url": "/7-wonders-calc/static/js/main.26e7bdfb.chunk.js"
   },
   {
-    "revision": "13a49d18a54db2ee0ae1",
-    "url": "/7-wonders-calc/static/js/runtime-main.e1ccdde7.js"
+    "revision": "2ea924cf7acf2c26a588",
+    "url": "/7-wonders-calc/static/js/runtime-main.bb0ef516.js"
   },
   {
     "revision": "1a5c55a49e64ff7fca1fac496b609af1",
