@@ -11,7 +11,7 @@ describe("App", () => {
     "civilian",
     "commerce",
     "guilds",
-    "science"
+    "science",
   ];
 
   beforeEach(() => {
@@ -20,8 +20,8 @@ describe("App", () => {
     // cy.scrollTo(0, 0);
   });
 
-  it("increments and decrements", () => {
-    pointTypes.forEach(p => {
+  it.skip("increments and decrements", () => {
+    pointTypes.forEach((p) => {
       cy.get(getTestId(p)).within(() => {
         cy.get(getTestId("increment")).click();
       });
@@ -33,8 +33,8 @@ describe("App", () => {
     });
   });
 
-  it("sums up the total of each point type", () => {
-    pointTypes.forEach(p => {
+  it.skip("sums up the total of each point type", () => {
+    pointTypes.forEach((p) => {
       cy.get(getTestId(p)).within(() => {
         cy.get(getTestId("increment")).click();
       });
@@ -43,8 +43,8 @@ describe("App", () => {
     cy.get(getTestId("totalPoints")).contains(pointTypes.length);
   });
 
-  it("navigates to point detail", () => {
-    pointTypes.forEach(p => {
+  it.skip("navigates to point detail", () => {
+    pointTypes.forEach((p) => {
       cy.visit(homeUrl);
       cy.get(getTestId(p)).within(() => {
         cy.get(getTestId("detail")).click();
@@ -53,8 +53,53 @@ describe("App", () => {
     });
   });
 
-  it("navigates to science calculator", () => {
+  it.skip("navigates to science calculator", () => {
     cy.get(getTestId("science-calculator")).click();
     cy.url().should("include", "science-calculator");
+  });
+  describe("calculates science score", () => {
+    it("starts at 0", () => {
+      cy.get(getTestId("science-calculator")).click();
+
+      cy.get("p").contains("0");
+    });
+    it("+7 combos", () => {
+      cy.get(getTestId("science-calculator")).click();
+      cy.get(`[aria-label="gear point slider"]`)
+        .first()
+        .focus()
+        .type("{rightarrow}")
+        .type("{rightarrow}")
+        .type("{rightarrow}");
+
+      cy.get(`[aria-label="masonry point slider"]`)
+        .first()
+        .focus()
+        .type("{rightarrow}")
+        .type("{rightarrow}");
+      cy.get(`[aria-label="language point slider"]`)
+        .first()
+        .focus()
+        .type("{rightarrow}");
+
+      cy.get("p").contains("21");
+    });
+    it("no combos", () => {
+      cy.get(getTestId("science-calculator")).click();
+      cy.get(`[aria-label="gear point slider"]`)
+        .first()
+        .focus()
+        .type("{rightarrow}")
+        .type("{rightarrow}")
+        .type("{rightarrow}");
+
+      cy.get(`[aria-label="language point slider"]`)
+        .first()
+        .focus()
+        .type("{rightarrow}")
+        .type("{rightarrow}");
+
+      cy.get("p").contains("13");
+    });
   });
 });

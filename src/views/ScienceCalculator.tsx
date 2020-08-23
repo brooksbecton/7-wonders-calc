@@ -39,11 +39,12 @@ export const ScienceCalculator: React.FC<RouteComponentProps> = () => {
         <img src={cogSvg} alt="Gear Icon" />
         <SliderWrapper>
           <Slider
+            aria-label="gear point slider"
             value={gearCardCount}
             step={1}
             min={0}
             max={8}
-            onChange={(event, value) => {
+            onChange={(_, value) => {
               setGearCardCount(value as number);
             }}
           />
@@ -64,11 +65,12 @@ export const ScienceCalculator: React.FC<RouteComponentProps> = () => {
         <img src={mason} alt="Freemason Icon" />
         <SliderWrapper>
           <Slider
+            aria-label="masonry point slider"
             value={architectureCardCount}
             step={1}
             min={0}
             max={8}
-            onChange={(event, value) => {
+            onChange={(_, value) => {
               setArchitectureCardCount(value as number);
             }}
           />
@@ -89,11 +91,12 @@ export const ScienceCalculator: React.FC<RouteComponentProps> = () => {
         <img src={tally} alt="5 Tally Marks" />
         <SliderWrapper>
           <Slider
+            aria-label="language point slider"
             value={tabletCardCount}
             step={1}
             min={0}
             max={8}
-            onChange={(event, value) => {
+            onChange={(_, value) => {
               setTabletCardCount(value as number);
             }}
           />
