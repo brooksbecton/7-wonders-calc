@@ -1,1 +1,0 @@
-export { usePoints } from './usePoints';

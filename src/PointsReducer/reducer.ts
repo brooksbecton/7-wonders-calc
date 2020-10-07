@@ -6,7 +6,7 @@ import {
   military,
   science,
   wonders,
-} from '../../icons';
+} from '../icons';
 import { IPointType } from './types';
 import { updatePointType } from './utils';
 
@@ -66,6 +66,9 @@ export const reducer = (state: typeof defaultState, action: any) => {
         : updatePointType(pointType, state);
 
       return newState;
+    }
+    case 'RESET': {
+      return defaultState;
     }
     default:
       return state;

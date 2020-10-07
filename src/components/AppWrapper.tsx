@@ -1,9 +1,12 @@
 import * as React from 'react';
+import { useContext } from 'react';
 import styled from 'styled-components';
+import { PointsContext } from '../PointsReducer/PointsContext';
 import pyramid from '../icons/pyramid.svg';
 
 const TopBar = styled.div`
-  justify-content: center;
+  align-items: center;
+  justify-content: space-between;
   background-color: #d1d1d1;
   display: flex;
   text-align: center;
@@ -22,17 +25,33 @@ const TopBar = styled.div`
 `;
 
 // eslint-disable-next-line react/prop-types
-export const AppWrapper: React.FunctionComponent = ({ children }) => (
-  <>
-    <TopBar>
-      <img src={pyramid} alt="Yellow Pyramid Icon" style={{ width: '40px' }} />
-    </TopBar>
-    <Wrapper>
-      {/* eslint-disable-next-line react/prop-types */}
-      <main>{children}</main>
-    </Wrapper>
-  </>
-);
+export const AppWrapper: React.FunctionComponent = ({ children }) => {
+  const { dispatch } = useContext(PointsContext);
+  const handleResetPress = () => dispatch({ type: 'RESET' });
+  return (
+    <>
+      <TopBar>
+        <div />
+        <img
+          src={pyramid}
+          alt="Yellow Pyramid Icon"
+          style={{ width: '40px' }}
+        />
+        <button
+          type="button"
+          onClick={handleResetPress}
+          onKeyDown={handleResetPress}
+        >
+          reset
+        </button>
+      </TopBar>
+      <Wrapper>
+        {/* eslint-disable-next-line react/prop-types */}
+        <main>{children}</main>
+      </Wrapper>
+    </>
+  );
+};
 
 const Wrapper = styled.div`
   display: flex;

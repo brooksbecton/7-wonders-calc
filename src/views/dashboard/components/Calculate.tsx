@@ -1,14 +1,11 @@
 import { RouteComponentProps } from '@reach/router';
 import * as React from 'react';
-
-import { usePoints } from '../../../hooks/usePoints';
+import { PointsContext } from '../../../PointsReducer/PointsContext';
 import { CalculateInput } from './CalculateInput';
 import { TotalPoints } from './TotalPoints';
 
 export const Calculate: React.FunctionComponent<RouteComponentProps> = () => {
-  // Array type is being weird
-  // const [pointTypes, setPoints] = usePoints();
-  const { x: pointTypes, y: setPoints } = usePoints();
+  const { pointTypes, setPoints } = React.useContext(PointsContext);
   return (
     <>
       <>
@@ -21,7 +18,10 @@ export const Calculate: React.FunctionComponent<RouteComponentProps> = () => {
             label={key}
             svg={svg}
             onChange={(newValue) => setPoints({
-              key, svg, color, value: newValue,
+              key,
+              svg,
+              color,
+              value: newValue,
             })}
             value={value}
           />

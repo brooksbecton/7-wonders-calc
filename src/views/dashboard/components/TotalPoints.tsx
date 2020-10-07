@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import { IPointType } from '../../../hooks/usePoints/types';
-import { getTotalPoints } from '../../../hooks/usePoints/utils';
+import { IPointType } from '../../../PointsReducer/types';
+import { getTotalPoints } from '../../../PointsReducer/utils';
 
 export interface ITotalPointsProps {
   pointTypes: IPointType[];

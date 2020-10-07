@@ -3,7 +3,7 @@ import * as React from 'react';
 import styled from 'styled-components';
 
 import { DetailWrapper } from '../../../components/DetailWrapper';
-import { usePoints } from '../../../hooks/usePoints';
+import { PointsContext } from '../../../PointsReducer/PointsContext';
 import { PointTypeDescription } from './PointTypeDescription';
 
 interface ICustomProps {
@@ -15,7 +15,7 @@ type Props = RouteComponentProps & ICustomProps;
 export const PointDetail: React.FunctionComponent<Props> = ({
   pointType = '',
 }: Props) => {
-  const { x: pointTypes } = usePoints();
+  const { pointTypes } = React.useContext(PointsContext);
   const pointInfo = pointTypes.find(({ key }) => key.indexOf(pointType) !== -1);
   return (
     <DetailWrapper>
