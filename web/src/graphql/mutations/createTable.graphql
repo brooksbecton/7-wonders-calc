@@ -1,0 +1,5 @@
+mutation createTable($title: String!) {
+  createTable(title: $title) {
+    id
+  }
+}
