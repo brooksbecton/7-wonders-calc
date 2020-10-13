@@ -17,10 +17,17 @@ export type Query = {
   me?: Maybe<User>;
   tables: Array<Table>;
   table?: Maybe<Table>;
+  player?: Maybe<Player>;
+  players?: Maybe<Array<Player>>;
 };
 
 
 export type QueryTableArgs = {
+  id: Scalars['Float'];
+};
+
+
+export type QueryPlayerArgs = {
   id: Scalars['Float'];
 };
 
@@ -37,9 +44,17 @@ export type Table = {
   id: Scalars['Int'];
   createdAt: Scalars['String'];
   updatedAt: Scalars['String'];
-  title: Scalars['String'];
-  playerIds: Array<Scalars['String']>;
-  ownerId: Scalars['String'];
+  ownerId: Scalars['Int'];
+};
+
+export type Player = {
+  __typename?: 'Player';
+  id: Scalars['Int'];
+  createdAt: Scalars['String'];
+  updatedAt: Scalars['String'];
+  table: Table;
+  name: Scalars['String'];
+  score: Scalars['Int'];
 };
 
 export type Mutation = {
@@ -47,9 +62,11 @@ export type Mutation = {
   register: UserResponse;
   login: UserResponse;
   logout: Scalars['Boolean'];
-  createTable: Table;
-  joinTable: Scalars['Float'];
+  createTable?: Maybe<Table>;
+  joinTable?: Maybe<Table>;
   deleteTable: Scalars['Boolean'];
+  createPlayer: Player;
+  deletePlayer: Scalars['Boolean'];
 };
 
 
@@ -63,17 +80,22 @@ export type MutationLoginArgs = {
 };
 
 
-export type MutationCreateTableArgs = {
-  title: Scalars['String'];
-};
-
-
 export type MutationJoinTableArgs = {
-  id: Scalars['Float'];
+  tableId: Scalars['Float'];
 };
 
 
 export type MutationDeleteTableArgs = {
+  id: Scalars['Float'];
+};
+
+
+export type MutationCreatePlayerArgs = {
+  name: Scalars['String'];
+};
+
+
+export type MutationDeletePlayerArgs = {
   id: Scalars['Float'];
 };
 
@@ -94,17 +116,28 @@ export type UsernamePasswordInput = {
   password: Scalars['String'];
 };
 
-export type CreateTableMutationVariables = Exact<{
-  title: Scalars['String'];
+export type CreatePlayerMutationVariables = Exact<{
+  name: Scalars['String'];
 }>;
+
+
+export type CreatePlayerMutation = (
+  { __typename?: 'Mutation' }
+  & { createPlayer: (
+    { __typename?: 'Player' }
+    & Pick<Player, 'id' | 'name'>
+  ) }
+);
+
+export type CreateTableMutationVariables = Exact<{ [key: string]: never; }>;
 
 
 export type CreateTableMutation = (
   { __typename?: 'Mutation' }
-  & { createTable: (
+  & { createTable?: Maybe<(
     { __typename?: 'Table' }
     & Pick<Table, 'id'>
-  ) }
+  )> }
 );
 
 export type DeleteTableMutationVariables = Exact<{
@@ -118,19 +151,55 @@ export type DeleteTableMutation = (
 );
 
 export type JoinTableMutationVariables = Exact<{
-  id: Scalars['Float'];
+  tableId: Scalars['Float'];
 }>;
 
 
 export type JoinTableMutation = (
   { __typename?: 'Mutation' }
-  & Pick<Mutation, 'joinTable'>
+  & { joinTable?: Maybe<(
+    { __typename?: 'Table' }
+    & Pick<Table, 'id'>
+  )> }
 );
 
 
+export const CreatePlayerDocument = gql`
+    mutation createPlayer($name: String!) {
+  createPlayer(name: $name) {
+    id
+    name
+  }
+}
+    `;
+export type CreatePlayerMutationFn = Apollo.MutationFunction<CreatePlayerMutation, CreatePlayerMutationVariables>;
+
+/**
+ * __useCreatePlayerMutation__
+ *
+ * To run a mutation, you first call `useCreatePlayerMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useCreatePlayerMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [createPlayerMutation, { data, loading, error }] = useCreatePlayerMutation({
+ *   variables: {
+ *      name: // value for 'name'
+ *   },
+ * });
+ */
+export function useCreatePlayerMutation(baseOptions?: Apollo.MutationHookOptions<CreatePlayerMutation, CreatePlayerMutationVariables>) {
+        return Apollo.useMutation<CreatePlayerMutation, CreatePlayerMutationVariables>(CreatePlayerDocument, baseOptions);
+      }
+export type CreatePlayerMutationHookResult = ReturnType<typeof useCreatePlayerMutation>;
+export type CreatePlayerMutationResult = Apollo.MutationResult<CreatePlayerMutation>;
+export type CreatePlayerMutationOptions = Apollo.BaseMutationOptions<CreatePlayerMutation, CreatePlayerMutationVariables>;
 export const CreateTableDocument = gql`
-    mutation createTable($title: String!) {
-  createTable(title: $title) {
+    mutation createTable {
+  createTable {
     id
   }
 }
@@ -150,7 +219,6 @@ export type CreateTableMutationFn = Apollo.MutationFunction<CreateTableMutation,
  * @example
  * const [createTableMutation, { data, loading, error }] = useCreateTableMutation({
  *   variables: {
- *      title: // value for 'title'
  *   },
  * });
  */
@@ -191,8 +259,10 @@ export type DeleteTableMutationHookResult = ReturnType<typeof useDeleteTableMuta
 export type DeleteTableMutationResult = Apollo.MutationResult<DeleteTableMutation>;
 export type DeleteTableMutationOptions = Apollo.BaseMutationOptions<DeleteTableMutation, DeleteTableMutationVariables>;
 export const JoinTableDocument = gql`
-    mutation joinTable($id: Float!) {
-  joinTable(id: $id)
+    mutation joinTable($tableId: Float!) {
+  joinTable(tableId: $tableId) {
+    id
+  }
 }
     `;
 export type JoinTableMutationFn = Apollo.MutationFunction<JoinTableMutation, JoinTableMutationVariables>;
@@ -210,7 +280,7 @@ export type JoinTableMutationFn = Apollo.MutationFunction<JoinTableMutation, Joi
  * @example
  * const [joinTableMutation, { data, loading, error }] = useJoinTableMutation({
  *   variables: {
- *      id: // value for 'id'
+ *      tableId: // value for 'tableId'
  *   },
  * });
  */

@@ -1,5 +1,5 @@
 import { Entity, PrimaryKey, Property } from "@mikro-orm/core";
-import { ObjectType, Field, Int } from "type-graphql";
+import { Field, Int, ObjectType } from "type-graphql";
 
 @ObjectType()
 @Entity()
@@ -16,15 +16,7 @@ export class Table {
   @Property({ type: "date", onUpdate: () => new Date() })
   updatedAt = new Date();
 
-  @Field(() => String)
+  @Field(() => Int)
   @Property()
-  title!: string;
-
-  @Field(() => [String])
-  @Property()
-  playerIds!: string[];
-
-  @Field(() => String)
-  @Property()
-  ownerId!: string;
+  ownerId!: number;
 }

@@ -1,23 +1,20 @@
-import * as React from 'react';
-import styled from 'styled-components';
-import { IPointType } from '../../../PointsReducer/types';
-import { getTotalPoints } from '../../../PointsReducer/utils';
+import * as React from "react";
+import styled from "styled-components";
+import { PointsContext } from "../../../PointsReducer/PointsContext";
+import { getTotalPoints } from "../../../PointsReducer/utils";
 
-export interface ITotalPointsProps {
-  pointTypes: IPointType[];
-}
+export const TotalPoints: React.FC = () => {
+  const { pointTypes } = React.useContext(PointsContext);
 
-export const TotalPoints: React.SFC<ITotalPointsProps> = ({
-  pointTypes,
-}: ITotalPointsProps) => (
-  <TotalContainer>
-    <h3 className="text-md" aria-live="polite">
-      Total Points:
-      {' '}
-      <span data-test-id="totalPoints">{getTotalPoints(pointTypes)}</span>
-    </h3>
-  </TotalContainer>
-);
+  return (
+    <TotalContainer>
+      <h3 className="text-md" aria-live="polite">
+        Total Points:{" "}
+        <span data-test-id="totalPoints">{getTotalPoints(pointTypes)}</span>
+      </h3>
+    </TotalContainer>
+  );
+};
 
 const TotalContainer = styled.div`
   background-color: #eead0e;

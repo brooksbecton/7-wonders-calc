@@ -1,5 +1,4 @@
-require('dotenv').config()
-
+require("dotenv").config();
 
 import { MikroORM } from "@mikro-orm/core";
 import { ApolloServer } from "apollo-server-express";
@@ -14,6 +13,7 @@ import { COOKIE_NAME, __prod__ } from "./constants";
 import { MyContext } from "./types";
 import cors from "cors";
 import { TableResolver } from "./resolvers/table";
+import { PlayerResolver } from "./resolvers/player";
 
 async function init() {
   const orm = await MikroORM.init(microConfig);
@@ -44,7 +44,7 @@ async function init() {
 
   const apolloServer = new ApolloServer({
     schema: await buildSchema({
-      resolvers: [TableResolver, HelloResolver, UserResolver],
+      resolvers: [TableResolver, HelloResolver, UserResolver, PlayerResolver],
       validate: false,
     }),
     context: ({ req, res }): MyContext => ({ em: orm.em, req, res }),

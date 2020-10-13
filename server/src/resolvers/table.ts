@@ -1,3 +1,4 @@
+import { Player } from "./../entitites/Player";
 import { Arg, Ctx, Mutation, Query, Resolver } from "type-graphql";
 import { Table } from "./../entitites/Table";
 import { MyContext } from "./../types";
@@ -17,46 +18,38 @@ export class TableResolver {
     return em.findOne(Table, { id });
   }
 
-  @Mutation(() => Table)
-  async createTable(
-    @Arg("title") title: string,
-    @Ctx() { em, req }: MyContext
-  ): Promise<Table> {
-    const newOwnerId = String(Math.random());
-    const table = em.create(Table, {
-      title,
-      ownerId: newOwnerId,
-      playerIds: [newOwnerId],
-    });
-
-    console.log("here");
-
-    await em.persistAndFlush(table);
-
-    req.session!.userId = newOwnerId;
-
-    return table;
+  @Mutation(() => Table, { nullable: true })
+  async createTable(@Ctx() { em, req }: MyContext): Promise<Table | null> {
+    const userId = req.session!.userId;
+    const targetPlayer = await em.findOne(Player, { id: userId });
+    if (targetPlayer) {
+      const table = em.create(Table, {
+        ownerId: userId,
+      });
+      targetPlayer.table = table;
+      await em.persistAndFlush(table);
+      return table;
+    }
+    return null;
   }
 
-  @Mutation(() => Number)
+  @Mutation(() => Table, { nullable: true })
   async joinTable(
-    @Arg("id") id: number,
+    @Arg("tableId") tableId: number,
     @Ctx() { em, req }: MyContext
-  ): Promise<number> {
-    req.session!.userId = String(Math.random());
-
+  ): Promise<Table | null> {
     const userId = req.session!.userId;
-    const targetTable = await em.findOne(Table, { id });
-    const updatedTargetTablePlayerIds = [
-      ...(targetTable?.playerIds ?? []),
-      userId,
-    ];
-    const num = await em.nativeUpdate(
-      Table,
-      { id },
-      { playerIds: updatedTargetTablePlayerIds }
-    );
-    return num;
+    const targetTable = await em.findOne(Table, { id: tableId });
+    const targetPlayer = await em.findOne(Player, { id: userId });
+    
+    if (targetPlayer && targetTable) {
+      targetPlayer.table = targetTable;
+
+      await em.persistAndFlush(targetTable);
+
+      return targetTable;
+    }
+    return null;
   }
 
   @Mutation(() => Boolean)
@@ -67,8 +60,7 @@ export class TableResolver {
     try {
       const userId = req.session!.userId;
       const targetTable = await em.findOne(Table, { id });
-      console.log("userId", userId);
-      console.log("targetTable", targetTable);
+
       if (targetTable?.ownerId === userId) {
         req.session!.userId = null;
         await em.nativeDelete(Table, { id });
@@ -80,20 +72,4 @@ export class TableResolver {
       return false;
     }
   }
-  //   @Mutation(() => Table, { nullable: true })
-  //   async updatePost(
-  //     @Arg("id") id: number,
-  //     @Arg("title") title: string,
-  //     @Ctx() { em }: MyContext
-  //   ): Promise<Table | null> {
-  //     const post = await em.findOne(Table, { id });
-  //     if (!post) {
-  //       return null;
-  //     }
-  //     if (typeof title !== "undefined") {
-  //       post.title = title;
-  //       await em.persistAndFlush(post);
-  //     }
-  //     return post;
-  //   }
 }

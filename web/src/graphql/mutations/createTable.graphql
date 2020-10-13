@@ -1,5 +1,5 @@
-mutation createTable($title: String!) {
-  createTable(title: $title) {
+mutation createTable {
+  createTable {
     id
   }
 }
