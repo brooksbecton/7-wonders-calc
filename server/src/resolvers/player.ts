@@ -1,6 +1,7 @@
 import { Player } from "./../entitites/Player";
 import { MyContext } from "src/types";
 import { Resolver, Query, Arg, Ctx, Mutation } from "type-graphql";
+import { Table } from "./../entitites/Table";
 @Resolver()
 export class PlayerResolver {
   @Query(() => Player, { nullable: true })
@@ -14,6 +15,17 @@ export class PlayerResolver {
   @Query(() => [Player], { nullable: true })
   players(@Ctx() { em }: MyContext): Promise<Player[] | null> {
     return em.find(Player, {});
+  }
+
+  @Query(() => [Player])
+  async tablesPlayers(
+    @Arg("tableId") tableId: number,
+    @Ctx()
+    { em }: MyContext
+  ): Promise<Player[] | null> {
+    const targetTable = await em.findOne(Table, { id: tableId });
+
+    return em.find(Player, { table: targetTable });
   }
 
   @Mutation(() => Player)

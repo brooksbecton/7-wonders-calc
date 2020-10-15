@@ -16,6 +16,7 @@ import { Calculate } from "./views/dashboard";
 import { JoinGame } from "./views/JoinGame";
 import { PointDetail } from "./views/pointDetail/components/PointDetails";
 import { ScienceCalculator } from "./views/ScienceCalculator";
+import { Scoreboard } from "./views/Scoreboard";
 
 const client = new ApolloClient({
   uri: "http://localhost:4000/graphql",
@@ -49,6 +50,7 @@ function App() {
             <ScienceCalculator path="science-calculator" />
             <JoinGame path="join-table" />
             <CreateGame path="create-table" />
+            <Scoreboard path="scoreboard/:tableId" />
           </Router>
 
           <Modal

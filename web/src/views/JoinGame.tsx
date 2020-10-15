@@ -1,4 +1,4 @@
-import { RouteComponentProps } from "@reach/router";
+import { RouteComponentProps, useNavigate } from "@reach/router";
 import React, { useState } from "react";
 import {
   useCreatePlayerMutation,
@@ -11,18 +11,18 @@ export const JoinGame: React.FC<RouteComponentProps> = () => {
 
   const [joinTable] = useJoinTableMutation();
   const [createPlayer] = useCreatePlayerMutation();
+  const navigate = useNavigate();
 
   const handleSubmit = async () => {
     // Create player and receive userId in cookie
-    const x = await createPlayer({ variables: { name } });
-    console.log(x);
+    await createPlayer({ variables: { name } });
 
     // join table based off newly created cookie
-    const table = await joinTable({ variables: { tableId: Number(gameId) } });
-    console.log(table);
+    const { data } = await joinTable({
+      variables: { tableId: Number(gameId) },
+    });
 
-    setGameId("");
-    setName("");
+    navigate(`scoreboard/${data?.joinTable?.id}`);
   };
 
   return (
@@ -46,7 +46,6 @@ export const JoinGame: React.FC<RouteComponentProps> = () => {
             type="text"
             placeholder="Name"
             value={name}
-
           />
         </label>
         <br />

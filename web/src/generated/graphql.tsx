@@ -19,6 +19,7 @@ export type Query = {
   table?: Maybe<Table>;
   player?: Maybe<Player>;
   players?: Maybe<Array<Player>>;
+  tablesPlayers: Array<Player>;
 };
 
 
@@ -29,6 +30,11 @@ export type QueryTableArgs = {
 
 export type QueryPlayerArgs = {
   id: Scalars['Float'];
+};
+
+
+export type QueryTablesPlayersArgs = {
+  tableId: Scalars['Float'];
 };
 
 export type User = {
@@ -150,6 +156,19 @@ export type DeleteTableMutation = (
   & Pick<Mutation, 'deleteTable'>
 );
 
+export type GetTablePlayersQueryVariables = Exact<{
+  tableId: Scalars['Float'];
+}>;
+
+
+export type GetTablePlayersQuery = (
+  { __typename?: 'Query' }
+  & { tablesPlayers: Array<(
+    { __typename?: 'Player' }
+    & Pick<Player, 'id' | 'name' | 'score'>
+  )> }
+);
+
 export type JoinTableMutationVariables = Exact<{
   tableId: Scalars['Float'];
 }>;
@@ -258,6 +277,41 @@ export function useDeleteTableMutation(baseOptions?: Apollo.MutationHookOptions<
 export type DeleteTableMutationHookResult = ReturnType<typeof useDeleteTableMutation>;
 export type DeleteTableMutationResult = Apollo.MutationResult<DeleteTableMutation>;
 export type DeleteTableMutationOptions = Apollo.BaseMutationOptions<DeleteTableMutation, DeleteTableMutationVariables>;
+export const GetTablePlayersDocument = gql`
+    query getTablePlayers($tableId: Float!) {
+  tablesPlayers(tableId: $tableId) {
+    id
+    name
+    score
+  }
+}
+    `;
+
+/**
+ * __useGetTablePlayersQuery__
+ *
+ * To run a query within a React component, call `useGetTablePlayersQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetTablePlayersQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetTablePlayersQuery({
+ *   variables: {
+ *      tableId: // value for 'tableId'
+ *   },
+ * });
+ */
+export function useGetTablePlayersQuery(baseOptions?: Apollo.QueryHookOptions<GetTablePlayersQuery, GetTablePlayersQueryVariables>) {
+        return Apollo.useQuery<GetTablePlayersQuery, GetTablePlayersQueryVariables>(GetTablePlayersDocument, baseOptions);
+      }
+export function useGetTablePlayersLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetTablePlayersQuery, GetTablePlayersQueryVariables>) {
+          return Apollo.useLazyQuery<GetTablePlayersQuery, GetTablePlayersQueryVariables>(GetTablePlayersDocument, baseOptions);
+        }
+export type GetTablePlayersQueryHookResult = ReturnType<typeof useGetTablePlayersQuery>;
+export type GetTablePlayersLazyQueryHookResult = ReturnType<typeof useGetTablePlayersLazyQuery>;
+export type GetTablePlayersQueryResult = Apollo.QueryResult<GetTablePlayersQuery, GetTablePlayersQueryVariables>;
 export const JoinTableDocument = gql`
     mutation joinTable($tableId: Float!) {
   joinTable(tableId: $tableId) {
