@@ -14,7 +14,7 @@ export type Scalars = {
 export type Query = {
   __typename?: 'Query';
   hello: Scalars['String'];
-  me?: Maybe<Scalars['Int']>;
+  me?: Maybe<Player>;
   tables: Array<Table>;
   table?: Maybe<Table>;
   player?: Maybe<Player>;
@@ -37,14 +37,6 @@ export type QueryTablesPlayersArgs = {
   tableId: Scalars['Float'];
 };
 
-export type Table = {
-  __typename?: 'Table';
-  id: Scalars['Int'];
-  createdAt: Scalars['String'];
-  updatedAt: Scalars['String'];
-  ownerId: Scalars['Int'];
-};
-
 export type Player = {
   __typename?: 'Player';
   id: Scalars['Int'];
@@ -53,6 +45,14 @@ export type Player = {
   table: Table;
   name: Scalars['String'];
   score: Scalars['Int'];
+};
+
+export type Table = {
+  __typename?: 'Table';
+  id: Scalars['Int'];
+  createdAt: Scalars['String'];
+  updatedAt: Scalars['String'];
+  ownerId: Scalars['Int'];
 };
 
 export type Mutation = {
@@ -192,12 +192,19 @@ export type JoinTableMutation = (
   )> }
 );
 
-export type MyUserIdQueryVariables = Exact<{ [key: string]: never; }>;
+export type MyPlayerQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type MyUserIdQuery = (
+export type MyPlayerQuery = (
   { __typename?: 'Query' }
-  & Pick<Query, 'me'>
+  & { me?: Maybe<(
+    { __typename?: 'Player' }
+    & Pick<Player, 'id' | 'name' | 'score'>
+    & { table: (
+      { __typename?: 'Table' }
+      & Pick<Table, 'id'>
+    ) }
+  )> }
 );
 
 
@@ -392,33 +399,40 @@ export function useJoinTableMutation(baseOptions?: Apollo.MutationHookOptions<Jo
 export type JoinTableMutationHookResult = ReturnType<typeof useJoinTableMutation>;
 export type JoinTableMutationResult = Apollo.MutationResult<JoinTableMutation>;
 export type JoinTableMutationOptions = Apollo.BaseMutationOptions<JoinTableMutation, JoinTableMutationVariables>;
-export const MyUserIdDocument = gql`
-    query myUserId {
-  me
+export const MyPlayerDocument = gql`
+    query myPlayer {
+  me {
+    id
+    name
+    score
+    table {
+      id
+    }
+  }
 }
     `;
 
 /**
- * __useMyUserIdQuery__
+ * __useMyPlayerQuery__
  *
- * To run a query within a React component, call `useMyUserIdQuery` and pass it any options that fit your needs.
- * When your component renders, `useMyUserIdQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * To run a query within a React component, call `useMyPlayerQuery` and pass it any options that fit your needs.
+ * When your component renders, `useMyPlayerQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * const { data, loading, error } = useMyUserIdQuery({
+ * const { data, loading, error } = useMyPlayerQuery({
  *   variables: {
  *   },
  * });
  */
-export function useMyUserIdQuery(baseOptions?: Apollo.QueryHookOptions<MyUserIdQuery, MyUserIdQueryVariables>) {
-        return Apollo.useQuery<MyUserIdQuery, MyUserIdQueryVariables>(MyUserIdDocument, baseOptions);
+export function useMyPlayerQuery(baseOptions?: Apollo.QueryHookOptions<MyPlayerQuery, MyPlayerQueryVariables>) {
+        return Apollo.useQuery<MyPlayerQuery, MyPlayerQueryVariables>(MyPlayerDocument, baseOptions);
       }
-export function useMyUserIdLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<MyUserIdQuery, MyUserIdQueryVariables>) {
-          return Apollo.useLazyQuery<MyUserIdQuery, MyUserIdQueryVariables>(MyUserIdDocument, baseOptions);
+export function useMyPlayerLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<MyPlayerQuery, MyPlayerQueryVariables>) {
+          return Apollo.useLazyQuery<MyPlayerQuery, MyPlayerQueryVariables>(MyPlayerDocument, baseOptions);
         }
-export type MyUserIdQueryHookResult = ReturnType<typeof useMyUserIdQuery>;
-export type MyUserIdLazyQueryHookResult = ReturnType<typeof useMyUserIdLazyQuery>;
-export type MyUserIdQueryResult = Apollo.QueryResult<MyUserIdQuery, MyUserIdQueryVariables>;
+export type MyPlayerQueryHookResult = ReturnType<typeof useMyPlayerQuery>;
+export type MyPlayerLazyQueryHookResult = ReturnType<typeof useMyPlayerLazyQuery>;
+export type MyPlayerQueryResult = Apollo.QueryResult<MyPlayerQuery, MyPlayerQueryVariables>;

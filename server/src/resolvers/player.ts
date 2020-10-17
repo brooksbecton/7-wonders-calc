@@ -4,10 +4,12 @@ import { Resolver, Query, Arg, Ctx, Mutation, Int } from "type-graphql";
 import { Table } from "./../entitites/Table";
 @Resolver()
 export class PlayerResolver {
-  @Query(() => Int, { nullable: true })
-  me(@Ctx() { req }: MyContext) {
+  @Query(() => Player, { nullable: true })
+  async me(@Ctx() { em, req }: MyContext): Promise<Player | null> {
     if (req.session!.userId) {
-      return req.session!.userId;
+      const player = await em.findOne(Player, { id: req.session!.userId });
+
+      return player;
     } else {
       return null;
     }

@@ -5,7 +5,7 @@ import { useContext } from "react";
 import styled from "styled-components";
 import {
   useDeletePlayerMutation,
-  useMyUserIdQuery
+  useMyPlayerQuery,
 } from "../generated/graphql";
 import pyramid from "../icons/pyramid.svg";
 import { PointsContext } from "../PointsReducer/PointsContext";
@@ -35,7 +35,7 @@ export const AppWrapper: React.FunctionComponent = ({ children }) => {
   const { dispatch } = useContext(PointsContext);
   const handleResetPress = () => dispatch({ type: "RESET" });
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
-  const { data } = useMyUserIdQuery();
+  const { data } = useMyPlayerQuery();
   const [deletePlayer] = useDeletePlayerMutation();
 
   const handleMenuItemPress = () => {
@@ -44,7 +44,7 @@ export const AppWrapper: React.FunctionComponent = ({ children }) => {
 
   const handleLeavePress = () => {
     if (data?.me) {
-      deletePlayer({ variables: { id: Number(data.me) } });
+      deletePlayer({ variables: { id: Number(data.me.id) } });
       handleMenuItemPress();
     }
   };
@@ -110,21 +110,34 @@ export const AppWrapper: React.FunctionComponent = ({ children }) => {
               </Link>
             </li>
             {data?.me && (
-              <li>
-                <button
-                  className="text-sm"
-                  onClick={handleLeavePress}
-                  style={{
-                    backgroundColor: "transparent",
-                    border: 0,
-                    margin: 0,
-                    padding: 0,
-                    cursor: "pointer",
-                  }}
-                >
-                  Leave Table
-                </button>
-              </li>
+              <>
+                <li>
+                  <Link
+                    onClick={handleMenuItemPress}
+                    style={{ textDecoration: "none" }}
+                    className="text-sm"
+                    aria-label="Go to Table"
+                    to={`${process.env.PUBLIC_URL}/scoreboard/${data.me.table.id}`}
+                  >
+                    Go to Table
+                  </Link>
+                </li>
+                <li>
+                  <button
+                    className="text-sm"
+                    onClick={handleLeavePress}
+                    style={{
+                      backgroundColor: "transparent",
+                      border: 0,
+                      margin: 0,
+                      padding: 0,
+                      cursor: "pointer",
+                    }}
+                  >
+                    Leave Table
+                  </button>
+                </li>
+              </>
             )}
             {!data?.me && (
               <>

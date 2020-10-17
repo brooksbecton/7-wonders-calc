@@ -2,12 +2,12 @@ import { RouteComponentProps, useParams } from "@reach/router";
 import React from "react";
 import {
   useGetTablePlayersQuery,
-  useMyUserIdQuery
+  useMyPlayerQuery
 } from "../generated/graphql";
 
 export const Scoreboard: React.FC<RouteComponentProps> = () => {
   const { tableId }: { tableId: string } = useParams();
-  const { data: userIdData } = useMyUserIdQuery();
+  const { data: userIdData } = useMyPlayerQuery();
   const { data, loading, error } = useGetTablePlayersQuery({
     variables: { tableId: Number(tableId) },
   });
@@ -27,7 +27,7 @@ export const Scoreboard: React.FC<RouteComponentProps> = () => {
           <li key={player.id}>
             <p
               style={{
-                fontWeight: player.id === userIdData?.me ? "bold" : "normal",
+                fontWeight: player.id === userIdData?.me?.id ? "bold" : "normal",
               }}
             >
               {player.name} : {player.score}
