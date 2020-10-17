@@ -14,7 +14,7 @@ export type Scalars = {
 export type Query = {
   __typename?: 'Query';
   hello: Scalars['String'];
-  me?: Maybe<User>;
+  me?: Maybe<Scalars['Int']>;
   tables: Array<Table>;
   table?: Maybe<Table>;
   player?: Maybe<Player>;
@@ -35,14 +35,6 @@ export type QueryPlayerArgs = {
 
 export type QueryTablesPlayersArgs = {
   tableId: Scalars['Float'];
-};
-
-export type User = {
-  __typename?: 'User';
-  id: Scalars['Int'];
-  createdAt: Scalars['String'];
-  updatedAt: Scalars['String'];
-  username: Scalars['String'];
 };
 
 export type Table = {
@@ -117,6 +109,14 @@ export type FieldError = {
   message: Scalars['String'];
 };
 
+export type User = {
+  __typename?: 'User';
+  id: Scalars['Int'];
+  createdAt: Scalars['String'];
+  updatedAt: Scalars['String'];
+  username: Scalars['String'];
+};
+
 export type UsernamePasswordInput = {
   username: Scalars['String'];
   password: Scalars['String'];
@@ -144,6 +144,16 @@ export type CreateTableMutation = (
     { __typename?: 'Table' }
     & Pick<Table, 'id'>
   )> }
+);
+
+export type DeletePlayerMutationVariables = Exact<{
+  id: Scalars['Float'];
+}>;
+
+
+export type DeletePlayerMutation = (
+  { __typename?: 'Mutation' }
+  & Pick<Mutation, 'deletePlayer'>
 );
 
 export type DeleteTableMutationVariables = Exact<{
@@ -180,6 +190,14 @@ export type JoinTableMutation = (
     { __typename?: 'Table' }
     & Pick<Table, 'id'>
   )> }
+);
+
+export type MyUserIdQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type MyUserIdQuery = (
+  { __typename?: 'Query' }
+  & Pick<Query, 'me'>
 );
 
 
@@ -247,6 +265,36 @@ export function useCreateTableMutation(baseOptions?: Apollo.MutationHookOptions<
 export type CreateTableMutationHookResult = ReturnType<typeof useCreateTableMutation>;
 export type CreateTableMutationResult = Apollo.MutationResult<CreateTableMutation>;
 export type CreateTableMutationOptions = Apollo.BaseMutationOptions<CreateTableMutation, CreateTableMutationVariables>;
+export const DeletePlayerDocument = gql`
+    mutation deletePlayer($id: Float!) {
+  deletePlayer(id: $id)
+}
+    `;
+export type DeletePlayerMutationFn = Apollo.MutationFunction<DeletePlayerMutation, DeletePlayerMutationVariables>;
+
+/**
+ * __useDeletePlayerMutation__
+ *
+ * To run a mutation, you first call `useDeletePlayerMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useDeletePlayerMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [deletePlayerMutation, { data, loading, error }] = useDeletePlayerMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useDeletePlayerMutation(baseOptions?: Apollo.MutationHookOptions<DeletePlayerMutation, DeletePlayerMutationVariables>) {
+        return Apollo.useMutation<DeletePlayerMutation, DeletePlayerMutationVariables>(DeletePlayerDocument, baseOptions);
+      }
+export type DeletePlayerMutationHookResult = ReturnType<typeof useDeletePlayerMutation>;
+export type DeletePlayerMutationResult = Apollo.MutationResult<DeletePlayerMutation>;
+export type DeletePlayerMutationOptions = Apollo.BaseMutationOptions<DeletePlayerMutation, DeletePlayerMutationVariables>;
 export const DeleteTableDocument = gql`
     mutation deleteTable($id: Float!) {
   deleteTable(id: $id)
@@ -344,3 +392,33 @@ export function useJoinTableMutation(baseOptions?: Apollo.MutationHookOptions<Jo
 export type JoinTableMutationHookResult = ReturnType<typeof useJoinTableMutation>;
 export type JoinTableMutationResult = Apollo.MutationResult<JoinTableMutation>;
 export type JoinTableMutationOptions = Apollo.BaseMutationOptions<JoinTableMutation, JoinTableMutationVariables>;
+export const MyUserIdDocument = gql`
+    query myUserId {
+  me
+}
+    `;
+
+/**
+ * __useMyUserIdQuery__
+ *
+ * To run a query within a React component, call `useMyUserIdQuery` and pass it any options that fit your needs.
+ * When your component renders, `useMyUserIdQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useMyUserIdQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useMyUserIdQuery(baseOptions?: Apollo.QueryHookOptions<MyUserIdQuery, MyUserIdQueryVariables>) {
+        return Apollo.useQuery<MyUserIdQuery, MyUserIdQueryVariables>(MyUserIdDocument, baseOptions);
+      }
+export function useMyUserIdLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<MyUserIdQuery, MyUserIdQueryVariables>) {
+          return Apollo.useLazyQuery<MyUserIdQuery, MyUserIdQueryVariables>(MyUserIdDocument, baseOptions);
+        }
+export type MyUserIdQueryHookResult = ReturnType<typeof useMyUserIdQuery>;
+export type MyUserIdLazyQueryHookResult = ReturnType<typeof useMyUserIdLazyQuery>;
+export type MyUserIdQueryResult = Apollo.QueryResult<MyUserIdQuery, MyUserIdQueryVariables>;

@@ -1,9 +1,18 @@
 import { Player } from "./../entitites/Player";
 import { MyContext } from "src/types";
-import { Resolver, Query, Arg, Ctx, Mutation } from "type-graphql";
+import { Resolver, Query, Arg, Ctx, Mutation, Int } from "type-graphql";
 import { Table } from "./../entitites/Table";
 @Resolver()
 export class PlayerResolver {
+  @Query(() => Int, { nullable: true })
+  me(@Ctx() { req }: MyContext) {
+    if (req.session!.userId) {
+      return req.session!.userId;
+    } else {
+      return null;
+    }
+  }
+
   @Query(() => Player, { nullable: true })
   player(
     @Arg("id") id: number,
@@ -46,12 +55,39 @@ export class PlayerResolver {
   @Mutation(() => Boolean)
   async deletePlayer(
     @Arg("id") id: number,
-    @Ctx() { em }: MyContext
+    @Ctx() { em, req }: MyContext
   ): Promise<boolean> {
-    try {
-      await em.nativeDelete(Player, { id });
-      return true;
-    } catch (error) {
+    if (!req.session!.userId) {
+      return false;
+    }
+
+    // A user is trying to delete themselves
+    if (req.session!.userId === id) {
+      try {
+        await em.nativeDelete(Player, { id });
+        req.session!.userId = null;
+        return true;
+      } catch (error) {
+        return false;
+      }
+    }
+
+    const userTable = await em.findOne(Table, { ownerId: req.session!.userId });
+
+    // If the owner of a table is trying to delete one of their players
+    if (userTable) {
+      const usersTablePlayers = await em.find(Player, { table: userTable });
+      const userTablePlayersIds = usersTablePlayers.map((p) => p.id);
+
+      if (userTablePlayersIds.includes(id)) {
+        await em.nativeDelete(Player, { id });
+        req.session!.userId = null;
+
+        return true;
+      } else {
+        return false;
+      }
+    } else {
       return false;
     }
   }
