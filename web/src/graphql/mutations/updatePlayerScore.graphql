@@ -1,0 +1,3 @@
+mutation updatePlayerScore($score: Float!) {
+    updateScore(score: $score)
+}

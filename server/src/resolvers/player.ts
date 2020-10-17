@@ -93,4 +93,22 @@ export class PlayerResolver {
       return false;
     }
   }
+
+  @Mutation(() => Boolean)
+  async updateScore(
+    @Arg("score") score: number,
+    @Ctx() { em, req }: MyContext
+  ): Promise<boolean> {
+    const player = await em.findOne(Player, {
+      id: req.session!.userId,
+    });
+
+    if (player) {
+      player.score = Number(score);
+      await em.persistAndFlush(player);
+      return true;
+    } else {
+      return false;
+    }
+  }
 }

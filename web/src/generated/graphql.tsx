@@ -65,6 +65,7 @@ export type Mutation = {
   deleteTable: Scalars['Boolean'];
   createPlayer: Player;
   deletePlayer: Scalars['Boolean'];
+  updateScore: Scalars['Boolean'];
 };
 
 
@@ -95,6 +96,11 @@ export type MutationCreatePlayerArgs = {
 
 export type MutationDeletePlayerArgs = {
   id: Scalars['Float'];
+};
+
+
+export type MutationUpdateScoreArgs = {
+  score: Scalars['Float'];
 };
 
 export type UserResponse = {
@@ -205,6 +211,16 @@ export type MyPlayerQuery = (
       & Pick<Table, 'id'>
     ) }
   )> }
+);
+
+export type UpdatePlayerScoreMutationVariables = Exact<{
+  score: Scalars['Float'];
+}>;
+
+
+export type UpdatePlayerScoreMutation = (
+  { __typename?: 'Mutation' }
+  & Pick<Mutation, 'updateScore'>
 );
 
 
@@ -436,3 +452,33 @@ export function useMyPlayerLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<M
 export type MyPlayerQueryHookResult = ReturnType<typeof useMyPlayerQuery>;
 export type MyPlayerLazyQueryHookResult = ReturnType<typeof useMyPlayerLazyQuery>;
 export type MyPlayerQueryResult = Apollo.QueryResult<MyPlayerQuery, MyPlayerQueryVariables>;
+export const UpdatePlayerScoreDocument = gql`
+    mutation updatePlayerScore($score: Float!) {
+  updateScore(score: $score)
+}
+    `;
+export type UpdatePlayerScoreMutationFn = Apollo.MutationFunction<UpdatePlayerScoreMutation, UpdatePlayerScoreMutationVariables>;
+
+/**
+ * __useUpdatePlayerScoreMutation__
+ *
+ * To run a mutation, you first call `useUpdatePlayerScoreMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdatePlayerScoreMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updatePlayerScoreMutation, { data, loading, error }] = useUpdatePlayerScoreMutation({
+ *   variables: {
+ *      score: // value for 'score'
+ *   },
+ * });
+ */
+export function useUpdatePlayerScoreMutation(baseOptions?: Apollo.MutationHookOptions<UpdatePlayerScoreMutation, UpdatePlayerScoreMutationVariables>) {
+        return Apollo.useMutation<UpdatePlayerScoreMutation, UpdatePlayerScoreMutationVariables>(UpdatePlayerScoreDocument, baseOptions);
+      }
+export type UpdatePlayerScoreMutationHookResult = ReturnType<typeof useUpdatePlayerScoreMutation>;
+export type UpdatePlayerScoreMutationResult = Apollo.MutationResult<UpdatePlayerScoreMutation>;
+export type UpdatePlayerScoreMutationOptions = Apollo.BaseMutationOptions<UpdatePlayerScoreMutation, UpdatePlayerScoreMutationVariables>;

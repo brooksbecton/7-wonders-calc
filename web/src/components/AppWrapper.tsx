@@ -6,9 +6,11 @@ import styled from "styled-components";
 import {
   useDeletePlayerMutation,
   useMyPlayerQuery,
+  useUpdatePlayerScoreMutation,
 } from "../generated/graphql";
 import pyramid from "../icons/pyramid.svg";
 import { PointsContext } from "../PointsReducer/PointsContext";
+import { getTotalPoints } from "../PointsReducer/utils";
 
 const TopBar = styled.div`
   align-items: center;
@@ -32,19 +34,30 @@ const TopBar = styled.div`
 
 // eslint-disable-next-line react/prop-types
 export const AppWrapper: React.FunctionComponent = ({ children }) => {
-  const { dispatch } = useContext(PointsContext);
+  const { dispatch, pointTypes } = useContext(PointsContext);
   const handleResetPress = () => dispatch({ type: "RESET" });
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const { data } = useMyPlayerQuery();
   const [deletePlayer] = useDeletePlayerMutation();
+  const [updatePlayerScore] = useUpdatePlayerScoreMutation();
+  const player = data?.me;
+  const totalPoints = getTotalPoints(pointTypes);
+
+  React.useEffect(() => {
+    if (player) {
+      updatePlayerScore({
+        variables: { score: totalPoints },
+      });
+    }
+  }, [updatePlayerScore, totalPoints, player?.id]);
 
   const handleMenuItemPress = () => {
     setIsMenuOpen(false);
   };
 
   const handleLeavePress = () => {
-    if (data?.me) {
-      deletePlayer({ variables: { id: Number(data.me.id) } });
+    if (player) {
+      deletePlayer({ variables: { id: Number(player.id) } });
       handleMenuItemPress();
     }
   };

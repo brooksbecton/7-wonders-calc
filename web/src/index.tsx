@@ -47,8 +47,6 @@ function App() {
             <CreateGame path="create-table" />
             <Scoreboard path="scoreboard/:tableId" />
           </Router>
-
-
         </AppWrapper>
       </PointsContext.Provider>
     </ApolloProvider>
