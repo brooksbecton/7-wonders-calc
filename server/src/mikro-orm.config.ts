@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 import { Table } from "./entitites/Table";
 import { __prod__ } from "./constants";
 import { MikroORM } from "@mikro-orm/core";
