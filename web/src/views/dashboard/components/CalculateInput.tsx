@@ -1,6 +1,6 @@
-import { Link } from '@reach/router';
-import * as React from 'react';
-import styled from 'styled-components';
+import { Link } from "@reach/router";
+import * as React from "react";
+import styled from "styled-components";
 
 interface IProps {
   label: string;
@@ -17,14 +17,19 @@ export const CalculateInput = ({
   svg,
   color,
 }: IProps) => {
-  const [pointType, pointsLabel] = label.split('-');
+  const [pointType, pointsLabel] = label.split("-");
 
   return (
     <Container data-test-id={pointType}>
       <LeftSide>
         <IconContainer>
           <img
-            style={{ backgroundColor: color, padding: 10 }}
+            style={{
+              backgroundColor: color,
+              padding: 10,
+              width: 35,
+              height: 35,
+            }}
             src={svg}
             alt={`${pointType} ${pointsLabel} icon`}
           />
@@ -67,7 +72,7 @@ export const CalculateInput = ({
             >
               -
             </button>
-            {pointType === 'science' && (
+            {pointType === "science" && (
               <Link
                 className="text-sm"
                 aria-label="Open Science Calculator"
