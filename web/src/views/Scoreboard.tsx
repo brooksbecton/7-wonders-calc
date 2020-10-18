@@ -10,6 +10,7 @@ export const Scoreboard: React.FC<RouteComponentProps> = () => {
   const { data: userIdData } = useMyPlayerQuery();
   const { data, loading, error } = useGetTablePlayersQuery({
     variables: { tableId: Number(tableId) },
+    pollInterval: 1000
   });
 
   if (error) {
