@@ -4,14 +4,17 @@ import {
   useCreatePlayerMutation,
   useJoinTableMutation,
 } from "../generated/graphql";
+import * as store from "store";
 
 export const JoinGame: React.FC<RouteComponentProps> = () => {
   const [gameId, setGameId] = useState("");
-  const [name, setName] = useState("");
+  const [name, setName] = useState(store.get('nickname'));
 
   const [joinTable] = useJoinTableMutation();
   const [createPlayer] = useCreatePlayerMutation();
   const navigate = useNavigate();
+
+
 
   const handleSubmit = async () => {
     // Create player and receive userId in cookie
@@ -23,6 +26,8 @@ export const JoinGame: React.FC<RouteComponentProps> = () => {
     });
 
     navigate(`scoreboard/${data?.joinTable?.id}`);
+
+    store.set('nickname', name)
   };
 
   return (

@@ -1,12 +1,13 @@
 import { RouteComponentProps, useNavigate } from "@reach/router";
 import React, { useState } from "react";
+import * as store from "store";
 import {
   useCreatePlayerMutation,
-  useCreateTableMutation,
+  useCreateTableMutation
 } from "../generated/graphql";
 
 export const CreateGame: React.FC<RouteComponentProps> = () => {
-  const [name, setName] = useState("");
+  const [name, setName] = useState(store.get('nickname'));
   const navigate = useNavigate();
   const [createTable] = useCreateTableMutation();
   const [createPlayer] = useCreatePlayerMutation();
@@ -17,6 +18,9 @@ export const CreateGame: React.FC<RouteComponentProps> = () => {
     // Create table based off newly created cookie
     const { data } = await createTable();
     navigate(`scoreboard/${data?.createTable?.id}`);
+
+    store.set('nickname', name)
+
   };
 
   return (
