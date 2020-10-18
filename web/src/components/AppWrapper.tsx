@@ -136,19 +136,15 @@ export const AppWrapper: React.FunctionComponent = ({ children }) => {
                   </Link>
                 </li>
                 <li>
-                  <button
-                    className="text-sm"
+                  <Link
                     onClick={handleLeavePress}
-                    style={{
-                      backgroundColor: "transparent",
-                      border: 0,
-                      margin: 0,
-                      padding: 0,
-                      cursor: "pointer",
-                    }}
+                    style={{ textDecoration: "none" }}
+                    className="text-sm"
+                    aria-label="Leave Table"
+                    to={`${process.env.PUBLIC_URL}/`}
                   >
-                    Leave Table
-                  </button>
+                   Leave Table
+                  </Link>
                 </li>
               </>
             )}
