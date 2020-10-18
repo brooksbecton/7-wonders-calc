@@ -17,7 +17,7 @@ import { BottomBar } from "../views/dashboard/components/BottomBar";
 
 const TopBar = styled.div`
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   background-color: var(--backdrop);
   display: flex;
   text-align: center;
@@ -78,13 +78,13 @@ export const AppWrapper: React.FunctionComponent = ({ children }) => {
           alt="Yellow Pyramid Icon"
           style={{ width: "40px" }}
         />
-        <button
+        {/* <button
           type="button"
           onClick={handleResetPress}
           onKeyDown={handleResetPress}
         >
           reset
-        </button>
+        </button> */}
       </TopBar>
       <Wrapper>
         <main>{children}</main>
