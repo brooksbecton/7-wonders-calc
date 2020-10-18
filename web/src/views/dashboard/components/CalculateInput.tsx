@@ -108,7 +108,7 @@ const BottomBar = styled.div`
   a {
     background-color: #060056;
     border: 0px;
-    color: #eead0e;
+    color: var(--pyramid-yellow);
     cursor: pointer;
     line-height: 28px;
     margin: 0;
@@ -145,7 +145,7 @@ const Angle = styled.div`
 const RightSide = styled.div`
   background: #060056;
   clip-path: polygon(30% 0, 100% 0, 100% 100%, 0% 100%);
-  color: #eead0e;
+  color: var(--pyramid-yellow);
   display: flex;
   flex-direction: row;
   justify-content: flex-end;

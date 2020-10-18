@@ -9,14 +9,16 @@ import {
   MyPlayerDocument,
   useUpdatePlayerScoreMutation,
 } from "../generated/graphql";
+import { close } from "../icons";
 import pyramid from "../icons/pyramid.svg";
 import { PointsContext } from "../PointsReducer/PointsContext";
 import { getTotalPoints } from "../PointsReducer/utils";
+import { BottomBar } from "../views/dashboard/components/BottomBar";
 
 const TopBar = styled.div`
   align-items: center;
   justify-content: space-between;
-  background-color: #d1d1d1;
+  background-color: var(--backdrop);
   display: flex;
   text-align: center;
   width: 100%;
@@ -85,9 +87,9 @@ export const AppWrapper: React.FunctionComponent = ({ children }) => {
         </button>
       </TopBar>
       <Wrapper>
-        {/* eslint-disable-next-line react/prop-types */}
         <main>{children}</main>
       </Wrapper>
+      <BottomBar handleMenuPress={() => setIsMenuOpen(!isMenuOpen)} />
       <Modal
         open={isMenuOpen}
         style={{
@@ -98,16 +100,29 @@ export const AppWrapper: React.FunctionComponent = ({ children }) => {
         }}
         onClose={() => setIsMenuOpen(false)}
       >
-        <div
-          style={{
-            minHeight: "30%",
-            backgroundColor: "white",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
+        <ModalContainer>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "flex-end",
+              flexDirection: "row",
+              width: "100%",
+            }}
+          >
+            <button
+              className="text-sm"
+              onClick={() => setIsMenuOpen(false)}
+              style={{
+                backgroundColor: "transparent",
+                border: 0,
+                margin: 0,
+                padding: 10,
+                cursor: "pointer",
+              }}
+            >
+              <img src={close} alt="close icon" />
+            </button>
+          </div>
           <ul
             style={{
               listStyle: "none",
@@ -197,14 +212,22 @@ export const AppWrapper: React.FunctionComponent = ({ children }) => {
               </button>
             </li>
           </ul>
-        </div>
+        </ModalContainer>
       </Modal>
-
-      <button onClick={() => setIsMenuOpen(!isMenuOpen)}>Open Menu</button>
     </>
   );
 };
 
+const ModalContainer = styled.div`
+  padding-bottom: 45px;
+  padding-left: 15;
+  padding-right: 15;
+  display: "flex";
+  flex-direction: "column";
+  justify-content: "center";
+  align-items: "center";
+  background-color: var(--pyramid-yellow);
+`;
 const Wrapper = styled.div`
   display: flex;
   justify-content: center;

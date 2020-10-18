@@ -2,7 +2,6 @@ import { RouteComponentProps } from "@reach/router";
 import * as React from "react";
 import { PointsContext } from "../../../PointsReducer/PointsContext";
 import { CalculateInput } from "./CalculateInput";
-import { TotalPoints } from "./TotalPoints";
 
 export const Calculate: React.FunctionComponent<RouteComponentProps> = () => {
   const { pointTypes, setPoints } = React.useContext(PointsContext);
@@ -26,7 +25,6 @@ export const Calculate: React.FunctionComponent<RouteComponentProps> = () => {
           value={value}
         />
       ))}
-      <TotalPoints />
     </>
   );
 };

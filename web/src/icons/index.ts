@@ -9,3 +9,5 @@ export { default as save } from './save.svg';
 export { default as backArrow } from './backArrow.svg';
 export { default as mason } from './mason.svg';
 export { default as tally } from './tally.svg';
+export { default as menu } from './menu.svg';
+export { default as close } from './close.svg';

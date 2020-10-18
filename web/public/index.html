@@ -6,7 +6,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
-    <meta name="theme-color" content="#d1d1d1" />
+    <meta name="theme-color" content="#f0f0f0" />
     <meta
       name="description"
       content="A point calculator to be used along side the popular board game '7 Wonders.'"
@@ -20,9 +20,15 @@
     <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
     <style>
       @import url("https://fonts.googleapis.com/css?family=Copse");
+
+      :root {
+        --backdrop: #bfbfbf;
+        --pyramid-yellow: #f2b851;
+      }
+
       html,
       body {
-        background-color: #d1d1d1;
+        background-color: var(--backdrop);
 
         margin: 0px;
         padding: 0px;
