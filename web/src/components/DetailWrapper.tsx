@@ -52,7 +52,7 @@ const BackButton = styled.button`
   align-items: center;
   background-color: transparent;
   border: none;
-  color: #060056;
+  color: var(--royal-purple);
   display: flex;
   margin-bottom: 12px;
   padding: 0px;

@@ -98,7 +98,7 @@ export const CalculateInput = ({
 
 const BottomBar = styled.div`
   align-content: center;
-  background-color: #000052;
+  background-color: var(--royal-purple);
   display: flex;
   flex-direction: row;
   height: 29px;
@@ -106,7 +106,7 @@ const BottomBar = styled.div`
 
   button,
   a {
-    background-color: #060056;
+    background-color: var(--royal-purple);
     border: 0px;
     color: var(--pyramid-yellow);
     cursor: pointer;
@@ -138,12 +138,12 @@ const LeftSide = styled.div`
 `;
 
 const Angle = styled.div`
-  background: #060056;
+  background-color: var(--royal-purple);
   width: 0%;
 `;
 
 const RightSide = styled.div`
-  background: #060056;
+  background-color: var(--royal-purple);
   clip-path: polygon(30% 0, 100% 0, 100% 100%, 0% 100%);
   color: var(--pyramid-yellow);
   display: flex;
