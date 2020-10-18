@@ -2,7 +2,7 @@ import { RouteComponentProps, useParams } from "@reach/router";
 import React from "react";
 import {
   useGetTablePlayersQuery,
-  useMyPlayerQuery
+  useMyPlayerQuery,
 } from "../generated/graphql";
 
 export const Scoreboard: React.FC<RouteComponentProps> = () => {
@@ -27,7 +27,8 @@ export const Scoreboard: React.FC<RouteComponentProps> = () => {
           <li key={player.id}>
             <p
               style={{
-                fontWeight: player.id === userIdData?.me?.id ? "bold" : "normal",
+                fontWeight:
+                  player.id === userIdData?.me?.id ? "bold" : "normal",
               }}
             >
               {player.name} : {player.score}

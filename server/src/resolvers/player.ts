@@ -1,6 +1,6 @@
 import { Player } from "./../entitites/Player";
 import { MyContext } from "src/types";
-import { Resolver, Query, Arg, Ctx, Mutation, Int } from "type-graphql";
+import { Resolver, Query, Arg, Ctx, Mutation } from "type-graphql";
 import { Table } from "./../entitites/Table";
 @Resolver()
 export class PlayerResolver {

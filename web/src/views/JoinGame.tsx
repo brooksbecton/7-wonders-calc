@@ -1,6 +1,7 @@
 import { RouteComponentProps, useNavigate } from "@reach/router";
 import React, { useState } from "react";
 import {
+  MyPlayerDocument,
   useCreatePlayerMutation,
   useJoinTableMutation,
 } from "../generated/graphql";
@@ -23,6 +24,8 @@ export const JoinGame: React.FC<RouteComponentProps> = () => {
     // join table based off newly created cookie
     const { data } = await joinTable({
       variables: { tableId: Number(gameId) },
+      refetchQueries: [{ query: MyPlayerDocument }],
+
     });
 
     navigate(`scoreboard/${data?.joinTable?.id}`);

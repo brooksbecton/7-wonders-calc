@@ -6,6 +6,7 @@ import styled from "styled-components";
 import {
   useDeletePlayerMutation,
   useMyPlayerQuery,
+  MyPlayerDocument,
   useUpdatePlayerScoreMutation,
 } from "../generated/graphql";
 import pyramid from "../icons/pyramid.svg";
@@ -47,9 +48,10 @@ export const AppWrapper: React.FunctionComponent = ({ children }) => {
     if (player) {
       updatePlayerScore({
         variables: { score: totalPoints },
+        refetchQueries: [{ query: MyPlayerDocument }],
       });
     }
-  }, [updatePlayerScore, totalPoints, player?.id]);
+  }, [updatePlayerScore, totalPoints, player]);
 
   const handleMenuItemPress = () => {
     setIsMenuOpen(false);
@@ -57,7 +59,10 @@ export const AppWrapper: React.FunctionComponent = ({ children }) => {
 
   const handleLeavePress = () => {
     if (player) {
-      deletePlayer({ variables: { id: Number(player.id) } });
+      deletePlayer({
+        variables: { id: Number(player.id) },
+        refetchQueries: [{ query: MyPlayerDocument }],
+      });
       handleMenuItemPress();
     }
   };
@@ -124,17 +129,19 @@ export const AppWrapper: React.FunctionComponent = ({ children }) => {
             </li>
             {data?.me && (
               <>
-                <li>
-                  <Link
-                    onClick={handleMenuItemPress}
-                    style={{ textDecoration: "none" }}
-                    className="text-sm"
-                    aria-label="Go to Table"
-                    to={`${process.env.PUBLIC_URL}/scoreboard/${data.me.table.id}`}
-                  >
-                    Go to Table
-                  </Link>
-                </li>
+                {data.me.table && (
+                  <li>
+                    <Link
+                      onClick={handleMenuItemPress}
+                      style={{ textDecoration: "none" }}
+                      className="text-sm"
+                      aria-label="Go to Table"
+                      to={`${process.env.PUBLIC_URL}/scoreboard/${data.me.table.id}`}
+                    >
+                      Go to Table
+                    </Link>
+                  </li>
+                )}
                 <li>
                   <Link
                     onClick={handleLeavePress}
@@ -143,7 +150,7 @@ export const AppWrapper: React.FunctionComponent = ({ children }) => {
                     aria-label="Leave Table"
                     to={`${process.env.PUBLIC_URL}/`}
                   >
-                   Leave Table
+                    Leave Table
                   </Link>
                 </li>
               </>
