@@ -1,0 +1,5 @@
+mutation createTable {
+  createTable {
+    id
+  }
+}

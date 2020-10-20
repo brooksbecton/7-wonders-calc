@@ -1,0 +1,10 @@
+query myPlayer {
+    me{
+        id
+        name
+        score
+        table{
+            id
+        }
+    }
+}

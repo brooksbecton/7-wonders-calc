@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="theme-color" content="#f0f0f0" />
+    <meta
+      name="description"
+      content="A point calculator to be used along side the popular board game '7 Wonders.'"
+    />
+    <!--
+      manifest.json provides metadata used when your web app is added to the
+      homescreen on Android. See https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
+    -->
+
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
+    <style>
+      @import url("https://fonts.googleapis.com/css?family=Copse");
+
+      :root {
+        --backdrop: #bfbfbf;
+        --pyramid-yellow: #f2b851;
+        --royal-purple: #1b156b;
+      }
+
+      html,
+      body {
+        background-color: var(--backdrop);
+
+        margin: 0px;
+        padding: 0px;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: "Copse";
+        margin: 0px;
+        padding: 0px;
+      }
+
+      * {
+        color: #3b3a3a;
+      }
+    </style>
+
+    <style>
+      html,
+      .text {
+        font-size: 16px;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+          "Segoe UI Symbol";
+        text-transform: none;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5 {
+        font-weight: 400;
+      }
+
+      h1,
+      .text-xl {
+        font-size: 2.441em;
+      }
+
+      h2,
+      .text-l {
+        font-size: 1.953em;
+      }
+
+      h3,
+      .text-md {
+        font-size: 1.563em;
+      }
+
+      h4,
+      .text-sm {
+        font-size: 1.25em;
+      }
+
+      h5,
+      .text-xs {
+        font-size: 0.8em;
+      }
+
+      p {
+        line-height: 1.45;
+      }
+    </style>
+    <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <title>7 Wonders Calulator</title>
+  </head>
+  <body>
+    <noscript> You need to enable JavaScript to run this app. </noscript>
+    <div id="root"></div>
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+  </body>
+</html>

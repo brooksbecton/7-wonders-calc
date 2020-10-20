@@ -1,0 +1,70 @@
+{
+  "name": "tmp",
+  "version": "0.1.0",
+  "private": true,
+  "homepage": "https://brooksbecton.github.io/7-wonders-calc",
+  "dependencies": {
+    "@apollo/client": "^3.2.3",
+    "@material-ui/core": "^4.11.0",
+    "@reach/router": "^1.3.4",
+    "@types/jest": "^26.0.10",
+    "@types/node": "^14.6.2",
+    "@types/ramda": "^0.27.14",
+    "@types/reach__router": "^1.3.3",
+    "@types/react": "^16.9.48",
+    "@types/react-dom": "^16.9.6",
+    "@types/store": "^2.0.2",
+    "@types/styled-components": "^5.1.2",
+    "cypress": "^5.0.0",
+    "eslint-config-airbnb-typescript": "^9.0.0",
+    "eslint-plugin-react": "^7.20.3",
+    "eslint-plugin-react-hooks": "^4.0.8",
+    "gh-pages": "^3.1.0",
+    "graphql": "^15.3.0",
+    "ramda": "^0.27.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-perf-devtool": "^3.1.8",
+    "react-pose": "^4.0.10",
+    "react-scripts": "^3.4.3",
+    "store": "^2.0.12",
+    "styled-components": "^5.0.1",
+    "typescript": "^4.0.2"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "gen": "graphql-codegen --config codegen.yml",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "e2e": "cypress run",
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@graphql-codegen/cli": "1.17.10",
+    "@graphql-codegen/typescript": "1.17.10",
+    "@graphql-codegen/typescript-react-apollo": "2.0.7",
+    "@typescript-eslint/eslint-plugin": "^3.6.1",
+    "@typescript-eslint/parser": "^3.9.1",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-jsx-a11y": "^6.3.1",
+    "@graphql-codegen/typescript-operations": "1.17.8",
+    "@graphql-codegen/introspection": "1.18.0"
+  }
+}

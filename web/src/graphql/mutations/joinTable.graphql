@@ -1,0 +1,5 @@
+mutation joinTable($tableId: Float!){
+    joinTable(tableId: $tableId){
+        id
+    }
+}
