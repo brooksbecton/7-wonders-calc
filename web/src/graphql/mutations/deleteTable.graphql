@@ -1,3 +1,0 @@
-mutation deleteTable($id: Float!){
-    deleteTable(id: $id)
-}
