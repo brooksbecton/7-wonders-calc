@@ -16,6 +16,7 @@ export const microConfig: Parameters<typeof MikroORM.init>[0] = {
   dbName: "7Wonders",
   type: "postgresql",
   debug: !__prod__,
+  user: process.env.DB_USER,
   password: process.env.DB_PASS,
 };
 
