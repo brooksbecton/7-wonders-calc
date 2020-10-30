@@ -1,19 +1,19 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "d6214605e66244bef053109ccdc0695d",
+    "revision": "d629bbdd54d4ebe0e19a128fb11d20a1",
     "url": "/7-wonders-calc/index.html"
   },
   {
-    "revision": "efa1d5e5e6e25cb9e428",
-    "url": "/7-wonders-calc/static/js/2.42635723.chunk.js"
+    "revision": "77c5f9d718b53e8afec8",
+    "url": "/7-wonders-calc/static/js/2.6ef106b0.chunk.js"
   },
   {
     "revision": "1937a0fc6634269e5f47f8181e27fdc7",
-    "url": "/7-wonders-calc/static/js/2.42635723.chunk.js.LICENSE.txt"
+    "url": "/7-wonders-calc/static/js/2.6ef106b0.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "527c48a1edb3318bbbb8",
-    "url": "/7-wonders-calc/static/js/main.b31979c1.chunk.js"
+    "revision": "63917185fde59a931ea8",
+    "url": "/7-wonders-calc/static/js/main.143dd805.chunk.js"
   },
   {
     "revision": "2ea924cf7acf2c26a588",
@@ -26,6 +26,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "e7193c1f140ec58a66e91887dd90e3b5",
     "url": "/7-wonders-calc/static/media/civilian.e7193c1f.svg"
+  },
+  {
+    "revision": "d5910dd0e9f84305827f5486554a1617",
+    "url": "/7-wonders-calc/static/media/close.d5910dd0.svg"
   },
   {
     "revision": "684989cc9fddb6def40ef1a018e23390",
@@ -46,6 +50,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "befe781ce98914de22f2b45793789d68",
     "url": "/7-wonders-calc/static/media/mason.befe781c.svg"
+  },
+  {
+    "revision": "f3883d0dbd751749e5f9b72aa0c91502",
+    "url": "/7-wonders-calc/static/media/menu.f3883d0d.svg"
   },
   {
     "revision": "0fce02a1756fbdc4350dd063657ef223",
