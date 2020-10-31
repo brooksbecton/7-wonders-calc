@@ -41,7 +41,7 @@ export class TableResolver {
     const userId = req.session!.userId;
     const targetTable = await em.findOne(Table, { id: tableId });
     const targetPlayer = await em.findOne(Player, { id: userId });
-    
+
     if (targetPlayer && targetTable) {
       targetPlayer.table = targetTable;
 
@@ -62,7 +62,7 @@ export class TableResolver {
       const targetTable = await em.findOne(Table, { id });
 
       if (targetTable?.ownerId === userId) {
-        req.session!.userId = null;
+        req.session!.destroy(() => {});
         await em.nativeDelete(Table, { id });
         return true;
       } else {

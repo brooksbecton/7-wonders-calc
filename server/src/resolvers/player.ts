@@ -67,7 +67,7 @@ export class PlayerResolver {
     if (req.session!.userId === id) {
       try {
         await em.nativeDelete(Player, { id });
-        req.session!.userId = null;
+        req.session!.destroy(() => {});
         return true;
       } catch (error) {
         return false;
@@ -83,7 +83,7 @@ export class PlayerResolver {
 
       if (userTablePlayersIds.includes(id)) {
         await em.nativeDelete(Player, { id });
-        req.session!.userId = null;
+        req.session!.destroy(() => {});
 
         return true;
       } else {
