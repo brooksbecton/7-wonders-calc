@@ -2,7 +2,7 @@
   "name": "tmp",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://brooksbecton.github.io/7-wonders-calc",
+  "homepage": "https://www.harveythegoodboy.xyz/",
   "dependencies": {
     "@apollo/client": "^3.2.3",
     "@material-ui/core": "^4.11.0",
