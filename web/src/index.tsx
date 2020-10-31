@@ -18,7 +18,11 @@ import { ScienceCalculator } from "./views/ScienceCalculator";
 import { Scoreboard } from "./views/Scoreboard";
 
 const client = new ApolloClient({
-  uri: "http://localhost:4000/graphql",
+  uri:
+    process.env.NODE_ENV === "production"
+      ? "https://www.harveythegoodboy.xyz/graphql"
+      : "http://localhost:4000/graphql",
+
   cache: new InMemoryCache(),
   credentials: "include",
 });
