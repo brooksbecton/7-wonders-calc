@@ -34,9 +34,10 @@ yarn test
 
 ## Deployment
 
-```
-npm run deploy
-```
+1. Pull latest code to server
+1. Build Files
+1. Copy client files to nginx `cp -a build/. /var/www/harveythegoodboy.xyz/html/`
+1. Restart Server
 
 ## Built With
 
