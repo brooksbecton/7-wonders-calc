@@ -10,7 +10,7 @@ export const Scoreboard: React.FC<RouteComponentProps> = () => {
   const { data: userIdData } = useMyPlayerQuery();
   const { data, loading, error } = useGetTablePlayersQuery({
     variables: { tableId: Number(tableId) },
-    pollInterval: 5000
+    pollInterval: 5000,
   });
 
   if (error) {
@@ -22,7 +22,8 @@ export const Scoreboard: React.FC<RouteComponentProps> = () => {
 
   return (
     <div>
-      <h1>Scoreboard: {tableId}</h1>
+      <h1>Scoreboard</h1>
+      <h2>{tableId}</h2>
       <ul>
         {data?.tablesPlayers.map((player) => (
           <li key={player.id}>

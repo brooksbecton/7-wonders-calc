@@ -14,6 +14,20 @@ describe("App", () => {
     "science",
   ];
 
+  function navigateToCreate() {
+    cy.get('[aria-label="Toggle Menu"]').click();
+    cy.get('[aria-label="Create a Table"]').click();
+  }
+
+  function navigateToJoin() {
+    cy.get('[aria-label="Toggle Menu"]').click();
+    cy.get('[aria-label="Join a Table"]').click();
+  }
+
+  function createGame() {
+    navigateToCreate();
+  }
+
   beforeEach(() => {
     cy.visit(homeUrl);
     cy.viewport("iphone-6");
@@ -105,10 +119,47 @@ describe("App", () => {
 
   describe("join table", () => {
     it("navigates to join page", () => {
-      cy.get('[aria-label="Toggle Menu"]').click();
-      cy.get('[aria-label="Join a Table"]').click();
-
+      navigateToJoin();
       cy.url().should("include", "join-table");
+    });
+
+    it("joins table", () => {
+      // Create Table
+      navigateToCreate();
+
+      cy.get("label").contains("Name").type("E2E User");
+      cy.get('[type="submit"]').click();
+
+      // Get ID
+      cy.get("h2")
+        .invoke("text")
+        .then((tableId) => {
+          // Leave Created Table
+          cy.get('[aria-label="Toggle Menu"]').click();
+          cy.get('[aria-label="Leave Table"]').click();
+
+          navigateToJoin();
+
+          // Join Created table as someone else
+          cy.get("label").contains("Game ID").type(tableId);
+          cy.get("label").contains("Name").type("New E2E User");
+          cy.get('[type="submit"]').click();
+        });
+    });
+  });
+  describe("create table", () => {
+    it("navigates to create page", () => {
+      navigateToCreate();
+      cy.url().should("include", "create-table");
+    });
+
+    it("create table", () => {
+      navigateToCreate();
+
+      cy.get("label").contains("Name").type("E2E User");
+      cy.get('[type="submit"]').click();
+
+      cy.url().should("include", "scoreboard");
     });
   });
 });
