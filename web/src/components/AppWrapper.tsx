@@ -136,7 +136,7 @@ export const AppWrapper: React.FunctionComponent = ({ children }) => {
                 onClick={handleMenuItemPress}
                 style={{ textDecoration: "none" }}
                 className="text-sm"
-                aria-label="Join a Table"
+                aria-label="Go to Calculator"
                 to={`${process.env.PUBLIC_URL}/`}
               >
                 Home

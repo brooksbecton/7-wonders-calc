@@ -1,5 +1,5 @@
 /* global cy */
-const homeUrl = "/7-wonders-calc/";
+const homeUrl = "";
 function getTestId(id) {
   return `[data-test-id="${id}"]`;
 }
@@ -20,7 +20,7 @@ describe("App", () => {
     // cy.scrollTo(0, 0);
   });
 
-  it.skip("increments and decrements", () => {
+  it("increments and decrements", () => {
     pointTypes.forEach((p) => {
       cy.get(getTestId(p)).within(() => {
         cy.get(getTestId("increment")).click();
@@ -33,7 +33,7 @@ describe("App", () => {
     });
   });
 
-  it.skip("sums up the total of each point type", () => {
+  it("sums up the total of each point type", () => {
     pointTypes.forEach((p) => {
       cy.get(getTestId(p)).within(() => {
         cy.get(getTestId("increment")).click();
@@ -43,7 +43,7 @@ describe("App", () => {
     cy.get(getTestId("totalPoints")).contains(pointTypes.length);
   });
 
-  it.skip("navigates to point detail", () => {
+  it("navigates to point detail", () => {
     pointTypes.forEach((p) => {
       cy.visit(homeUrl);
       cy.get(getTestId(p)).within(() => {
@@ -53,7 +53,7 @@ describe("App", () => {
     });
   });
 
-  it.skip("navigates to science calculator", () => {
+  it("navigates to science calculator", () => {
     cy.get(getTestId("science-calculator")).click();
     cy.url().should("include", "science-calculator");
   });
@@ -100,6 +100,15 @@ describe("App", () => {
         .type("{rightarrow}");
 
       cy.get("p").contains("13");
+    });
+  });
+
+  describe("join table", () => {
+    it("navigates to join page", () => {
+      cy.get('[aria-label="Toggle Menu"]').click();
+      cy.get('[aria-label="Join a Table"]').click();
+
+      cy.url().should("include", "join-table");
     });
   });
 });
