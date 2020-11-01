@@ -21,7 +21,15 @@ export const PointDetail: React.FunctionComponent<Props> = ({
     <DetailWrapper>
       <Header>
         {pointInfo && (
-          <IconContainer style={{ paddingRight: "10px" }}>
+          <IconContainer
+            style={{
+              backgroundColor: pointInfo.color,
+              padding: 10,
+              marginRight: 10,
+              width: 35,
+              height: 35,
+            }}
+          >
             <img src={pointInfo.svg} alt={`${pointInfo.key} icon`} />
           </IconContainer>
         )}
@@ -46,6 +54,10 @@ const IconContainer = styled.div`
 const Header = styled.div`
   display: flex;
   flex-direction: row;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  border-width: 0.5px;
+  border-bottom-style: solid;
 `;
 
 export default PointDetail;

@@ -8,25 +8,28 @@ export interface IProps {}
 // eslint-disable-next-line react/prop-types
 export const DetailWrapper: React.SFC<IProps> = ({ children }) => (
   <>
-    <BackButton
-      aria-label="Go Back One Screen"
-      onClick={() => window.history.back()}
-    >
-      <img src={backArrow} alt="Back Arrow" />
-      <span>Back</span>
-    </BackButton>
-    <ContentContainer>{children}</ContentContainer>
+    <ContentContainer>
+      <BackButton
+        aria-label="Go Back One Screen"
+        onClick={() => window.history.back()}
+      >
+        <img src={backArrow} alt="Back Arrow" />
+        <span>Back</span>
+      </BackButton>
+      {children}
+    </ContentContainer>
   </>
 );
 
 export const ContentContainer = styled.div`
+  background: #e5e5e5;
   height: 90%;
   padding: 25px;
   display: flex;
   flex-direction: column;
 
   h1 {
-    text-transform: uppercase;
+    text-transform: capitalize;
     margin: 0px;
   }
   p {
