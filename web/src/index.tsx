@@ -16,6 +16,7 @@ import { JoinGame } from "./views/JoinGame";
 import { PointDetail } from "./views/pointDetail/components/PointDetails";
 import { ScienceCalculator } from "./views/ScienceCalculator";
 import { Scoreboard } from "./views/Scoreboard";
+import { Helmet } from "react-helmet";
 
 const client = new ApolloClient({
   uri:
@@ -41,6 +42,13 @@ function App() {
 
   return (
     <ApolloProvider client={client}>
+      <Helmet>
+        <title>7 Wonders Calculator</title>
+        <meta
+          name="description"
+          content="Point calculator for the board game 7 Wonders"
+        />
+      </Helmet>
       <PointsContext.Provider value={{ dispatch, pointTypes, setPoints }}>
         <AppWrapper>
           <Router
