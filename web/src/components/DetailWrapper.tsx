@@ -1,7 +1,7 @@
-import * as React from 'react';
-import posed from 'react-pose';
-import styled from 'styled-components';
-import { backArrow } from '../icons';
+import * as React from "react";
+import posed from "react-pose";
+import styled from "styled-components";
+import { backArrow } from "../icons";
 
 export interface IProps {}
 
@@ -15,28 +15,15 @@ export const DetailWrapper: React.SFC<IProps> = ({ children }) => (
       <img src={backArrow} alt="Back Arrow" />
       <span>Back</span>
     </BackButton>
-    <BounceIn initialPose="exit" pose="enter">
-      <ContentContainer>{children}</ContentContainer>
-    </BounceIn>
+    <ContentContainer>{children}</ContentContainer>
   </>
 );
 
-const BounceIn = posed.div({
-  enter: {
-    opacity: 100,
-    x: 0,
-  },
-  exit: {
-    opacity: 50,
-    x: 50,
-  },
-});
-
-const ContentContainer = styled.div`
-  min-height: 90%;
-  background-color: #e5e5e5;
+export const ContentContainer = styled.div`
+  height: 90%;
   padding: 25px;
-  box-shadow: 0px 6px 5px -3px rgba(0, 0, 0, 0.75);
+  display: flex;
+  flex-direction: column;
 
   h1 {
     text-transform: uppercase;

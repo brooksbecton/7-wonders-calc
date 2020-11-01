@@ -6,16 +6,16 @@ import {
   useJoinTableMutation,
 } from "../generated/graphql";
 import * as store from "store";
+import { ContentContainer } from "../components/DetailWrapper";
+import styled from "styled-components";
 
 export const JoinGame: React.FC<RouteComponentProps> = () => {
   const [gameId, setGameId] = useState("");
-  const [name, setName] = useState(store.get('nickname'));
+  const [name, setName] = useState(store.get("nickname"));
 
   const [joinTable] = useJoinTableMutation();
   const [createPlayer] = useCreatePlayerMutation();
   const navigate = useNavigate();
-
-
 
   const handleSubmit = async () => {
     // Create player and receive userId in cookie
@@ -25,44 +25,102 @@ export const JoinGame: React.FC<RouteComponentProps> = () => {
     const { data } = await joinTable({
       variables: { tableId: Number(gameId) },
       refetchQueries: [{ query: MyPlayerDocument }],
-
     });
 
     navigate(`scoreboard/${data?.joinTable?.id}`);
 
-    store.set('nickname', name)
+    store.set("nickname", name);
   };
 
   return (
-    <div>
-      <h1>Join Game</h1>
-      <form onSubmit={(e) => e.preventDefault()}>
-        <label>
-          Game ID
-          <input
+    <ContentContainer>
+      <h1 className="text-lg">Join Game</h1>
+      <Form onSubmit={(e) => e.preventDefault()}>
+        <FormContainer>
+          <Label className="text-md" htmlFor="gameID">
+            Game ID
+          </Label>
+
+          <Input
+            id="gameID"
             onChange={(e) => setGameId(e.target.value)}
             type="text"
-            placeholder="Game ID"
+            placeholder="Enter Game ID"
             value={gameId}
           />
-        </label>
-        <br />
-        <label>
-          Name
-          <input
+
+          <Label className="text-md" htmlFor="name">
+            Name
+          </Label>
+
+          <Input
+            id="name"
             onChange={(e) => setName(e.target.value)}
             type="text"
-            placeholder="Name"
+            placeholder="Enter Name"
             value={name}
           />
-        </label>
-        <br />
-        <button type="submit" onClick={handleSubmit}>
-          Submit
-        </button>
-        <br />
-        <button>Cancel</button>
-      </form>
-    </div>
+        </FormContainer>
+        <ButtonContainer>
+          <Button className="text-md" type="submit" onClick={handleSubmit}>
+            Submit
+          </Button>
+          <Button transparent className="text-md" onClick={() => navigate("/")}>
+            Cancel
+          </Button>
+        </ButtonContainer>
+      </Form>
+    </ContentContainer>
   );
 };
+
+export const FormContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  align-items: stretch;
+  text-align: center;
+`;
+export const ButtonContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  flex: 1;
+  align-items: stretch;
+  text-align: center;
+`;
+
+export const Input = styled.input`
+  padding: 10px;
+  border-radius: 8px;
+  border-width: 0px;
+`;
+export const Button = styled.button<{ transparent?: boolean }>`
+  background-color: ${(props) => (props.transparent ? "transparent" : "white")};
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+  border-radius: 8px;
+  border-width: 0px;
+  padding: 10px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+`;
+
+export const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+`;
+
+export const Label = styled.label`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+
+  padding-bottom: 10px;
+  padding-top: 10px;
+`;

@@ -43,7 +43,10 @@ function App() {
     <ApolloProvider client={client}>
       <PointsContext.Provider value={{ dispatch, pointTypes, setPoints }}>
         <AppWrapper>
-          <Router basepath={process.env.PUBLIC_URL}>
+          <Router
+            basepath={process.env.PUBLIC_URL}
+            style={{ height: "100%", width: "100%" }}
+          >
             <Calculate path="/" />
             <PointDetail path="detail/:pointType" />
             <ScienceCalculator path="science-calculator" />

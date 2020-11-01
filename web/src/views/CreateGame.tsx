@@ -1,11 +1,20 @@
 import { RouteComponentProps, useNavigate } from "@reach/router";
 import React, { useState } from "react";
 import * as store from "store";
+import { ContentContainer } from "../components/DetailWrapper";
 import {
   MyPlayerDocument,
   useCreatePlayerMutation,
   useCreateTableMutation,
 } from "../generated/graphql";
+import {
+  Button,
+  ButtonContainer,
+  Form,
+  FormContainer,
+  Input,
+  Label,
+} from "./JoinGame";
 
 export const CreateGame: React.FC<RouteComponentProps> = () => {
   const [name, setName] = useState(store.get("nickname"));
@@ -28,25 +37,31 @@ export const CreateGame: React.FC<RouteComponentProps> = () => {
   };
 
   return (
-    <div>
-      <h1>Create Game</h1>
-      <form onSubmit={(e) => e.preventDefault()}>
-        <label>
-          Name
-          <input
+    <ContentContainer>
+      <h1 className="text-lg">Create Game</h1>
+      <Form onSubmit={(e) => e.preventDefault()}>
+        <FormContainer>
+          <Label className="text-md" htmlFor="name">
+            Name
+          </Label>
+          <Input
+            id="name"
             onChange={(e) => setName(e.target.value)}
             type="text"
             placeholder="Name"
             value={name}
           />
-        </label>
-        <br />
-        <button type="submit" onClick={handleSubmit}>
-          Submit
-        </button>
-        <br />
-        <button>Cancel</button>
-      </form>
-    </div>
+        </FormContainer>
+        <ButtonContainer>
+          <Button className="text-md" type="submit" onClick={handleSubmit}>
+            Submit
+          </Button>
+
+          <Button transparent className="text-md" onClick={() => navigate("/")}>
+            Cancel
+          </Button>
+        </ButtonContainer>
+      </Form>
+    </ContentContainer>
   );
 };

@@ -70,7 +70,7 @@ export const AppWrapper: React.FunctionComponent = ({ children }) => {
   };
 
   return (
-    <>
+    <div style={{ display: "flex", flexDirection: "column", height: "100%" }}>
       <TopBar>
         <div />
         <img
@@ -86,9 +86,7 @@ export const AppWrapper: React.FunctionComponent = ({ children }) => {
           reset
         </button> */}
       </TopBar>
-      <Wrapper>
-        <main>{children}</main>
-      </Wrapper>
+      <Wrapper>{children}</Wrapper>
       <BottomBar handleMenuPress={() => setIsMenuOpen(!isMenuOpen)} />
       <Modal
         open={isMenuOpen}
@@ -214,7 +212,7 @@ export const AppWrapper: React.FunctionComponent = ({ children }) => {
           </ul>
         </ModalContainer>
       </Modal>
-    </>
+    </div>
   );
 };
 
@@ -228,11 +226,13 @@ const ModalContainer = styled.div`
   align-items: "center";
   background-color: var(--pyramid-yellow);
 `;
-const Wrapper = styled.div`
+const Wrapper = styled.main`
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
+  align-items: flex-start;
   flex-direction: column;
-  max-width: 380px;
+  width: 380px;
+  flex: 1;
   margin-left: auto;
   margin-right: auto;
   padding-left: 10px;

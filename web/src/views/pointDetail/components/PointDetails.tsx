@@ -1,10 +1,10 @@
-import { RouteComponentProps } from '@reach/router';
-import * as React from 'react';
-import styled from 'styled-components';
+import { RouteComponentProps } from "@reach/router";
+import * as React from "react";
+import styled from "styled-components";
 
-import { DetailWrapper } from '../../../components/DetailWrapper';
-import { PointsContext } from '../../../PointsReducer/PointsContext';
-import { PointTypeDescription } from './PointTypeDescription';
+import { DetailWrapper } from "../../../components/DetailWrapper";
+import { PointsContext } from "../../../PointsReducer/PointsContext";
+import { PointTypeDescription } from "./PointTypeDescription";
 
 interface ICustomProps {
   // eslint-disable-next-line react/require-default-props
@@ -13,7 +13,7 @@ interface ICustomProps {
 
 type Props = RouteComponentProps & ICustomProps;
 export const PointDetail: React.FunctionComponent<Props> = ({
-  pointType = '',
+  pointType = "",
 }: Props) => {
   const { pointTypes } = React.useContext(PointsContext);
   const pointInfo = pointTypes.find(({ key }) => key.indexOf(pointType) !== -1);
@@ -21,7 +21,7 @@ export const PointDetail: React.FunctionComponent<Props> = ({
     <DetailWrapper>
       <Header>
         {pointInfo && (
-          <IconContainer style={{ paddingRight: '10px' }}>
+          <IconContainer style={{ paddingRight: "10px" }}>
             <img src={pointInfo.svg} alt={`${pointInfo.key} icon`} />
           </IconContainer>
         )}
@@ -30,7 +30,6 @@ export const PointDetail: React.FunctionComponent<Props> = ({
           <p style={{ padding: 0, margin: 0 }}>Points</p>
         </div>
       </Header>
-      <hr />
       <PointTypeDescription pointType={pointType} />
     </DetailWrapper>
   );
