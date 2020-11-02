@@ -1,5 +1,5 @@
 import { Modal } from "@material-ui/core";
-import { Link } from "@reach/router";
+import { Link } from "react-router-dom";
 import * as React from "react";
 import { useContext } from "react";
 import styled from "styled-components";
@@ -135,7 +135,7 @@ export const AppWrapper: React.FunctionComponent = ({ children }) => {
                 style={{ textDecoration: "none" }}
                 className="text-sm"
                 aria-label="Go to Calculator"
-                to={`${process.env.PUBLIC_URL}/`}
+                to={`/`}
               >
                 Home
               </Link>

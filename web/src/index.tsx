@@ -1,7 +1,7 @@
 import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
-import { Router } from "@reach/router";
 import React, { useEffect, useReducer } from "react";
 import { render } from "react-dom";
+import { Helmet } from "react-helmet";
 import { registerObserver } from "react-perf-devtool";
 import * as store from "store";
 import { AppWrapper } from "./components/AppWrapper";
@@ -16,7 +16,8 @@ import { JoinGame } from "./views/JoinGame";
 import { PointDetail } from "./views/pointDetail/components/PointDetails";
 import { ScienceCalculator } from "./views/ScienceCalculator";
 import { Scoreboard } from "./views/Scoreboard";
-import { Helmet } from "react-helmet";
+import posed, { PoseGroup } from "react-pose";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 const client = new ApolloClient({
   uri:
@@ -26,6 +27,11 @@ const client = new ApolloClient({
 
   cache: new InMemoryCache(),
   credentials: "include",
+});
+
+const RoutesContainer = posed.div({
+  enter: { opacity: 1 },
+  exit: { opacity: 0 },
 });
 
 registerObserver();
@@ -51,17 +57,28 @@ function App() {
       </Helmet>
       <PointsContext.Provider value={{ dispatch, pointTypes, setPoints }}>
         <AppWrapper>
-          <Router
-            basepath={process.env.PUBLIC_URL}
-            style={{ height: "100%", width: "100%" }}
-          >
-            <Calculate path="/" />
-            <PointDetail path="detail/:pointType" />
-            <ScienceCalculator path="science-calculator" />
-            <JoinGame path="join-table" />
-            <CreateGame path="create-table" />
-            <Scoreboard path="scoreboard/:tableId" />
-          </Router>
+          <RoutesContainer style={{ width: "100%", height: "100%" }}>
+            <Switch>
+              <Route exact path="/">
+                <Calculate />
+              </Route>
+              <Route exact path="/detail/:pointType">
+                <PointDetail />
+              </Route>
+              <Route exact path="/science-calculator">
+                <ScienceCalculator />
+              </Route>
+              <Route exact path="/join-table">
+                <JoinGame />
+              </Route>
+              <Route exact path="/create-table">
+                <CreateGame />
+              </Route>
+              <Route path="scoreboard/:tableId">
+                <Scoreboard />
+              </Route>
+            </Switch>
+          </RoutesContainer>
         </AppWrapper>
       </PointsContext.Provider>
     </ApolloProvider>
@@ -69,5 +86,10 @@ function App() {
 }
 
 const rootElement = document.getElementById("root");
-render(<App />, rootElement);
+render(
+  <Router>
+    <App />
+  </Router>,
+  rootElement
+);
 serviceWorker();

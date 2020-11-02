@@ -1,4 +1,4 @@
-import { RouteComponentProps, useNavigate } from "@reach/router";
+import { useHistory } from "react-router-dom";
 import React, { useState } from "react";
 import * as store from "store";
 import { ContentContainer } from "../components/DetailWrapper";
@@ -16,9 +16,9 @@ import {
   Label,
 } from "./JoinGame";
 
-export const CreateGame: React.FC<RouteComponentProps> = () => {
+export const CreateGame: React.FC = () => {
   const [name, setName] = useState(store.get("nickname"));
-  const navigate = useNavigate();
+  const history = useHistory();
   const [createTable] = useCreateTableMutation();
   const [createPlayer] = useCreatePlayerMutation();
 
@@ -31,7 +31,7 @@ export const CreateGame: React.FC<RouteComponentProps> = () => {
     const { data } = await createTable({
       refetchQueries: [{ query: MyPlayerDocument }],
     });
-    navigate(`scoreboard/${data?.createTable?.id}`);
+    history.push(`/scoreboard/${data?.createTable?.id}`);
 
     store.set("nickname", name);
   };
@@ -57,7 +57,11 @@ export const CreateGame: React.FC<RouteComponentProps> = () => {
             Submit
           </Button>
 
-          <Button transparent className="text-md" onClick={() => navigate("/")}>
+          <Button
+            transparent
+            className="text-md"
+            onClick={() => history.push("/")}
+          >
             Cancel
           </Button>
         </ButtonContainer>

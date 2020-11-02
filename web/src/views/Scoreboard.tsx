@@ -1,11 +1,11 @@
-import { RouteComponentProps, useParams } from "@reach/router";
 import React from "react";
+import { useParams } from "react-router-dom";
 import {
   useGetTablePlayersQuery,
   useMyPlayerQuery,
 } from "../generated/graphql";
 
-export const Scoreboard: React.FC<RouteComponentProps> = () => {
+export const Scoreboard: React.FC = () => {
   const { tableId }: { tableId: string } = useParams();
   const { data: userIdData } = useMyPlayerQuery();
   const { data, loading, error } = useGetTablePlayersQuery({

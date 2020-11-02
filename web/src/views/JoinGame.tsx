@@ -1,4 +1,4 @@
-import { RouteComponentProps, useNavigate } from "@reach/router";
+import { useHistory } from "react-router-dom";
 import React, { useState } from "react";
 import {
   MyPlayerDocument,
@@ -9,13 +9,13 @@ import * as store from "store";
 import { ContentContainer } from "../components/DetailWrapper";
 import styled from "styled-components";
 
-export const JoinGame: React.FC<RouteComponentProps> = () => {
+export const JoinGame: React.FC = () => {
   const [gameId, setGameId] = useState("");
   const [name, setName] = useState(store.get("nickname"));
 
   const [joinTable] = useJoinTableMutation();
   const [createPlayer] = useCreatePlayerMutation();
-  const navigate = useNavigate();
+  const history = useHistory();
 
   const handleSubmit = async () => {
     // Create player and receive userId in cookie
@@ -27,7 +27,7 @@ export const JoinGame: React.FC<RouteComponentProps> = () => {
       refetchQueries: [{ query: MyPlayerDocument }],
     });
 
-    navigate(`scoreboard/${data?.joinTable?.id}`);
+    history.push(`/scoreboard/${data?.joinTable?.id}`);
 
     store.set("nickname", name);
   };
@@ -65,7 +65,11 @@ export const JoinGame: React.FC<RouteComponentProps> = () => {
           <Button className="text-md" type="submit" onClick={handleSubmit}>
             Submit
           </Button>
-          <Button transparent className="text-md" onClick={() => navigate("/")}>
+          <Button
+            transparent
+            className="text-md"
+            onClick={() => history.push("/")}
+          >
             Cancel
           </Button>
         </ButtonContainer>

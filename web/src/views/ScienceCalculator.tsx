@@ -1,11 +1,10 @@
-import Slider from '@material-ui/core/Slider';
-import { RouteComponentProps } from '@reach/router';
-import * as React from 'react';
-import styled from 'styled-components';
+import Slider from "@material-ui/core/Slider";
+import * as React from "react";
+import styled from "styled-components";
 
-import { DetailWrapper } from '../components/DetailWrapper';
-import cogSvg from '../icons/cog.svg';
-import { mason, tally } from '../icons/index';
+import { DetailWrapper } from "../components/DetailWrapper";
+import cogSvg from "../icons/cog.svg";
+import { mason, tally } from "../icons/index";
 
 export interface IProps {
   icon: string;
@@ -14,7 +13,7 @@ export interface IProps {
   value: any;
 }
 
-export const ScienceCalculator: React.FC<RouteComponentProps> = () => {
+export const ScienceCalculator: React.FC = () => {
   const [gearCardCount, setGearCardCount] = React.useState(0);
   const [architectureCardCount, setArchitectureCardCount] = React.useState(0);
   const [tabletCardCount, setTabletCardCount] = React.useState(0);
@@ -27,9 +26,8 @@ export const ScienceCalculator: React.FC<RouteComponentProps> = () => {
     return gearScore + archScore + langScore;
   };
 
-  const getScienceSetsScore = () => Math.min(
-    gearCardCount, architectureCardCount, tabletCardCount,
-  ) * 7;
+  const getScienceSetsScore = () =>
+    Math.min(gearCardCount, architectureCardCount, tabletCardCount) * 7;
 
   return (
     <DetailWrapper>
@@ -51,14 +49,14 @@ export const ScienceCalculator: React.FC<RouteComponentProps> = () => {
         </SliderWrapper>
         <div
           style={{
-            width: '20%',
-            textAlign: 'center',
+            width: "20%",
+            textAlign: "center",
           }}
         >
-          <p className="text-xl" style={{ marginBottom: '-10px' }}>
+          <p className="text-xl" style={{ marginBottom: "-10px" }}>
             {gearCardCount}
           </p>
-          <p style={{ margin: '0' }}>cards</p>
+          <p style={{ margin: "0" }}>cards</p>
         </div>
       </ScienceSliderWrapper>
       <ScienceSliderWrapper>
@@ -77,14 +75,14 @@ export const ScienceCalculator: React.FC<RouteComponentProps> = () => {
         </SliderWrapper>
         <div
           style={{
-            width: '20%',
-            textAlign: 'center',
+            width: "20%",
+            textAlign: "center",
           }}
         >
-          <p className="text-xl" style={{ marginBottom: '-10px' }}>
+          <p className="text-xl" style={{ marginBottom: "-10px" }}>
             {architectureCardCount}
           </p>
-          <p style={{ margin: '0' }}>cards</p>
+          <p style={{ margin: "0" }}>cards</p>
         </div>
       </ScienceSliderWrapper>
       <ScienceSliderWrapper>
@@ -103,14 +101,14 @@ export const ScienceCalculator: React.FC<RouteComponentProps> = () => {
         </SliderWrapper>
         <div
           style={{
-            width: '20%',
-            textAlign: 'center',
+            width: "20%",
+            textAlign: "center",
           }}
         >
-          <p className="text-xl" style={{ marginBottom: '-10px' }}>
+          <p className="text-xl" style={{ marginBottom: "-10px" }}>
             {tabletCardCount}
           </p>
-          <p style={{ margin: '0' }}>cards</p>
+          <p style={{ margin: "0" }}>cards</p>
         </div>
       </ScienceSliderWrapper>
       <hr />

@@ -1,4 +1,4 @@
-import { Link } from "@reach/router";
+import { Link } from "react-router-dom";
 import * as React from "react";
 import styled from "styled-components";
 
@@ -77,7 +77,7 @@ export const CalculateInput = ({
                 className="text-sm"
                 aria-label="Open Science Calculator"
                 data-test-id="science-calculator"
-                to="science-calculator"
+                to="/science-calculator"
               >
                 fx
               </Link>
@@ -85,7 +85,7 @@ export const CalculateInput = ({
             <Link
               aria-label={`Go to ${pointType} description`}
               data-test-id="detail"
-              to={`detail/${pointType}`}
+              to={`/detail/${pointType}`}
             >
               ?
             </Link>
