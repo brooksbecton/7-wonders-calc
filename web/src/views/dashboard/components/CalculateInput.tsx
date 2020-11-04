@@ -1,6 +1,22 @@
 import { Link } from "react-router-dom";
-import * as React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
+import { useSpring, animated } from "react-spring";
+
+// Hook
+function usePrevious<T>(value: T) {
+  // The ref object is a generic container whose current property is mutable ...
+  // ... and can hold any value, similar to an instance property on a class
+  const ref = useRef(value);
+
+  // Store current value in ref
+  useEffect(() => {
+    ref.current = value;
+  }, [value]); // Only re-run if value changes
+
+  // Return previous value (happens before update in useEffect above)
+  return ref.current;
+}
 
 interface IProps {
   label: string;
@@ -17,7 +33,33 @@ export const CalculateInput = ({
   svg,
   color,
 }: IProps) => {
+  const [isIncrementing, setIsIncrementing] = useState(false);
+  const [isDecrementing, setIsDecrementing] = useState(false);
   const [pointType, pointsLabel] = label.split("-");
+
+  const props = useSpring({
+    transform: isIncrementing
+      ? "translate(0px, -10px)"
+      : isDecrementing
+      ? "translate(0px, 10px)"
+      : "translate(0px,0px)",
+  });
+
+  const handleIncrement = () => {
+    setIsIncrementing(true);
+  };
+
+  const handleDecrement = () => {
+    setIsDecrementing(true);
+  };
+
+  const handleDecrementFinish = () => {
+    setIsDecrementing(false);
+  };
+
+  const handleIncrementFinish = () => {
+    setIsIncrementing(false);
+  };
 
   return (
     <Container data-test-id={pointType}>
@@ -34,6 +76,7 @@ export const CalculateInput = ({
             alt={`${pointType} ${pointsLabel} icon`}
           />
         </IconContainer>
+
         <Label htmlFor={label}>
           <h2 className="text-md">{pointType}</h2>
           <br />
@@ -44,13 +87,15 @@ export const CalculateInput = ({
       <RightSide>
         <InputWrapper>
           <div>
-            <ScoreInput
-              id={label}
-              className="text-xl"
-              type="tel"
-              onChange={(e) => onChange(Number(e.target.value))}
-              value={value}
-            />
+            <animated.div style={props}>
+              <ScoreInput
+                id={label}
+                className="text-xl"
+                type="tel"
+                onChange={(e) => onChange(Number(e.target.value))}
+                value={value}
+              />
+            </animated.div>
             <ScoreLabel>Score</ScoreLabel>
           </div>
           <BottomBar>
@@ -60,6 +105,8 @@ export const CalculateInput = ({
               aria-label={`Increment ${pointType} points to ${value + 1}`}
               data-test-id="increment"
               onClick={() => onChange(value + 1)}
+              onMouseDown={handleIncrement}
+              onMouseUp={handleIncrementFinish}
             >
               +
             </button>
@@ -69,6 +116,8 @@ export const CalculateInput = ({
               aria-label={`Decrement ${pointType} points to ${value - 1}`}
               data-test-id="decrement"
               onClick={() => onChange(value - 1)}
+              onMouseDown={handleDecrement}
+              onMouseUp={handleDecrementFinish}
             >
               -
             </button>
