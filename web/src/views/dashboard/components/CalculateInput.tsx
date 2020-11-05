@@ -86,18 +86,16 @@ export const CalculateInput = ({
       <Angle />
       <RightSide>
         <InputWrapper>
-          <div>
-            <animated.div style={props}>
-              <ScoreInput
-                id={label}
-                className="text-xl"
-                type="tel"
-                onChange={(e) => onChange(Number(e.target.value))}
-                value={value}
-              />
-            </animated.div>
+          <animated.div style={props}>
+            <ScoreInput
+              id={label}
+              className="text-xl"
+              type="tel"
+              onChange={(e) => onChange(Number(e.target.value))}
+              value={value}
+            />
             <ScoreLabel>Score</ScoreLabel>
-          </div>
+          </animated.div>
           <BottomBar>
             <button
               type="button"
