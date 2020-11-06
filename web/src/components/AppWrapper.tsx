@@ -37,8 +37,7 @@ const TopBar = styled.div`
 
 // eslint-disable-next-line react/prop-types
 export const AppWrapper: React.FunctionComponent = ({ children }) => {
-  const { dispatch, pointTypes } = useContext(PointsContext);
-  const handleResetPress = () => dispatch({ type: "RESET" });
+  const { pointTypes } = useContext(PointsContext);
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const { data } = useMyPlayerQuery();
   const [deletePlayer] = useDeletePlayerMutation();

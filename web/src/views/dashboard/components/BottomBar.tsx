@@ -44,8 +44,8 @@ const TotalPoints = styled.h3`
   flex-direction: row;
   align-items: center;
 
-  span{
-    margin-left: 5px
+  span {
+    margin-left: 5px;
   }
 `;
 

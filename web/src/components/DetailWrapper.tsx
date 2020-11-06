@@ -1,5 +1,4 @@
 import * as React from "react";
-import posed from "react-pose";
 import styled from "styled-components";
 import { backArrow } from "../icons";
 
@@ -24,6 +23,7 @@ export const DetailWrapper: React.SFC<IProps> = ({ children }) => (
 export const ContentContainer = styled.div`
   background: #e5e5e5;
   height: 90%;
+  width: 100%;
   padding: 25px;
   display: flex;
   flex-direction: column;
