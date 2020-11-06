@@ -3,14 +3,6 @@ import React, { useEffect, useReducer } from "react";
 import { render } from "react-dom";
 import { Helmet } from "react-helmet";
 import { registerObserver } from "react-perf-devtool";
-import posed from "react-pose";
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-  useLocation,
-} from "react-router-dom";
-import { animated, useTransition } from "react-spring";
 import * as store from "store";
 import { AppWrapper } from "./components/AppWrapper";
 import { updatePoint } from "./PointsReducer/actions";
@@ -24,6 +16,8 @@ import { JoinGame } from "./views/JoinGame";
 import { PointDetail } from "./views/pointDetail/components/PointDetails";
 import { ScienceCalculator } from "./views/ScienceCalculator";
 import { Scoreboard } from "./views/Scoreboard";
+import posed, { PoseGroup } from "react-pose";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 const client = new ApolloClient({
   uri:
@@ -47,33 +41,7 @@ function App() {
   const [pointTypes, dispatch] = useReducer(reducer, pointData);
   const setPoints = (newPointType: IPointType) =>
     dispatch(updatePoint(newPointType));
-  const location = useLocation();
-  const isGoingBackwards = location.pathname === "/";
-  const transitions = useTransition(location, (location) => location.pathname, {
-    from: {
-      opacity: 0,
-      position: "fixed",
-      width: "380px",
-      transform: isGoingBackwards
-        ? "translate3d(-100%,0,0)"
-        : "translate3d(100%,0,0)",
-    },
-    enter: {
-      position: "static",
-      opacity: 1,
-      transform: "translate3d(0%,0,0)",
-    },
-    leave: {
-      opacity: 0,
-      width: "380px",
 
-      position: "fixed",
-
-      transform: isGoingBackwards
-        ? "translate3d(50%,0,0)"
-        : "translate3d(-50%,0,0)",
-    },
-  });
   useEffect(() => {
     store.set("points", pointTypes);
   });
@@ -89,36 +57,27 @@ function App() {
       </Helmet>
       <PointsContext.Provider value={{ dispatch, pointTypes, setPoints }}>
         <AppWrapper>
-          <RoutesContainer>
-            {transitions.map(({ item: location, props, key }) => (
-              <animated.div
-                key={key}
-                style={{
-                  ...props,
-                }}
-              >
-                <Switch location={location}>
-                  <Route exact path="/">
-                    <Calculate />
-                  </Route>
-                  <Route exact path="/detail/:pointType">
-                    <PointDetail />
-                  </Route>
-                  <Route exact path="/science-calculator">
-                    <ScienceCalculator />
-                  </Route>
-                  <Route exact path="/join-table">
-                    <JoinGame />
-                  </Route>
-                  <Route exact path="/create-table">
-                    <CreateGame />
-                  </Route>
-                  <Route path="scoreboard/:tableId">
-                    <Scoreboard />
-                  </Route>
-                </Switch>
-              </animated.div>
-            ))}
+          <RoutesContainer style={{ width: "100%", height: "100%" }}>
+            <Switch>
+              <Route exact path="/">
+                <Calculate />
+              </Route>
+              <Route exact path="/detail/:pointType">
+                <PointDetail />
+              </Route>
+              <Route exact path="/science-calculator">
+                <ScienceCalculator />
+              </Route>
+              <Route exact path="/join-table">
+                <JoinGame />
+              </Route>
+              <Route exact path="/create-table">
+                <CreateGame />
+              </Route>
+              <Route path="scoreboard/:tableId">
+                <Scoreboard />
+              </Route>
+            </Switch>
           </RoutesContainer>
         </AppWrapper>
       </PointsContext.Provider>
