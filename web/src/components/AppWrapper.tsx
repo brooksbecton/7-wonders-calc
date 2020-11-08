@@ -70,7 +70,15 @@ export const AppWrapper: React.FunctionComponent = ({ children }) => {
   };
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", height: "100%" }}>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "flex-start",
+        height: "100%",
+        overflow: "scroll",
+      }}
+    >
       <TopBar>
         <div />
         <img
@@ -78,13 +86,6 @@ export const AppWrapper: React.FunctionComponent = ({ children }) => {
           alt="Yellow Pyramid Icon"
           style={{ width: "40px" }}
         />
-        {/* <button
-          type="button"
-          onClick={handleResetPress}
-          onKeyDown={handleResetPress}
-        >
-          reset
-        </button> */}
       </TopBar>
       <Wrapper>{children}</Wrapper>
       <BottomBar handleMenuPress={() => setIsMenuOpen(!isMenuOpen)} />
@@ -227,11 +228,12 @@ const ModalContainer = styled.div`
   background-color: var(--pyramid-yellow);
 `;
 const Wrapper = styled.main`
+  height: auto;
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
   flex-direction: column;
-  width: 380px;
+  max-width: 380px;
   flex: 1;
   margin-left: auto;
   margin-right: auto;

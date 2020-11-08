@@ -1,10 +1,20 @@
 import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
+import useScrollPosition from "@react-hook/window-scroll";
+import { AnimatePresence, motion } from "framer-motion";
 import React, { useEffect, useReducer } from "react";
 import { render } from "react-dom";
 import { Helmet } from "react-helmet";
 import { registerObserver } from "react-perf-devtool";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  useLocation,
+} from "react-router-dom";
 import * as store from "store";
 import { AppWrapper } from "./components/AppWrapper";
+import { usePrevious } from "./hooks/usePrevious";
+import { useScroll } from "./hooks/useScroll";
 import { updatePoint } from "./PointsReducer/actions";
 import { PointsContext } from "./PointsReducer/PointsContext";
 import { defaultState, reducer } from "./PointsReducer/reducer";
@@ -16,8 +26,6 @@ import { JoinGame } from "./views/JoinGame";
 import { PointDetail } from "./views/pointDetail/components/PointDetails";
 import { ScienceCalculator } from "./views/ScienceCalculator";
 import { Scoreboard } from "./views/Scoreboard";
-import posed, { PoseGroup } from "react-pose";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 const client = new ApolloClient({
   uri:
@@ -29,22 +37,69 @@ const client = new ApolloClient({
   credentials: "include",
 });
 
-const RoutesContainer = posed.div({
-  enter: { opacity: 1 },
-  exit: { opacity: 0 },
-});
-
 registerObserver();
+
+const PageWrapper: React.FunctionComponent = ({ children }) => {
+  const location = useLocation();
+  const prevLocation = usePrevious(location);
+
+  const isForward =
+    prevLocation.pathname !== location.pathname && location.pathname === "/";
+
+  const defaults = {
+    maxWidth: "380px",
+  };
+  const pageVariants = {
+    initial: {
+      opacity: 0,
+      overflow: "hidden",
+      position: "absolute" as const,
+      x: isForward ? "100vw" : "-100vw",
+      ...defaults,
+    },
+    in: {
+      opacity: 1,
+      x: 0,
+      position: "relative" as const,
+      ...defaults,
+    },
+    out: {
+      opacity: 0,
+      position: "absolute" as const,
+      overflow: "hidden",
+      x: isForward ? "-100vw" : "100vw",
+      ...defaults,
+    },
+  };
+
+  const pageTransition = {
+    type: "tween",
+    ease: "anticipate",
+    duration: 0.5,
+  };
+
+  return (
+    <motion.div
+      initial="initial"
+      animate="in"
+      exit="out"
+      variants={pageVariants}
+      transition={pageTransition}
+    >
+      {children}
+    </motion.div>
+  );
+};
 
 function App() {
   const pointData = store.get("points", defaultState);
   const [pointTypes, dispatch] = useReducer(reducer, pointData);
   const setPoints = (newPointType: IPointType) =>
     dispatch(updatePoint(newPointType));
-
   useEffect(() => {
     store.set("points", pointTypes);
   });
+  const location = useLocation();
 
   return (
     <ApolloProvider client={client}>
@@ -57,28 +112,40 @@ function App() {
       </Helmet>
       <PointsContext.Provider value={{ dispatch, pointTypes, setPoints }}>
         <AppWrapper>
-          <RoutesContainer style={{ width: "100%", height: "100%" }}>
-            <Switch>
+          <AnimatePresence>
+            <Switch location={location} key={location.pathname}>
               <Route exact path="/">
-                <Calculate />
+                <PageWrapper>
+                  <Calculate />
+                </PageWrapper>
               </Route>
               <Route exact path="/detail/:pointType">
-                <PointDetail />
+                <PageWrapper>
+                  <PointDetail />
+                </PageWrapper>
               </Route>
               <Route exact path="/science-calculator">
-                <ScienceCalculator />
+                <PageWrapper>
+                  <ScienceCalculator />
+                </PageWrapper>
               </Route>
               <Route exact path="/join-table">
-                <JoinGame />
+                <PageWrapper>
+                  <JoinGame />
+                </PageWrapper>
               </Route>
               <Route exact path="/create-table">
-                <CreateGame />
+                <PageWrapper>
+                  <CreateGame />
+                </PageWrapper>
               </Route>
               <Route path="scoreboard/:tableId">
-                <Scoreboard />
+                <PageWrapper>
+                  <Scoreboard />
+                </PageWrapper>
               </Route>
             </Switch>
-          </RoutesContainer>
+          </AnimatePresence>
         </AppWrapper>
       </PointsContext.Provider>
     </ApolloProvider>
