@@ -3,6 +3,8 @@ import styled from "styled-components";
 import { PointsContext } from "../../../PointsReducer/PointsContext";
 import { getTotalPoints } from "../../../PointsReducer/utils";
 import { menu } from "../../../icons";
+import { AnimatePresence, motion } from "framer-motion";
+import { usePrevious } from "../../../hooks/usePrevious";
 
 interface IProps {
   handleMenuPress: () => void;
@@ -10,6 +12,10 @@ interface IProps {
 
 export const BottomBar: React.FC<IProps> = ({ handleMenuPress }) => {
   const { pointTypes } = React.useContext(PointsContext);
+  const total = getTotalPoints(pointTypes);
+  const prevTotal = usePrevious(total);
+
+  const isIncrementing = prevTotal < total;
 
   return (
     <Container>
@@ -19,7 +25,18 @@ export const BottomBar: React.FC<IProps> = ({ handleMenuPress }) => {
         aria-live="polite"
       >
         Total Points:{" "}
-        <span data-test-id="totalPoints">{getTotalPoints(pointTypes)}</span>
+        <AnimatePresence>
+          <motion.span
+            key={total}
+            initial={{ opacity: 0, y: isIncrementing ? 15 : -15 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: isIncrementing ? -15 : 15 }}
+            style={{ position: "absolute", marginLeft: 150 }}
+            data-test-id="totalPoints"
+          >
+            {total}
+          </motion.span>
+        </AnimatePresence>
       </TotalPoints>
       <button
         aria-label="Toggle Menu"
@@ -44,8 +61,8 @@ const TotalPoints = styled.h3`
   flex-direction: row;
   align-items: center;
 
-  span{
-    margin-left: 5px
+  span {
+    margin-left: 5px;
   }
 `;
 
