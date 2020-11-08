@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
 interface IScrollPositions {
   x: number;
@@ -11,16 +11,16 @@ export function useScroll() {
     y: window.scrollY,
   };
   const [scrollPositions, setScrollPositions] = useState(
-    defaultScrollPositions,
+    defaultScrollPositions
   );
   const handleScrollChange = () => {
     setScrollPositions({ x: window.scrollX, y: window.scrollY });
   };
   useEffect(() => {
-    window.addEventListener('scroll', handleScrollChange);
+    window.addEventListener("scroll", handleScrollChange);
 
     return () => {
-      window.removeEventListener('scroll', handleScrollChange);
+      window.removeEventListener("scroll", handleScrollChange);
     };
   });
   return scrollPositions;
