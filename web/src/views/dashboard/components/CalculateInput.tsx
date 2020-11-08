@@ -200,7 +200,7 @@ const RightSide = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
-  flex: 1.5;
+  flex: 2;
   min-width: 110px;
   input {
     width: 100%;
