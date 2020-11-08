@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
+import { motion } from "framer-motion";
 
 interface IProps {
   label: string;
@@ -36,6 +37,8 @@ export const CalculateInput = ({
   const handleIncrementFinish = () => {
     setIsIncrementing(false);
   };
+  const AnimatedLink = motion.custom(Link);
+  const AnimatedScoreInput = motion.custom(ScoreInput);
 
   return (
     <Container data-test-id={pointType}>
@@ -74,7 +77,9 @@ export const CalculateInput = ({
             <ScoreLabel>Score</ScoreLabel>
           </div>
           <BottomBar>
-            <button
+            <motion.button
+              whileHover={{ scale: 1.2 }}
+              whileTap={{ scale: 1.3 }}
               type="button"
               className="text-sm"
               aria-label={`Increment ${pointType} points to ${value + 1}`}
@@ -84,8 +89,10 @@ export const CalculateInput = ({
               // onMouseUp={handleIncrementFinish}
             >
               +
-            </button>
-            <button
+            </motion.button>
+            <motion.button
+              whileHover={{ scale: 1.2 }}
+              whileTap={{ scale: 0.8 }}
               type="button"
               className="text-sm"
               aria-label={`Decrement ${pointType} points to ${value - 1}`}
@@ -95,24 +102,26 @@ export const CalculateInput = ({
               // onMouseUp={handleDecrementFinish}
             >
               -
-            </button>
+            </motion.button>
             {pointType === "science" && (
-              <Link
+              <AnimatedLink
+                whileHover={{ scale: 1.2 }}
                 className="text-sm"
                 aria-label="Open Science Calculator"
                 data-test-id="science-calculator"
                 to="/science-calculator"
               >
                 fx
-              </Link>
+              </AnimatedLink>
             )}
-            <Link
+            <AnimatedLink
+              whileHover={{ scale: 1.2, rotate: 20 }}
               aria-label={`Go to ${pointType} description`}
               data-test-id="detail"
               to={`/detail/${pointType}`}
             >
               ?
-            </Link>
+            </AnimatedLink>
           </BottomBar>
         </InputWrapper>
       </RightSide>
