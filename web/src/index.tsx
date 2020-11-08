@@ -1,5 +1,4 @@
 import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
-import useScrollPosition from "@react-hook/window-scroll";
 import { AnimatePresence, motion } from "framer-motion";
 import React, { useEffect, useReducer } from "react";
 import { render } from "react-dom";
