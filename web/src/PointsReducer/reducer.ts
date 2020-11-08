@@ -6,59 +6,59 @@ import {
   military,
   science,
   wonders,
-} from '../icons';
-import { IPointType } from './types';
-import { updatePointType } from './utils';
+} from "../icons";
+import { IPointType } from "./types";
+import { updatePointType } from "./utils";
 
 export const defaultState: IPointType[] = [
   {
-    key: 'military-points',
+    key: "military-points",
     svg: military,
     value: 0,
-    color: '#E74441',
+    color: "#EF8583",
   },
   {
-    key: 'treasury-points',
+    key: "treasury-points",
     svg: coin,
     value: 0,
-    color: '#FFF',
+    color: "#FFF",
   },
   {
-    key: 'wonders-points',
+    key: "wonders-points",
     svg: wonders,
     value: 0,
-    color: '#FFF',
+    color: "#FFF",
   },
   {
-    key: 'civilian-points',
+    key: "civilian-points",
     svg: civilian,
     value: 0,
-    color: '#4396DD',
+    color: "#4396DD",
   },
   {
-    key: 'commerce-points',
+    key: "commerce-points",
     svg: commerce,
     value: 0,
-    color: '#F6C044',
+    color: "#F6C044",
   },
   {
-    key: 'guilds-points',
+    key: "guilds-points",
     svg: guild,
     value: 0,
-    color: '#9B7EC2',
+    color: "#9B7EC2",
   },
   {
-    key: 'science-points',
+    key: "science-points",
     svg: science,
     value: 0,
-    color: '#4FAD7C',
+    color: "#4FAD7C",
   },
 ];
 
 export const reducer = (state: typeof defaultState, action: any) => {
   const { type } = action;
   switch (type) {
-    case 'UPDATE_POINT': {
+    case "UPDATE_POINT": {
       const { type: x, ...pointType } = action;
       const newValue: number = pointType.value;
       const newState = Number.isNaN(newValue)
@@ -67,7 +67,7 @@ export const reducer = (state: typeof defaultState, action: any) => {
 
       return newState;
     }
-    case 'RESET': {
+    case "RESET": {
       return defaultState;
     }
     default:

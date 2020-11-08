@@ -37,14 +37,6 @@ export const CalculateInput = ({
   const [isDecrementing, setIsDecrementing] = useState(false);
   const [pointType, pointsLabel] = label.split("-");
 
-  const props = useSpring({
-    transform: isIncrementing
-      ? "translate(0px, -10px)"
-      : isDecrementing
-      ? "translate(0px, 10px)"
-      : "translate(0px,0px)",
-  });
-
   const handleIncrement = () => {
     setIsIncrementing(true);
   };
@@ -67,26 +59,27 @@ export const CalculateInput = ({
         <IconContainer>
           <img
             style={{
-              backgroundColor: color,
               padding: 10,
-              width: 35,
-              height: 35,
+              width: 50,
+              height: 50,
             }}
             src={svg}
             alt={`${pointType} ${pointsLabel} icon`}
           />
         </IconContainer>
 
-        <Label htmlFor={label}>
-          <h2 className="text-md">{pointType}</h2>
-          <br />
-          <span>{pointsLabel}</span>
-        </Label>
+        <Label htmlFor={label}></Label>
       </LeftSide>
       <Angle />
       <RightSide>
         <InputWrapper>
-          <animated.div style={props}>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+            }}
+          >
             <ScoreInput
               id={label}
               className="text-xl"
@@ -95,7 +88,7 @@ export const CalculateInput = ({
               value={value}
             />
             <ScoreLabel>Score</ScoreLabel>
-          </animated.div>
+          </div>
           <BottomBar>
             <button
               type="button"
@@ -103,8 +96,8 @@ export const CalculateInput = ({
               aria-label={`Increment ${pointType} points to ${value + 1}`}
               data-test-id="increment"
               onClick={() => onChange(value + 1)}
-              onMouseDown={handleIncrement}
-              onMouseUp={handleIncrementFinish}
+              // onMouseDown={handleIncrement}
+              // onMouseUp={handleIncrementFinish}
             >
               +
             </button>
@@ -114,8 +107,8 @@ export const CalculateInput = ({
               aria-label={`Decrement ${pointType} points to ${value - 1}`}
               data-test-id="decrement"
               onClick={() => onChange(value - 1)}
-              onMouseDown={handleDecrement}
-              onMouseUp={handleDecrementFinish}
+              // onMouseDown={handleDecrement}
+              // onMouseUp={handleDecrementFinish}
             >
               -
             </button>
@@ -139,6 +132,20 @@ export const CalculateInput = ({
           </BottomBar>
         </InputWrapper>
       </RightSide>
+      <div
+        style={{
+          height: "103px",
+          justifyContent: "center",
+          backgroundColor: color,
+          writingMode: "vertical-rl",
+          textOrientation: "mixed",
+          textTransform: "capitalize",
+          padding: "5px",
+          textAlign: "center",
+        }}
+      >
+        <h2 style={{ fontSize: "1.2em" }}>{pointType}</h2>
+      </div>
     </Container>
   );
 };
@@ -148,8 +155,7 @@ const BottomBar = styled.div`
   background-color: var(--royal-purple);
   display: flex;
   flex-direction: row;
-  height: 29px;
-  justify-content: flex-end;
+  justify-content: space-around;
 
   button,
   a {
@@ -169,24 +175,22 @@ const BottomBar = styled.div`
 
 const InputWrapper = styled.div`
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   flex-direction: column;
-  width: 70%;
-`;
-
-const LeftSide = styled.div`
-  display: flex;
-  flex-direction: row;
-  height: 105px;
-  justify-content: space-between;
-  padding: 10px;
-  padding-bottom: 4px;
   width: 70%;
 `;
 
 const Angle = styled.div`
   background-color: var(--royal-purple);
   width: 0%;
+`;
+const LeftSide = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  height: "100%";
 `;
 
 const RightSide = styled.div`
@@ -196,7 +200,7 @@ const RightSide = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
-  width: 80%;
+  flex: 1.5;
   min-width: 110px;
   input {
     width: 100%;
@@ -209,24 +213,18 @@ const Container = styled.div`
   display: flex;
   flex-direction: row;
   margin-bottom: 25px;
-  width: 100%;
 `;
 
 const IconContainer = styled.div`
-  display: flex;
-  align-items: center;
   img {
-    width: 35px;
+    width: 50px;
   }
 `;
 
 const Label = styled.label`
   align-self: center;
-  flex-grow: 3;
   padding-left: 13px;
   text-transform: capitalize;
-  line-height: 8px;
-  max-width: 221.375px;
 
   h2 {
     margin-bottom: 5px;
@@ -244,6 +242,7 @@ const ScoreLabel = styled.p`
   margin: 0;
   color: #e5e5e5;
   text-align: center;
+  text-transform: capitalize;
 `;
 
 const ScoreInput = styled.input`

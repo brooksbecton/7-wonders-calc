@@ -17,7 +17,7 @@ export const Calculate: React.FunctionComponent = () => {
   return (
     <ListContainer>
       {pointTypes.map(({ key, value, svg, color }) => (
-        <Item>
+        <Item key={key}>
           <CalculateInput
             color={color}
             key={key}

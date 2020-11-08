@@ -13,7 +13,6 @@ import {
 import * as store from "store";
 import { AppWrapper } from "./components/AppWrapper";
 import { usePrevious } from "./hooks/usePrevious";
-import { useScroll } from "./hooks/useScroll";
 import { updatePoint } from "./PointsReducer/actions";
 import { PointsContext } from "./PointsReducer/PointsContext";
 import { defaultState, reducer } from "./PointsReducer/reducer";
