@@ -76,7 +76,6 @@ export const AppWrapper: React.FunctionComponent = ({ children }) => {
         flexDirection: "column",
         justifyContent: "flex-start",
         height: "100%",
-        overflow: "scroll",
       }}
     >
       <TopBar>
@@ -228,15 +227,12 @@ const ModalContainer = styled.div`
   background-color: var(--pyramid-yellow);
 `;
 const Wrapper = styled.main`
-  height: auto;
   display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-  flex-direction: column;
-  max-width: 380px;
   flex: 1;
-  margin-left: auto;
-  margin-right: auto;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+
   padding-left: 10px;
   padding-right: 10px;
 `;

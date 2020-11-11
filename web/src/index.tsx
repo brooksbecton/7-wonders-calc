@@ -45,27 +45,26 @@ const PageWrapper: React.FunctionComponent = ({ children }) => {
     prevLocation.pathname !== location.pathname && location.pathname === "/";
 
   const defaults = {
-    maxWidth: "380px",
+    position: "absolute" as const,
+    margin: "auto",
+    width: "100%",
+    height: "100%",
   };
   const pageVariants = {
     initial: {
       opacity: 0,
-      overflow: "hidden",
-      position: "absolute" as const,
       x: isForward ? "100vw" : "-100vw",
       ...defaults,
     },
     in: {
       opacity: 1,
       x: 0,
-      position: "relative" as const,
       ...defaults,
     },
     out: {
-      opacity: 0,
-      position: "absolute" as const,
-      overflow: "hidden",
       x: isForward ? "-100vw" : "100vw",
+
+      opacity: 0,
       ...defaults,
     },
   };
@@ -109,42 +108,81 @@ function App() {
         />
       </Helmet>
       <PointsContext.Provider value={{ dispatch, pointTypes, setPoints }}>
-        <AppWrapper>
-          <AnimatePresence>
-            <Switch location={location} key={location.pathname}>
-              <Route exact path="/">
-                <PageWrapper>
-                  <Calculate />
-                </PageWrapper>
-              </Route>
-              <Route exact path="/detail/:pointType">
-                <PageWrapper>
-                  <PointDetail />
-                </PageWrapper>
-              </Route>
-              <Route exact path="/science-calculator">
-                <PageWrapper>
-                  <ScienceCalculator />
-                </PageWrapper>
-              </Route>
-              <Route exact path="/join-table">
-                <PageWrapper>
-                  <JoinGame />
-                </PageWrapper>
-              </Route>
-              <Route exact path="/create-table">
-                <PageWrapper>
-                  <CreateGame />
-                </PageWrapper>
-              </Route>
-              <Route path="scoreboard/:tableId">
-                <PageWrapper>
-                  <Scoreboard />
-                </PageWrapper>
-              </Route>
-            </Switch>
-          </AnimatePresence>
-        </AppWrapper>
+        <AnimatePresence>
+          <PageWrapper key={location.pathname}>
+            <AppWrapper>
+              <Switch location={location} key={location.pathname}>
+                <Route exact path="/">
+                  <div
+                    style={{
+                      width: "100%",
+
+                      height: "100%",
+                      maxWidth: "380px",
+                    }}
+                  >
+                    <Calculate />
+                  </div>
+                </Route>
+                <Route exact path="/detail/:pointType">
+                  <div
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      maxWidth: "380px",
+                    }}
+                  >
+                    <PointDetail />
+                  </div>
+                </Route>
+                <Route exact path="/science-calculator">
+                  <div
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      maxWidth: "380px",
+                    }}
+                  >
+                    <ScienceCalculator />
+                  </div>
+                </Route>
+                <Route exact path="/join-table">
+                  <div
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      maxWidth: "380px",
+                    }}
+                  >
+                    <JoinGame />
+                  </div>
+                </Route>
+                <Route exact path="/create-table">
+                  <div
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      maxWidth: "380px",
+                    }}
+                  >
+                    <CreateGame />
+                  </div>
+                </Route>
+                <Route path="scoreboard/:tableId">
+                  <div
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      maxWidth: "380px",
+                    }}
+                  >
+                    <Scoreboard />
+                  </div>
+                </Route>
+              </Switch>
+            </AppWrapper>
+          </PageWrapper>
+        </AnimatePresence>
       </PointsContext.Provider>
     </ApolloProvider>
   );

@@ -71,13 +71,9 @@ const Container = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
-
-  padding-left: 15px;
-  padding-right: 15px;
+  padding: 15px;
   position: sticky;
   bottom: 0;
-  padding-bottom: 15px;
-  padding-top: 15px;
 
   p {
     margin: 0px;
