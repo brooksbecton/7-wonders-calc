@@ -72,9 +72,9 @@ const Container = styled.div`
   flex-direction: row;
   justify-content: center;
   padding: 15px;
-  position: sticky;
+  position: fixed;
   bottom: 0;
-
+  width: calc(100vw - 30px);
   p {
     margin: 0px;
   }

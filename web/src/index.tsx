@@ -1,6 +1,6 @@
 import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
 import { AnimatePresence, motion } from "framer-motion";
-import React, { useEffect, useReducer } from "react";
+import React, { useEffect, useReducer, useState } from "react";
 import { render } from "react-dom";
 import { Helmet } from "react-helmet";
 import { registerObserver } from "react-perf-devtool";
@@ -20,10 +20,12 @@ import { IPointType } from "./PointsReducer/types";
 import serviceWorker from "./registerServiceWorker";
 import { CreateGame } from "./views/CreateGame";
 import { Calculate } from "./views/dashboard";
+import { BottomBar } from "./views/dashboard/components/BottomBar";
 import { JoinGame } from "./views/JoinGame";
 import { PointDetail } from "./views/pointDetail/components/PointDetails";
 import { ScienceCalculator } from "./views/ScienceCalculator";
 import { Scoreboard } from "./views/Scoreboard";
+import { BottomBarMenu } from "./views/wrapper/Modal";
 
 const client = new ApolloClient({
   uri:
@@ -90,6 +92,7 @@ const PageWrapper: React.FunctionComponent = ({ children }) => {
 
 function App() {
   const pointData = store.get("points", defaultState);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [pointTypes, dispatch] = useReducer(reducer, pointData);
   const setPoints = (newPointType: IPointType) =>
     dispatch(updatePoint(newPointType));
@@ -119,6 +122,7 @@ function App() {
 
                       height: "100%",
                       maxWidth: "380px",
+                      marginBottom: 77,
                     }}
                   >
                     <Calculate />
@@ -130,6 +134,7 @@ function App() {
                       width: "100%",
                       height: "100%",
                       maxWidth: "380px",
+                      marginBottom: 77,
                     }}
                   >
                     <PointDetail />
@@ -141,6 +146,7 @@ function App() {
                       width: "100%",
                       height: "100%",
                       maxWidth: "380px",
+                      marginBottom: 77,
                     }}
                   >
                     <ScienceCalculator />
@@ -152,6 +158,7 @@ function App() {
                       width: "100%",
                       height: "100%",
                       maxWidth: "380px",
+                      marginBottom: 77,
                     }}
                   >
                     <JoinGame />
@@ -163,6 +170,7 @@ function App() {
                       width: "100%",
                       height: "100%",
                       maxWidth: "380px",
+                      marginBottom: 77,
                     }}
                   >
                     <CreateGame />
@@ -174,6 +182,7 @@ function App() {
                       width: "100%",
                       height: "100%",
                       maxWidth: "380px",
+                      marginBottom: 77,
                     }}
                   >
                     <Scoreboard />
@@ -183,6 +192,12 @@ function App() {
             </AppWrapper>
           </PageWrapper>
         </AnimatePresence>
+        <BottomBarMenu isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
+        <BottomBar
+          handleMenuPress={() => {
+            setIsMenuOpen(true);
+          }}
+        />
       </PointsContext.Provider>
     </ApolloProvider>
   );
