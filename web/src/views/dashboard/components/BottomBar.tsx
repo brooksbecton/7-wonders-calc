@@ -30,7 +30,7 @@ export const BottomBar: React.FC<IProps> = ({ handleMenuPress }) => {
             key={total}
             initial={{ opacity: 0, y: isIncrementing ? 15 : -15 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: isIncrementing ? -15 : 15 }}
+            exit={{ opacity: 0 }}
             style={{ position: "absolute", marginLeft: 150 }}
             data-test-id="totalPoints"
           >
