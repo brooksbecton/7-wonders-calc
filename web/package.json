@@ -40,6 +40,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "e2e": "cypress run",
+    "e2e:dev": "cypress open",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"

@@ -160,6 +160,7 @@ describe("App", () => {
       cy.get('[type="submit"]').click();
 
       cy.url().should("include", "scoreboard");
+      cy.get("li").contains(/E2E User/);
     });
   });
 });

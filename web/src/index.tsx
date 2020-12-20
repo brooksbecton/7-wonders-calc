@@ -55,7 +55,6 @@ const PageWrapper: React.FunctionComponent = ({ children }) => {
   const pageVariants = {
     initial: {
       opacity: 0,
-      x: isForward ? "100vw" : "-100vw",
       ...defaults,
     },
     in: {
@@ -119,7 +118,6 @@ function App() {
                   <div
                     style={{
                       width: "100%",
-
                       height: "100%",
                       maxWidth: "380px",
                       marginBottom: 77,
@@ -176,7 +174,7 @@ function App() {
                     <CreateGame />
                   </div>
                 </Route>
-                <Route path="scoreboard/:tableId">
+                <Route path="/scoreboard/:tableId">
                   <div
                     style={{
                       width: "100%",
