@@ -1,7 +1,7 @@
-import { Link } from "react-router-dom";
-import React, { useEffect, useRef, useState } from "react";
-import styled from "styled-components";
 import { motion } from "framer-motion";
+import React from "react";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
 
 interface IProps {
   label: string;
@@ -18,27 +18,9 @@ export const CalculateInput = ({
   svg,
   color,
 }: IProps) => {
-  const [isIncrementing, setIsIncrementing] = useState(false);
-  const [isDecrementing, setIsDecrementing] = useState(false);
   const [pointType, pointsLabel] = label.split("-");
 
-  const handleIncrement = () => {
-    setIsIncrementing(true);
-  };
-
-  const handleDecrement = () => {
-    setIsDecrementing(true);
-  };
-
-  const handleDecrementFinish = () => {
-    setIsDecrementing(false);
-  };
-
-  const handleIncrementFinish = () => {
-    setIsIncrementing(false);
-  };
   const AnimatedLink = motion.custom(Link);
-  const AnimatedScoreInput = motion.custom(ScoreInput);
 
   return (
     <Container data-test-id={pointType}>
@@ -85,8 +67,6 @@ export const CalculateInput = ({
               aria-label={`Increment ${pointType} points to ${value + 1}`}
               data-test-id="increment"
               onClick={() => onChange(value + 1)}
-              // onMouseDown={handleIncrement}
-              // onMouseUp={handleIncrementFinish}
             >
               +
             </motion.button>
@@ -98,8 +78,6 @@ export const CalculateInput = ({
               aria-label={`Decrement ${pointType} points to ${value - 1}`}
               data-test-id="decrement"
               onClick={() => onChange(value - 1)}
-              // onMouseDown={handleDecrement}
-              // onMouseUp={handleDecrementFinish}
             >
               -
             </motion.button>

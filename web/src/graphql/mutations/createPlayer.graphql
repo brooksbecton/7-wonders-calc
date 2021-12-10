@@ -1,6 +1,0 @@
-mutation createPlayer($name: String!){
-    createPlayer(name: $name){
-        id
-        name
-    }
-}

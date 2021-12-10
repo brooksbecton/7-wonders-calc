@@ -2,11 +2,6 @@ import React from "react";
 import { Modal } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import {
-  MyPlayerDocument,
-  useDeletePlayerMutation,
-  useMyPlayerQuery,
-} from "../../generated/graphql";
 import { close } from "./../../icons/index";
 
 interface IProps {
@@ -18,22 +13,9 @@ export const BottomBarMenu: React.FunctionComponent<IProps> = ({
   isMenuOpen,
   setIsMenuOpen,
 }) => {
-  const { data } = useMyPlayerQuery();
-  const player = data?.me;
-  const [deletePlayer] = useDeletePlayerMutation();
 
   const handleMenuItemPress = () => {
     setIsMenuOpen(false);
-  };
-
-  const handleLeavePress = () => {
-    if (player) {
-      deletePlayer({
-        variables: { id: Number(player.id) },
-        refetchQueries: [{ query: MyPlayerDocument }],
-      });
-      handleMenuItemPress();
-    }
   };
 
   return (
@@ -89,60 +71,6 @@ export const BottomBarMenu: React.FunctionComponent<IProps> = ({
               Home
             </Link>
           </li>
-          {data?.me && (
-            <>
-              {data.me.table && (
-                <li>
-                  <Link
-                    onClick={handleMenuItemPress}
-                    style={{ textDecoration: "none" }}
-                    className="text-sm"
-                    aria-label="Go to Table"
-                    to={`${process.env.PUBLIC_URL}/scoreboard/${data.me.table.id}`}
-                  >
-                    Go to Table
-                  </Link>
-                </li>
-              )}
-              <li>
-                <Link
-                  onClick={handleLeavePress}
-                  style={{ textDecoration: "none" }}
-                  className="text-sm"
-                  aria-label="Leave Table"
-                  to={`${process.env.PUBLIC_URL}/`}
-                >
-                  Leave Table
-                </Link>
-              </li>
-            </>
-          )}
-          {!data?.me && (
-            <>
-              <li>
-                <Link
-                  onClick={handleMenuItemPress}
-                  style={{ textDecoration: "none" }}
-                  className="text-sm"
-                  aria-label="Join a Table"
-                  to={`${process.env.PUBLIC_URL}/join-table`}
-                >
-                  Join Table
-                </Link>
-              </li>
-              <li>
-                <Link
-                  onClick={handleMenuItemPress}
-                  style={{ textDecoration: "none" }}
-                  className="text-sm"
-                  aria-label="Create a Table"
-                  to={`${process.env.PUBLIC_URL}/create-table`}
-                >
-                  Create Table
-                </Link>
-              </li>
-            </>
-          )}
           <li>
             <button
               className="text-sm"

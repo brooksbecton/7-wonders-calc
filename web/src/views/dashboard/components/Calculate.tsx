@@ -1,7 +1,5 @@
 import * as React from "react";
-import posed from "react-pose";
 import { PointsContext } from "../../../PointsReducer/PointsContext";
-import { IPointType } from "../../../PointsReducer/types";
 import { CalculateInput } from "./CalculateInput";
 
 export const Calculate: React.FunctionComponent = () => {

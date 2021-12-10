@@ -10,6 +10,16 @@ import {
 import { IPointType } from "./types";
 import { updatePointType } from "./utils";
 
+console.log({
+  civilian,
+  coin,
+  commerce,
+  guild,
+  military,
+  science,
+  wonders,
+});
+
 export const defaultState: IPointType[] = [
   {
     key: "military-points",

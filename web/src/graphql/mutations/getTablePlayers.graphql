@@ -1,7 +1,0 @@
-query getTablePlayers($tableId: Float!) {
-    tablesPlayers(tableId:$tableId){
-        id
-        name
-        score
-    }
-}

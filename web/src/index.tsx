@@ -1,4 +1,3 @@
-import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
 import { AnimatePresence, motion } from "framer-motion";
 import React, { useEffect, useReducer, useState } from "react";
 import { render } from "react-dom";
@@ -18,24 +17,11 @@ import { PointsContext } from "./PointsReducer/PointsContext";
 import { defaultState, reducer } from "./PointsReducer/reducer";
 import { IPointType } from "./PointsReducer/types";
 import serviceWorker from "./registerServiceWorker";
-import { CreateGame } from "./views/CreateGame";
 import { Calculate } from "./views/dashboard";
 import { BottomBar } from "./views/dashboard/components/BottomBar";
-import { JoinGame } from "./views/JoinGame";
 import { PointDetail } from "./views/pointDetail/components/PointDetails";
 import { ScienceCalculator } from "./views/ScienceCalculator";
-import { Scoreboard } from "./views/Scoreboard";
 import { BottomBarMenu } from "./views/wrapper/Modal";
-
-const client = new ApolloClient({
-  uri:
-    process.env.NODE_ENV === "production"
-      ? "https://www.harveythegoodboy.xyz/graphql"
-      : "http://localhost:4000/graphql",
-
-  cache: new InMemoryCache(),
-  credentials: "include",
-});
 
 registerObserver();
 
@@ -101,7 +87,7 @@ function App() {
   const location = useLocation();
 
   return (
-    <ApolloProvider client={client}>
+    <>
       <Helmet>
         <title>7 Wonders Calculator</title>
         <meta
@@ -150,54 +136,14 @@ function App() {
                     <ScienceCalculator />
                   </div>
                 </Route>
-                <Route exact path="/join-table">
-                  <div
-                    style={{
-                      width: "100%",
-                      height: "100%",
-                      maxWidth: "380px",
-                      marginBottom: 77,
-                    }}
-                  >
-                    <JoinGame />
-                  </div>
-                </Route>
-                <Route exact path="/create-table">
-                  <div
-                    style={{
-                      width: "100%",
-                      height: "100%",
-                      maxWidth: "380px",
-                      marginBottom: 77,
-                    }}
-                  >
-                    <CreateGame />
-                  </div>
-                </Route>
-                <Route path="/scoreboard/:tableId">
-                  <div
-                    style={{
-                      width: "100%",
-                      height: "100%",
-                      maxWidth: "380px",
-                      marginBottom: 77,
-                    }}
-                  >
-                    <Scoreboard />
-                  </div>
-                </Route>
               </Switch>
             </AppWrapper>
           </PageWrapper>
         </AnimatePresence>
         <BottomBarMenu isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
-        <BottomBar
-          handleMenuPress={() => {
-            setIsMenuOpen(true);
-          }}
-        />
+        <BottomBar />
       </PointsContext.Provider>
-    </ApolloProvider>
+    </>
   );
 }
 

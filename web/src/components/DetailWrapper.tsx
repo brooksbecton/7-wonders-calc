@@ -1,13 +1,8 @@
 import * as React from "react";
-import posed from "react-pose";
 import styled from "styled-components";
 import { backArrow } from "../icons";
 
-export interface IProps {}
-
-// eslint-disable-next-line react/prop-types
-export const DetailWrapper: React.SFC<IProps> = ({ children }) => (
-  <>
+export const DetailWrapper: React.FunctionComponent = ({ children }) => (
     <ContentContainer>
       <BackButton
         aria-label="Go Back One Screen"
@@ -18,7 +13,7 @@ export const DetailWrapper: React.SFC<IProps> = ({ children }) => (
       </BackButton>
       {children}
     </ContentContainer>
-  </>
+  
 );
 
 export const ContentContainer = styled.div`

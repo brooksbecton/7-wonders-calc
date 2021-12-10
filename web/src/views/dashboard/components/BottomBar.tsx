@@ -1,20 +1,15 @@
+import { AnimatePresence, motion } from "framer-motion";
 import * as React from "react";
 import styled from "styled-components";
+import { usePrevious } from "../../../hooks/usePrevious";
 import { PointsContext } from "../../../PointsReducer/PointsContext";
 import { getTotalPoints } from "../../../PointsReducer/utils";
-import { menu } from "../../../icons";
-import { AnimatePresence, motion } from "framer-motion";
-import { usePrevious } from "../../../hooks/usePrevious";
 
-interface IProps {
-  handleMenuPress: () => void;
-}
 
-export const BottomBar: React.FC<IProps> = ({ handleMenuPress }) => {
+export const BottomBar: React.FunctionComponent = () => {
   const { pointTypes } = React.useContext(PointsContext);
   const total = getTotalPoints(pointTypes);
   const prevTotal = usePrevious(total);
-
   const isIncrementing = prevTotal < total;
 
   return (
@@ -38,19 +33,6 @@ export const BottomBar: React.FC<IProps> = ({ handleMenuPress }) => {
           </motion.span>
         </AnimatePresence>
       </TotalPoints>
-      <button
-        aria-label="Toggle Menu"
-        style={{
-          backgroundColor: "transparent",
-          border: 0,
-          margin: 0,
-          padding: 10,
-          cursor: "pointer",
-        }}
-        onClick={handleMenuPress}
-      >
-        <img src={menu} alt="menu icon" />
-      </button>
     </Container>
   );
 };
