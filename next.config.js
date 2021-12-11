@@ -1,5 +1,8 @@
+const withPWA = require('next-pwa')
+const runtimeCaching = require('next-pwa/cache')
+
 /** @type {import('next').NextConfig} */
-module.exports = {
+module.exports = withPWA({
   reactStrictMode: true,
   webpack(config) {
     config.module.rules.push({
@@ -14,5 +17,9 @@ module.exports = {
     locales: ["en"],
     defaultLocale: "en",
   },
+  pwa: {
+    dest: 'public',
+    runtimeCaching,
+  },
 
-}
+})
