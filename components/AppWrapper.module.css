@@ -1,0 +1,25 @@
+.topBar {
+  align-items: center;
+  justify-content: center;
+  background-color: var(--backdrop);
+  display: flex;
+  text-align: center;
+  width: 100%;
+}
+
+.topBar > img {
+  padding: 10px;
+  height: 43px;
+  width: 43px;
+}
+
+.wrapper {
+  display: flex;
+  flex: 1;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+
+  padding-left: 10px;
+  padding-right: 10px;
+}

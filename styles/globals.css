@@ -1,0 +1,75 @@
+:root {
+  --backdrop: #bfbfbf;
+  --pyramid-yellow: #f2b851;
+  --royal-purple: #1b156b;
+}
+
+html,
+body {
+  background-color: var(--backdrop);
+
+  margin: 0px;
+  padding: 0px;
+
+  height: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Copse";
+  margin: 0px;
+  padding: 0px;
+}
+
+* {
+  color: #3b3a3a;
+}
+
+html,
+.text {
+  font-size: 16px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  text-transform: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-weight: 400;
+}
+
+h1,
+.text-xl {
+  font-size: 2.441em;
+}
+
+h2,
+.text-l {
+  font-size: 1.953em;
+}
+
+h3,
+.text-md {
+  font-size: 1.563em;
+}
+
+h4,
+.text-sm {
+  font-size: 1.25em;
+}
+
+h5,
+.text-xs {
+  font-size: 0.8em;
+}
+
+p {
+  line-height: 1.45;
+}

@@ -1,0 +1,101 @@
+.bottomBar {
+  align-content: center;
+  background-color: var(--royal-purple);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.bottomBar > a,
+.bottomBar > button {
+  background-color: var(--royal-purple);
+  border: 0px;
+  color: var(--pyramid-yellow);
+  cursor: pointer;
+  line-height: 28px;
+  margin: 0;
+  margin-right: 12px;
+  padding-left: 7px;
+  padding-right: 7px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.inputWrapper {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 70%;
+}
+
+.angle {
+  background-color: var(--royal-purple);
+  width: 0%;
+}
+
+.leftSide {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  height: "100%";
+}
+
+.rightSide {
+  background-color: var(--royal-purple);
+  clip-path: polygon(30% 0, 100% 0, 100% 100%, 0% 100%);
+  color: var(--pyramid-yellow);
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  flex: 2;
+  min-width: 110px;
+}
+
+.rightSide > input {
+  width: 100%;
+}
+
+.container {
+  background: #e5e5e5;
+  box-shadow: 0px 6px 5px -3px rgba(0, 0, 0, 0.75);
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 25px;
+}
+
+.iconContainer > img {
+  width: 50px;
+  height: 50px;
+  padding: 10px;
+}
+
+.label {
+  align-self: center;
+  padding-left: 13px;
+  text-transform: capitalize;
+}
+
+.label > h2 {
+  margin-bottom: 5px;
+}
+.label > p {
+  margin: 0;
+}
+
+.scoreLabel {
+  margin: 0;
+  color: #e5e5e5;
+  text-align: center;
+  text-transform: capitalize;
+}
+
+.scoreInput {
+  background-color: transparent;
+  border: 0;
+  color: #e5e5e5;
+  height: 47px;
+  text-align: center;
+  width: 50%;
+}
