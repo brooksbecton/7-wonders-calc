@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useCallback } from "react";
-import { CalculateInput } from "../components/CalculateInput";
-import { PointTypeSvg } from "../components/PointTypeSvg";
+import { CalculateInput } from "./CalculateInput";
+import { PointTypeSvg } from "./PointTypeSvg";
 import { PointsContext } from "../models/PointsReducer/PointsContext";
 import { IPointType } from "../models/PointsReducer/types";
 import {
@@ -12,7 +12,7 @@ import {
   Commerce,
   Guild,
   Science,
-} from "./../components/icons";
+} from "./icons";
 
 export const Calculate: React.FunctionComponent = () => {
   const { pointTypes, setPoints } = React.useContext(PointsContext);

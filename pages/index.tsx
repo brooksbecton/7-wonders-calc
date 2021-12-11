@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import { Calculate } from "./calculate";
+import { Calculate } from "../components/Calculate";
 
 const Home: NextPage = () => {
   return (
