@@ -5,7 +5,7 @@
             ],
             "target": {
                   "namespace": "android_app",
-                  "package_name": "com.sevenwonderscalculator.twa",
+                  "package_name": "com.sevenwonderscalculator.www.twa",
                   "sha256_cert_fingerprints": [
                         "4A:30:6D:6E:FF:E9:FA:91:92:BC:EF:79:72:66:E4:5C:0D:84:D0:BD:21:45:31:E6:58:8E:07:C2:CD:F7:47:E4"
                   ]
