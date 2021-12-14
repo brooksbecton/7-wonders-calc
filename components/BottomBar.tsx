@@ -50,10 +50,10 @@ const Container = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
-  padding: 15px;
+  padding: 15px 25px;
   position: fixed;
   bottom: 0;
-  width: calc(100vw - 30px);
+  width: calc(100vw - 50px);
   p {
     margin: 0px;
   }
