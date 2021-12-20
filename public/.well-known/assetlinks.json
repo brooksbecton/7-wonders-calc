@@ -1,6 +1,15 @@
-[{
-        "relation": ["delegate_permission/common.handle_all_urls"],
-        "target" : { "namespace": "android_app", "package_name": "com.sevenwonderscalculator.twa",
-                     "sha256_cert_fingerprints": ["4D:E7:9F:79:D2:27:1B:B2:A7:29:15:CC:A9:2E:5B:C2:E4:97:75:36:7B:5A:75:9A:CA:28:A7:CD:D1:0C:23:C1"] }
+[
+      {
+            "relation": [
+                  "delegate_permission/common.handle_all_urls"
+            ],
+            "target": {
+                  "namespace": "android_app",
+                  "package_name": "com.sevenwonderscalculator.twa",
+                  "sha256_cert_fingerprints": [
+                        "4D:E7:9F:79:D2:27:1B:B2:A7:29:15:CC:A9:2E:5B:C2:E4:97:75:36:7B:5A:75:9A:CA:28:A7:CD:D1:0C:23:C1",
+                        "5C:1F:F4:A1:AC:5D:92:E4:A5:68:86:47:A0:4B:4F:60:C4:DF:18:D0:3A:F3:52:83:0A:D7:75:9E:3A:F9:E5:FF"
+                  ]
+            }
       }
 ]
