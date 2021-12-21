@@ -18,7 +18,7 @@ export const CalculateInput = ({
   Svg,
   color,
 }: IProps) => {
-  const [pointType, pointsLabel] = label.split("-");
+  const [pointType] = label.split("-");
 
   return (
     <Container data-test-id={pointType}>
@@ -98,6 +98,7 @@ export const CalculateInput = ({
       </RightSide>
       <div
         style={{
+          borderRadius: "0px 6px 6px 0px",
           height: "103px",
           justifyContent: "center",
           backgroundColor: color,
@@ -172,6 +173,7 @@ const RightSide = styled.div`
 `;
 
 const Container = styled.div`
+  border-radius: 6px;
   background: #e5e5e5;
   box-shadow: 0px 6px 5px -3px rgba(0, 0, 0, 0.75);
   display: flex;
