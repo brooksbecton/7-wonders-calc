@@ -1,5 +1,9 @@
 define(['exports'], (function (exports) { 'use strict';
 
+
+    self.__WB_DISABLE_DEV_LOGS = true
+
+
     try {
       self['workbox:core:6.4.1'] && _();
     } catch (e) {}

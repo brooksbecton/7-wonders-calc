@@ -1,47 +1,25 @@
 import { AnimatePresence } from "framer-motion";
 import type { AppProps } from "next/app";
-import Image from "next/image";
-import { useEffect, useReducer } from "react";
-import * as store from "store";
+import { Provider } from "react-redux";
 import styled from "styled-components";
-import BottomBar from "../components/BottomBar";
-import { updatePoint } from "../models/PointsReducer/actions";
-import { PointsContext } from "../models/PointsReducer/PointsContext";
-import { defaultState, reducer } from "../models/PointsReducer/reducer";
-import { IPointType } from "../models/PointsReducer/types";
+import { Pyramid } from "../components/icons/";
+import "../config/firebase";
+import store from "../models/store";
 import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const pointData = store.get("points", defaultState);
-  const [pointTypes, dispatch] = useReducer(reducer, pointData);
-  const setPoints = (newPointType: IPointType) =>
-    dispatch(updatePoint(newPointType));
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      store.set("points", pointTypes);
-    }
-  });
-
   return (
     <AnimatePresence>
-      <PointsContext.Provider value={{ dispatch, pointTypes, setPoints }}>
+      <Provider store={store}>
         <AppContainer>
           <TopBar>
-            <Image
-              src={"/pyramid.svg"}
-              alt="Yellow Pyramid Icon"
-              height={40}
-              width={40}
-            />
+            <Pyramid height={40} width={40} />
           </TopBar>
           <PageContainer>
             <Component {...pageProps} />
           </PageContainer>
-          <BottomBarSpacer />
-          <BottomBar />
         </AppContainer>
-      </PointsContext.Provider>
+      </Provider>
     </AnimatePresence>
   );
 }
@@ -74,7 +52,8 @@ const TopBar = styled.div`
   background-color: var(--backdrop);
   display: flex;
   justify-content: center;
-  padding-bottom: 15px;
+  padding-bottom: 25px;
+  padding-top: 15px;
   text-align: center;
   width: 100%;
 

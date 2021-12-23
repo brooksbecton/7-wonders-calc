@@ -16,25 +16,25 @@ interface IProps {
 export const PointTypeSvg: React.FunctionComponent<IProps> = (props) => {
   const getComponent = () => {
     switch (props.pointType) {
-      case "military-points":
+      case "military":
         return <Military />;
 
-      case "treasury-points":
+      case "treasury":
         return <Coin />;
 
-      case "wonders-points":
+      case "wonders":
         return <Wonders />;
 
-      case "civilian-points":
+      case "civilian":
         return <Civilian />;
 
-      case "commerce-points":
+      case "commerce":
         return <Commerce />;
 
-      case "guilds-points":
+      case "guilds":
         return <Guild />;
 
-      case "science-points":
+      case "science":
         return <Science />;
     }
   };

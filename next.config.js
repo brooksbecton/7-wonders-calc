@@ -1,5 +1,6 @@
-const withPWA = require('next-pwa')
-const runtimeCaching = require('next-pwa/cache')
+const withPWA = require("next-pwa");
+const runtimeCaching = require("next-pwa/cache");
+const prod = process.env.NODE_ENV === "production";
 
 /** @type {import('next').NextConfig} */
 module.exports = withPWA({
@@ -8,18 +9,18 @@ module.exports = withPWA({
     config.module.rules.push({
       test: /\.svg$/i,
       issuer: /\.[jt]sx?$/,
-      use: ['@svgr/webpack'],
-    })
+      use: ["@svgr/webpack"],
+    });
 
-    return config
+    return config;
   },
   i18n: {
     locales: ["en"],
     defaultLocale: "en",
   },
   pwa: {
-    dest: 'public',
+    dest: "public",
     runtimeCaching,
+    disable: prod ? false : true,
   },
-
-})
+});
