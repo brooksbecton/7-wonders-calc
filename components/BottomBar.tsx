@@ -1,19 +1,13 @@
 import Popover from "@mui/material/Popover";
-import { getAuth, signInAnonymously } from "firebase/auth";
-import firebase from "firebase/compat/app";
 import { motion } from "framer-motion";
 import { useRouter } from "next/router";
-import * as React from "react";
-import { MouseEventHandler, useState } from "react";
-import { useDispatch } from "react-redux";
+import React, { MouseEventHandler, useState } from "react";
 import styled from "styled-components";
+import { useIsOnline } from "../hooks/useIsOnline";
 import { usePrevious } from "../hooks/usePrevious";
-import {
-  DEFAULT_TABLE_KEY,
-  ITableScore,
-  resetScore,
-} from "../models/ScoreSlice";
+import { DEFAULT_TABLE_KEY, ITableScore } from "../models/ScoreSlice";
 import { createTable } from "../services/table";
+import { getUserId } from "../utils/getUserId";
 import { Button } from "./Button";
 
 interface IProps {
@@ -24,50 +18,21 @@ interface IProps {
 
 export const BottomBar: React.FunctionComponent<IProps> = (props) => {
   const { handleReset, score, tableId = DEFAULT_TABLE_KEY } = props;
-
+  const isOnline = useIsOnline();
   const [anchorEl, setAnchorEl] = useState<any>();
-  const auth = getAuth();
-  const dispatch = useDispatch();
-
   const total = Object.values(score).reduce(
     (total, scoreType) => total + scoreType.value,
     0
   );
   const prevTotal = usePrevious(total);
   const isIncrementing = prevTotal < total;
-  const [userId, setUserId] = useState("");
-  const [isCreatingTable, setIsCreatingTable] = useState(false);
   const router = useRouter();
 
-  React.useEffect(() => {
-    const unregisterAuthObserver = firebase
-      .auth()
-      .onAuthStateChanged(async (user) => {
-        if (!!user) {
-          setUserId(user.uid);
-        } else {
-          // Auth Error
-        }
-      });
-    return () => unregisterAuthObserver();
-  }, []);
+  const handleCreateTable = async () => {
+    const userId = await getUserId();
 
-  React.useEffect(() => {
-    if (isCreatingTable && userId) {
-      createTable(userId).then((tableId) => {
-        if (tableId) {
-          router.push(`table/${tableId}`);
-        } else {
-          // Failed to create table
-        }
-      });
-    } else {
-      signInAnonymously(auth);
-    }
-  }, [isCreatingTable, userId]);
-
-  const handleCreateTable = () => {
-    setIsCreatingTable(true);
+    await createTable(userId);
+    router.push(`table/${tableId}`);
   };
 
   const handleMenuClick: MouseEventHandler = (event) => {
@@ -112,27 +77,28 @@ export const BottomBar: React.FunctionComponent<IProps> = (props) => {
           horizontal: "left",
         }}
       >
-        <div
-          style={{
-            padding: "15px",
-        
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "space-around",
-          }}
-        >
+        <PopoverContainer>
           <MenuItem>
             <Button onClick={handleResetPress}>Reset Score</Button>
           </MenuItem>
-          <MenuItem>
-            <Button onClick={handleCreateTable}>Create Table</Button>
-          </MenuItem>
-        </div>
+          {isOnline && (
+            <MenuItem>
+              <Button onClick={handleCreateTable}>Create Table</Button>
+            </MenuItem>
+          )}
+        </PopoverContainer>
       </Popover>
       <Button onClick={handleMenuClick}>• • •</Button>
     </Container>
   );
 };
+
+const PopoverContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 15px;
+`;
 
 const TotalPoints = styled.h3`
   flex-grow: 1;
@@ -147,12 +113,13 @@ const TotalPoints = styled.h3`
 
 const Container = styled.div`
   background-color: var(--pyramid-yellow);
+  bottom: 0;
   display: flex;
   flex-direction: row;
   justify-content: center;
   padding: 15px 25px;
   position: sticky;
-  bottom: 0;
+  
   p {
     margin: 0px;
   }
