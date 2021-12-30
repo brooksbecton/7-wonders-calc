@@ -79,7 +79,7 @@ export const BottomBar: React.FunctionComponent<IProps> = (props) => {
       >
         <PopoverContainer>
           <MenuItem>
-            <Button onClick={handleResetPress}>Reset Score</Button>
+            <Button data-test-id="reset" onClick={handleResetPress}>Reset Score</Button>
           </MenuItem>
           {isOnline && (
             <MenuItem>
@@ -88,7 +88,9 @@ export const BottomBar: React.FunctionComponent<IProps> = (props) => {
           )}
         </PopoverContainer>
       </Popover>
-      <Button onClick={handleMenuClick}>• • •</Button>
+      <Button aria-label="Open Menu" onClick={handleMenuClick}>
+        • • •
+      </Button>
     </Container>
   );
 };
@@ -119,7 +121,7 @@ const Container = styled.div`
   justify-content: center;
   padding: 15px 25px;
   position: sticky;
-  
+
   p {
     margin: 0px;
   }

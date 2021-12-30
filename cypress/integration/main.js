@@ -1,7 +1,12 @@
+import { describe, it } from 'mocha';
+
 /* global cy */
 const homeUrl = "";
 function getTestId(id) {
   return `[data-test-id="${id}"]`;
+}
+function getByAriaLabel(label) {
+  return `[aria-label="${label}"]`;
 }
 describe("App", () => {
   const pointTypes = [
@@ -82,5 +87,18 @@ describe("App", () => {
       cy.get(getTestId("language-slider")).first().click();
       cy.get(getTestId("science-total")).contains("32");
     });
+  });
+  it.only("resets scores", () => {
+    pointTypes.forEach((p) => {
+      cy.get(getTestId(p)).within(() => {
+        cy.get(getTestId("increment")).click();
+      });
+    });
+    cy.get(getByAriaLabel("Open Menu")).click();
+    cy.get(getTestId("reset")).click();
+
+
+    cy.get(getTestId("totalPoints")).contains(0);
+
   });
 });
