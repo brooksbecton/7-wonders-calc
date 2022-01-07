@@ -88,9 +88,9 @@ export const BottomBar: React.FunctionComponent<IProps> = (props) => {
           )}
         </PopoverContainer>
       </Popover>
-      <Button aria-label="Open Menu" onClick={handleMenuClick}>
+      {/* <Button aria-label="Open Menu" onClick={handleMenuClick}>
         • • •
-      </Button>
+      </Button> */}
     </Container>
   );
 };
