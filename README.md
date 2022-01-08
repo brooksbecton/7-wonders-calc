@@ -1,15 +1,26 @@
 # 7 Wonders Calculator
 
-## New Builds
-
-### Android
+[PWA Builder](https://www.pwabuilder.com/publish?site=https://7wonderscalculator.com)
 
 Colors
 
 ```
+Backdrop: rgb(191,191,191)
 Pyramid Yellow: rgb(242, 184, 81)
 Royal Purple: rgb(27, 21, 107)
 ```
+
+## New Builds
+
+### iOS
+
+- Bundle ID: com.7wonderscalculator
+- Status Bar Color: Backdrop
+- Splash Screen Color: Royal Purple
+- Progress Bar Color: Pyramid Yellow
+
+
+### Android
 
 - Package Id: "com.sevenwonderscalculator.twa"
 - Theme Color: Pyramid Yellow
