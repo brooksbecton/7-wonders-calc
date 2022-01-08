@@ -14,7 +14,7 @@ Royal Purple: rgb(27, 21, 107)
 
 ### iOS
 
-- Bundle ID: com.7wonderscalculator
+- Bundle ID: com.sevenwonderscalculator.twa
 - Status Bar Color: Backdrop
 - Splash Screen Color: Royal Purple
 - Progress Bar Color: Pyramid Yellow
