@@ -115,6 +115,8 @@ const TotalPoints = styled.h3`
 
 const Container = styled.div`
   background-color: var(--pyramid-yellow);
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
   bottom: 0;
   display: flex;
   flex-direction: row;
