@@ -3,10 +3,8 @@ import { motion } from "framer-motion";
 import { useRouter } from "next/router";
 import React, { MouseEventHandler, useState } from "react";
 import styled from "styled-components";
-import { useIsOnline } from "../hooks/useIsOnline";
 import { usePrevious } from "../hooks/usePrevious";
 import { ITableScore } from "../models/ScoreSlice";
-import { getUserId } from "../utils/getUserId";
 import { Button } from "./Button";
 
 interface IProps {
@@ -17,7 +15,6 @@ interface IProps {
 
 export const BottomBar: React.FunctionComponent<IProps> = (props) => {
   const { handleReset, score } = props;
-  const isOnline = useIsOnline();
   const [anchorEl, setAnchorEl] = useState<any>();
   const total = Object.values(score).reduce(
     (total, scoreType) => total + scoreType.value,
