@@ -5,8 +5,7 @@ import React, { MouseEventHandler, useState } from "react";
 import styled from "styled-components";
 import { useIsOnline } from "../hooks/useIsOnline";
 import { usePrevious } from "../hooks/usePrevious";
-import { DEFAULT_TABLE_KEY, ITableScore } from "../models/ScoreSlice";
-import { createTable } from "../services/table";
+import { ITableScore } from "../models/ScoreSlice";
 import { getUserId } from "../utils/getUserId";
 import { Button } from "./Button";
 
@@ -17,7 +16,7 @@ interface IProps {
 }
 
 export const BottomBar: React.FunctionComponent<IProps> = (props) => {
-  const { handleReset, score, tableId = DEFAULT_TABLE_KEY } = props;
+  const { handleReset, score } = props;
   const isOnline = useIsOnline();
   const [anchorEl, setAnchorEl] = useState<any>();
   const total = Object.values(score).reduce(
@@ -27,13 +26,6 @@ export const BottomBar: React.FunctionComponent<IProps> = (props) => {
   const prevTotal = usePrevious(total);
   const isIncrementing = prevTotal < total;
   const router = useRouter();
-
-  const handleCreateTable = async () => {
-    const userId = await getUserId();
-
-    await createTable(userId);
-    router.push(`table/${tableId}`);
-  };
 
   const handleMenuClick: MouseEventHandler = (event) => {
     setAnchorEl(event.currentTarget);
@@ -79,18 +71,15 @@ export const BottomBar: React.FunctionComponent<IProps> = (props) => {
       >
         <PopoverContainer>
           <MenuItem>
-            <Button data-test-id="reset" onClick={handleResetPress}>Reset Score</Button>
+            <Button data-test-id="reset" onClick={handleResetPress}>
+              Reset Score
+            </Button>
           </MenuItem>
-          {isOnline && (
-            <MenuItem>
-              <Button onClick={handleCreateTable}>Create Table</Button>
-            </MenuItem>
-          )}
         </PopoverContainer>
       </Popover>
-      {/* <Button aria-label="Open Menu" onClick={handleMenuClick}>
+      <Button aria-label="Open Menu" onClick={handleMenuClick}>
         • • •
-      </Button> */}
+      </Button>
     </Container>
   );
 };

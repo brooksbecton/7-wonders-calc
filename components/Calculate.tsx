@@ -1,13 +1,7 @@
-import { getAuth } from "firebase/auth";
 import * as React from "react";
 import { useCallback } from "react";
 import { useDispatch } from "react-redux";
-import {
-  DEFAULT_TABLE_KEY,
-  IPointType,
-  ITableScore,
-  updateScore,
-} from "../models/ScoreSlice";
+import { IPointType, ITableScore, updateScore } from "../models/ScoreSlice";
 import { getPointTypeColor } from "../utils/getPointTypeColor";
 import { CalculateInput } from "./CalculateInput";
 import { PointTypeSvg } from "./PointTypeSvg";
@@ -18,8 +12,7 @@ interface IProps {
 }
 
 export const Calculate: React.FunctionComponent<IProps> = (props) => {
-  const { score, tableId = DEFAULT_TABLE_KEY } = props;
-  const userId = getAuth().currentUser?.uid;
+  const { score } = props;
   const dispatch = useDispatch();
 
   const handleScoreChange = useCallback(
@@ -27,8 +20,6 @@ export const Calculate: React.FunctionComponent<IProps> = (props) => {
       dispatch(
         updateScore({
           key,
-          tableId,
-          userId,
           value,
         })
       );

@@ -4,24 +4,19 @@ import { useDispatch, useSelector } from "react-redux";
 import BottomBar from "../components/BottomBar";
 import { Calculate } from "../components/Calculate";
 import {
-  DEFAULT_TABLE_KEY,
-  DEFAULT_USER_KEY,
   resetScore,
 } from "../models/ScoreSlice";
 import { IRootState } from "../models/store";
 
 const Home: NextPage = () => {
   const score = useSelector(
-    (state: IRootState) => state.score[DEFAULT_TABLE_KEY][DEFAULT_USER_KEY]
+    (state: IRootState) => state.score
   );
   const dispatch = useDispatch();
 
   const handleReset = () => {
     dispatch(
-      resetScore({
-        tableId: DEFAULT_TABLE_KEY,
-        userId: DEFAULT_USER_KEY,
-      })
+      resetScore()
     );
   };
 

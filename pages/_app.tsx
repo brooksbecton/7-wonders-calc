@@ -3,7 +3,6 @@ import type { AppProps } from "next/app";
 import { Provider } from "react-redux";
 import styled from "styled-components";
 import { Pyramid } from "../components/icons/";
-import "../config/firebase";
 import store from "../models/store";
 import "../styles/globals.css";
 
